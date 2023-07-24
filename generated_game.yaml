@@ -1,0 +1,299 @@
+actions:
+  action_types:
+  - descriptor:
+    - (Always available)
+    image: false
+    name: General Actions
+    simple: true
+    type: general
+    variants:
+    - descriptor:
+      - Take 1 coin from the Treasury.
+      name: Income
+    - descriptor:
+      - Take 2 coins from the Treasury. (Can be blocked by the Duke)
+      name: Foreign Aid
+    - descriptor:
+      - Pay 7 coins to the Treasury and launch a Coup against another player. That
+        player immediately loses an influence. A Coup is always successful. If you
+        start your turn with 10 (or more) coins you are required to launch a Coup.
+      name: Coup
+  - descriptor:
+    - (If challenged a player must show they influence the relevant character)
+    image: true
+    image_first: true
+    name: Character Actions
+    simple: false
+    type: character
+    variants:
+    - characters:
+      - Duke
+      descriptor:
+      - Take 3 coins from the Treasury.
+      image: duke
+      name: Tax
+    - characters:
+      - Assassin
+      descriptor:
+      - Pay 3 coins to the Treasury and launch an assassination against another player.
+        If successful that player immediately loses an influence. (Can be blocked
+        by the Contessa)
+      image: assassin
+      name: Assassinate
+    - characters:
+      - Captain
+      descriptor:
+      - Take 2 coins from another player. If they only have one coin, take only one.
+        (Can be blocked by the Ambassador or the Captain)
+      image: captain
+      name: Steal
+    - characters:
+      - Ambassador
+      descriptor:
+      - Exchange cards with the Court. First take 2 random cards from the Court deck.
+        Choose which, if any, to exchange with your face-down cards. Then return two
+        cards to the Court deck.
+      image: ambassador
+      name: Exchange
+  - descriptor:
+    - Counteractions can be taken by other players to intervene or block a player's
+      action.
+    - Counteractions operate like character actions. Players may claim to influence
+      any of the characters and use their abilities to counteract another player.
+      They may be telling the truth or bluffing.
+    - They do not need to show any cards unless challenged. Counteractions may be
+      challenged, but if not challenged they automatically succeed. If an action is
+      successfully counteracted, the action fails but any coins paid as the cost of
+      the action remain spent.
+    image: true
+    image_first: false
+    name: Counteractions
+    simple: false
+    type: counteraction
+    variants:
+    - characters:
+      - Duke
+      descriptor:
+      - Any player claiming the Duke may counteract and block a player attempting
+        to collect foreign aid.</p>
+      - The player trying to gain foreign aid receives no coins that turn.
+      image: duke
+      name: Blocks Foreign Aid
+    - characters:
+      - Contessa
+      descriptor:
+      - The player who is being assassinated may claim the Contessa and counteract
+        to block the assassination.
+      - The assassination fails but the fee paid by the player for the assassin remains
+        spent.
+      image: contessa
+      name: Blocks Assassination
+    - characters:
+      - Ambassador
+      - Captain
+      descriptor:
+      - The player who is being stolen from may claim either the Ambassador or the
+        Captain and counteract to block the steal.
+      - The player trying to steal receives no coins that turn.
+      image: ambassador/captain
+      name: Blocks Stealing
+  overview:
+  - A player may choose any action they want and can afford. Some actions (Character
+    Actions) require influencing characters.</p>
+  - If they choose a Character Action a player must claim that the required character
+    is one of their face down cards. They can be telling the truth or bluffing. They
+    do not need to reveal any of their face down cards unless they are challenged.
+    If they are not challenged they automatically succeed.</p>
+  - If a player starts their turn with 10 (or more) coins they must launch a Coup
+    that turn as their only action.</p>
+challenges:
+  text:
+  - Any action or counteraction using character influence can be challenged.
+  - Any other player can issue a challenge to a player regardless of whether they
+    are involved in the action.
+  - Once an action or counteraction is declared other players must be given an opportunity
+    to challenge. Once play continues challenges cannot be retroactively issued.
+  - If a player is challenged they must prove they had the required influence by showing
+    the relevant character is one of their face-down cards. If they can't, or do not
+    wish to, prove it, they lose the challenge. If they can, the challenger loses.
+  - Whoever loses the challenge immediately loses an influence.
+  - If a player wins a challenge by showing the relevant character card, they first
+    return that card to the Court deck, re-shuffle the Court deck and take a random
+    replacement card.
+  - (That way they have not lost influence and other players do not know the new influence
+    card they have). Then the action or counteraction is resolved.
+  - If an action is successfully challenged the entire action fails, and any coins
+    paid as the cost of the action are returned to the player.
+characters:
+- name: Duke
+- image_with_logo: coup_images/coup1.webp
+- name: Assassin
+- image_with_logo: coup_images/coup2.webp
+- name: Captain
+- image_with_logo: coup_images/coup3.webp
+- name: Ambassador
+- image_with_logo: coup_images/coup4.webp
+- name: Contessa
+- image_with_logo: coup_images/coup5.webp
+components:
+  image: coup_images/components2.webp
+  variants:
+  - name: Character Card
+    name_plural: Character Cards
+    type: card
+    variant_suffix: Card
+    variant_suffix_plural: Cards
+    variants:
+    - name: Duke
+      neach: 3
+    - name: Assassin
+      neach: 3
+    - name: Captain
+      neach: 3
+    - name: Ambassador
+      neach: 3
+    - name: Contessa
+      neach: 3
+  - name: Summary Cards
+    name_plural: Summary Cards
+    neach: 6
+    type: card
+    variants: null
+  - name: Coin
+    name_plural: Coins
+    neach: 50
+    type: token
+    variants: null
+  - name: Instructions
+    name_plural: Instructions
+    neach: 1
+    type: paper
+    variants: null
+font_family: Roboto, sans-serif;
+game_play:
+  text:
+  - On your turn, you can take any of the actions listed on the action list, provided
+    you can afford it. Actions can be challenged by any other player, and bluffs can
+    be called. If you lose a challenge, you lose an influence.
+  - After the action is chosen other players have an opportunity to challenge or counteract
+    that action.
+  - If an action is not challenged or counteracted, the action automatically succeeds.
+    Challenges are resolved first before any action or counteraction is resolved.
+  - When a player has lost all their influence and both their cards are face up in
+    front of them, they are immediately out of the game. They leave their cards face
+    up and return all their coins to the Treasury.
+  - The game ends when there is only one player left.
+hero_image: coup_images/coup.webp
+images:
+  ambassador:
+    alt: ambassador with logo img
+    class: ambassador-with-logo-img
+    src: coup_images/coup4.webp
+  ambassador/captain:
+    alt: ambassador & captain with logo img
+    class: ambassador-captain-with-logo-img
+    src: coup_images/coup6.webp
+  assassin:
+    alt: ambassador with logo img
+    class: ambassador-with-logo-img
+    src: coup_images/coup2.webp
+  captain:
+    alt: captain with logo img
+    class: captain-with-logo-img
+    src: coup_images/coup3.webp
+  contessa:
+    alt: contessa with logo img
+    class: contessa-with-logo-img
+    src: coup_images/coup5.webp
+  duke:
+    alt: duke with logo img
+    class: duke-with-logo-img
+    src: coup_images/coup1.webp
+name: Teenage Mutant Ninja Power Struggle
+note:
+  background_color: '#f6f6f6'
+  background_image: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 95%,  rgba(0,0,0,0)
+    95%, rgba(250,15,10,0.1) 100%);
+  border_radius: 40px
+  box_shadow: true
+notes:
+  note1:
+  - class: influence
+    text:
+    - Facedown cards in front of a player represent who they influence at court. The
+      characters printed on their face down cards represents which characters that
+      player influences and their abilities.
+    - Every time a player loses an influence they have to turn over and reveal one
+      of their face down cards. Revealed cards remain face up in front of the player
+      visible to everyone and no longer provide influence for the player.
+    - Each player always chooses which of their own cards they wish to reveal when
+      they lose an influence.
+    - When a player has lost all their influence they are exiled and out of the game.
+    title: Influence
+  note2:
+  - class: double-dangers
+    text:
+    - It is possible to lose 2 influence in one turn if you unsuccessfully defend
+      against an assassination.
+    - For example, if you challenge an assassin used against you and lose the challenge,
+      you will lose 1 influence for the lost challenge and then 1 influence for the
+      successful assassination.
+    - Or if you bluff about having the Contessa to block an assassination attempt
+      and are challenged, you will lose 1 influence for the lost challenge and then
+      lose 1 influence for the successful assassination.
+    title: 'Note: Double Dangers of Assassination'
+  - class: lack-trust
+    text:
+    - Any negotiations are allowed, but none are ever binding. Players are not allowed
+      to reveal any of their cards to other players.
+    - No coins can be given or lent to other players.
+    - There is no second place.
+    title: Total (Lack of) Trust
+  note3:
+  - class: two-player
+    text:
+    - When playing Coup with two players, the starting player receives only 1 coin
+      at the beginning of the game.
+    - 'As a variant, Coup can be played with two players with these changes to the
+      setup:'
+    - Divide the cards into a 3 sets of 5 (each set has one of each character). Each
+      player takes one set, secretly chooses one card and discards the rest.
+    - Shuffle the third set and deal one card to each player and then put the remaining
+      three cards face down as the court deck.
+    title: Two Player Coup & Two Player Variant
+objective:
+  text:
+  - To eliminate the influence of all other players and be the last survivor.
+setup:
+  image: coup_images/coup7.webp
+  text:
+  - Shuffle all the character cards and deal 2 to each player. Players can always
+    look at their cards but must keep them face down in front of them. Place the remaining
+    cards in the middle of the play area as the Court deck.
+  - Give each player 2 coins. Each player's money must be kept visible. Place the
+    remaining coins in the middle of the play area as the Treasury.
+  - Give one summary card to each player. This is for reference only. Players should
+    familiarize themselves with all the actions and characters before starting the
+    game.
+  - The person who won the last game starts.
+story:
+  text:
+  - In the heart of New York City, deep beneath the storm-tossed streets, our heroes,
+    Leonardo, Raphael, Donatello, and Michelangelo, are locked in a state of recovery.
+    Following their last battle with Shredder, they work under the tutelage of Master
+    Splinter to rebuild the strained bonds of brotherhood.
+  - But peace is fleeting, especially beneath the ground. A new threat arises, plunging
+    the city into chaos. Shredder may have fallen, but his legacy lives on. Various
+    factions scramble to fill the power vacuum left in his wake, endangering the city
+    our heroes cherish.
+  - The Turtles must each gather their own allies, use their unique skills, and outwit
+    both enemies and one another to ensure the protection of their home. The trust
+    that held them together is now the factor that turns them separate ways.
+  - "In this game, you take on the role of one of the Turtles, working to solidify
+    your influence and resources in order to thwart the lingering Foot Clan\u2019s
+    attempts for power while keeping the city safe. Bear in mind that only one can
+    control the city\u2019s underbelly. Will you save the city, or will it descend
+    into the chaos of the power-hungry?"
+  - "Choose your actions wisely, strategize your alliances, and remember - in the
+    end, only the most influential will rule. It\u2019s time to come out of the shadows,
+    it\u2019s time to play Teenage Mutant Ninja Power Struggle."

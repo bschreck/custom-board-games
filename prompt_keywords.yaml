@@ -1,0 +1,110 @@
+medium:
+ - portrait
+ - Digital paintin
+ - Concept art
+ - Ultra realistic illustration
+ - Underwater portrait
+ - Underwater steampunk
+   
+style:
+hyperrealistic
+pop-art
+Modernist
+art nouveau
+
+artist:
+John Collier	19th century portrait painter. Add elegancy
+Stanley Artgerm Lau	Strong realistic modern drawing.
+Frida Kahlo	Quite strong effect following Kahlo’s portrait style. Sometimes result in picture frame
+John Singer Sargent	Good to use with woman portrait, generate 19th delicate clothings, some impressionism
+Alphonse Mucha	2D portrait painting in style of Alphonse Mucha
+
+website:
+pixiv	Japanese anime style
+pixabay	Commercial stock photo style
+artstation	Modern illustration, fantasy
+
+resolution:
+unreal engine	Very realistic and detailed 3D
+sharp focus	Increase resolution
+8k	Increase resolution, though can lead to it looking more fake. Makes the image more camera like and realistic
+vray	3D rendering best for objects, landscape and building.
+
+additional_details:
+dramatic	Increases the emotional expressivity of the face. Overall substantial increase in photo potential / variability. +1 for variability, important for getting the max hit.
+silk	Add silk to clothing
+expansive	More open background, smaller subject
+low angle shot	shot from low angle **
+god rays	sunlight breaking through the cloud
+psychedelic	vivid color with distortion
+
+color:
+iridescent gold	Shinny gold
+silver	Silver color
+vintage	vintage effect
+
+
+portrait:
+  - headshot
+  - posed
+  - candid
+  - gender identity
+  - cultural identity
+  - photorealistic
+  - expressive emotions
+  - soft focus
+  - close up
+  - sideview
+  - eye contact
+  - age range
+  - full depth of field
+  - shallow depth of field
+    
+
+logos:
+  - mascot
+  - emblem
+  - lettermark
+
+realistic:
+‘hyper-realistic’
+‘still-life’
+‘textured’
+
+impressionist:
+‘pastel colours’
+‘painted light’
+‘bokeh’
+‘brushstrokes’
+‘visible brushstrokes’
+
+landscape:
+‘pastel colours’
+‘painted light’
+‘bokeh’
+‘brushstrokes’
+‘visible brushstrokes’
+
+character_design:
+‘warrior’
+‘cyborg’
+‘cyber punk’
+‘fairy’
+‘femme fatale’
+‘mother nature’
+‘girl next door’
+‘villain’
+‘angel’
+‘devil’
+‘knight’
+‘goddess’
+‘god’
+‘gamer’
+‘geek’
+‘popular girl’
+‘goth’
+‘artist’
+‘nun’
+‘priest’
+‘professor’
+‘muse’
