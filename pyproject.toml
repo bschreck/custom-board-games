@@ -1,0 +1,29 @@
+[project]
+name = "custom-board-games"
+version = "1"
+dependencies = [
+    "discord.py",
+    "python-dotenv",
+    "stability-sdk",
+    "pillow",
+    "torchvision",
+    "PyGithub",
+    "openai",
+    "autogpt",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+test = []
+
+dev = []
+
+[tool.black]
+line-length = 120
+skip-magic-trailing-comma = true
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "src"
+]
+markers = []
