@@ -1,0 +1,26 @@
+colors:
+  - hex: "#004f2d"
+  - hex: "#7bc286"
+  - hex: "#ffc09f"
+  - hex: "#ff5e5b"
+fontfamily: "Fredoka One"
+character_images:
+  - name: Leonardo
+    image: "Teenage Mutant Ninja Turtle Leonardo performing a dynamic action"
+    logo: "Logo of Leonardo with katanas"
+  - name: Donatello
+    image: "Teenage Mutant Ninja Turtle Donatello working on a technology gadget"
+    logo: "Logo of Donatello with Bo staff"
+  - name: Michelangelo
+    image: "Teenage Mutant Ninja Turtle Michelangelo skateboarding and eating pizza"
+    logo: "Logo of Michelangelo with nun-chucks"
+  - name: Raphael
+    image: "Teenage Mutant Ninja Turtle Raphael in a defensive posture with sai"
+    logo: "Logo of Raphael with sai"
+  - name: "April O'Neil"
+    image: "April O'Neil reporting a news alongside Teenage Mutant Ninja Turtles"
+    logo: "Logo of April O’Neil with news microphone"
+background_card_art_image: "Shadowy alley of New York with graffiti on walls and pizza slice on the ground"
+hero_image_for_box: "All four Teenage Mutant Ninja Turtles in dynamic poses with New York City's skyline and a pizza in the background"
+background_art_for_box: "Comic-style explosion that converges into a pizza slice"
+token_image: "Pizza slice with a bite taken out with a New York City silhouette in the background"

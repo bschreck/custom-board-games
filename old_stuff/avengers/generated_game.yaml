@@ -1,0 +1,188 @@
+actions:
+  action_types:
+  - descriptor:
+    - (Always available)
+    image: false
+    name: General Actions
+    simple: true
+    type: general
+    variants:
+    - descriptor:
+      - Take 1 gold from the Treasury.
+      name: Income
+    - descriptor:
+      - Take 2 gold from the Treasury. (Can be blocked by the King)
+      name: Tribute
+    - descriptor:
+      - Pay 7 gold to the Treasury and launch a Siege against another player. That
+        player immediately loses an influence. A Siege is always successful. If you
+        start your turn with 10 (or more) gold you are required to launch a Siege.
+      name: Siege
+  - descriptor:
+    - (If challenged a player must show they influence the relevant character)
+    image: true
+    image_first: true
+    name: Avenger Actions
+    simple: false
+    type: avenger
+    variants:
+    - avengers:
+      - King
+      descriptor:
+      - Take 3 gold from the Treasury.
+      image: King
+      name: Tax
+    - avengers:
+      - Archer
+      descriptor:
+      - Pay 3 gold to the Treasury and launch an assassination against another player.
+        If successful that player immediately loses an influence. (Can be blocked
+        by the Healer)
+      image: Archer
+      name: Assassinate
+    - avengers:
+      - Knight
+      descriptor:
+      - Take 2 gold from another player. If they only have one gold, take only one.
+        (Can be blocked by the Oracle or the Knight)
+      image: Knight
+      name: Steal
+    - avengers:
+      - Oracle
+      descriptor:
+      - Exchange cards with the Court. First take 2 random cards from the Court deck.
+        Choose which, if any, to exchange with your face-down cards. Then return two
+        cards to the Court deck.
+      image: Oracle
+      name: Exchange
+  - descriptor:
+    - Counteractions can be taken by other players to intervene or block a player's
+      action.
+    - Counteractions operate like avenger actions. Players may claim to influence
+      any of the avengers and use their abilities to counteract another player. They
+      may be telling the truth or bluffing.
+    - They do not need to show any cards unless challenged. Counteractions may be
+      challenged, but if not challenged they automatically succeed. If an action is
+      successfully counteracted, the action fails but any gold paid as the cost of
+      the action remain spent.
+    image: true
+    image_first: false
+    name: Counteractions
+    simple: false
+    type: counteraction
+    variants:
+    - avengers:
+      - King
+      descriptor:
+      - Any player claiming the King may counteract and block a player attempting
+        to collect tribute.
+      - The player trying to gain tribute receives no gold that turn.
+      image: King
+      name: Blocks Tribute
+    - avengers:
+      - Healer
+      descriptor:
+      - The player who is being assassinated may claim the Healer and counteract to
+        block the assassination.
+      - The assassination fails but the fee paid by the player for the assassin remains
+        spent.
+      image: Healer
+      name: Blocks Assassination
+    - avengers:
+      - Oracle
+      - Knight
+      descriptor:
+      - The player who is being stolen from may claim either the Oracle or the Knight
+        and counteract to block the steal.
+      - The player trying to steal receives no gold that turn.
+      image: Oracle/Knight
+      name: Blocks Stealing
+avengers:
+- name: King
+- image_with_logo: avengers_images/king1.webp
+- name: Archer
+- image_with_logo: avengers_images/archer2.webp
+- name: Knight
+- image_with_logo: avengers_images/knight3.webp
+- name: Oracle
+- image_with_logo: avengers_images/oracle4.webp
+- name: Healer
+- image_with_logo: avengers_images/healer5.webp
+components:
+  image: avengers_images/components2.webp
+  variants:
+  - name: Character Card
+    name_plural: Character Cards
+    type: card
+    variant_suffix: Card
+    variant_suffix_plural: Cards
+    variants:
+    - name: King
+      neach: 3
+    - name: Archer
+      neach: 3
+    - name: Knight
+      neach: 3
+    - name: Oracle
+      neach: 3
+    - name: Healer
+      neach: 3
+  - name: Summary Cards
+    name_plural: Summary Cards
+    neach: 6
+    type: card
+    variants: null
+  - name: Gold
+    name_plural: Gold
+    neach: 50
+    type: token
+    variants: null
+  - name: Instructions
+    name_plural: Instructions
+    neach: 1
+    type: paper
+    variants: null
+game_play:
+  text:
+  - On your turn, you can take any of the actions listed on the action list, provided
+    you can afford it. Actions can be challenged by any other player, and bluffs can
+    be called. If you lose a challenge, you lose an influence.
+  - After the action is chosen other players have an opportunity to challenge or counteract
+    that action.
+  - If an action is not challenged or counteracted, the action automatically succeeds.
+    Challenges are resolved first before any action or counteraction is resolved.
+  - When a player has lost all their influence and both their cards are face up in
+    front of them, they are immediately out of the game. They leave their cards face
+    up and return all their gold to the Treasury.
+  - The game ends when there is only one player left.
+name: 'Avengers: Lords of the Middle Ages'
+objective:
+  text:
+  - To eliminate the influence of all other players and be the last survivor.
+setup:
+  text:
+  - Shuffle all the character cards and deal 2 to each player. Players can always
+    look at their cards but must keep them face down in front of them. Place the remaining
+    cards in the middle of the play area as the Court deck.
+  - Give each player 2 gold pieces. Each player's money must be kept visible. Place
+    the remaining gold in the middle of the play area as the Treasury.
+  - Give one summary card to each player. This is for reference only. Players should
+    familiarize themselves with all the actions and characters before starting the
+    game.
+  - The person who won the last game starts.
+story:
+  text:
+  - In the dark ages, a new class of knights emerges, granted amazing abilities by
+    the mystic arts or divine favor, powers that today would be considered either
+    commonplace or obsolete, but in the midst of medieval Europe seemed almost godlike.
+  - Known as The Avengers, these unique individuals wield such 'powers' as the ability
+    to create fire without flint, manipulate simple machinery from a distance, or
+    even predict the weather with eerie accuracy.
+  - As a baron or baroness among the noble elite, you watch in both awe and fear as
+    these Avengers influence the ongoing wars, diplomatic relations, and the fate
+    of kingdoms. However, you also see an opportunity to control these powerful figures
+    for your own gain and to secure your legacy.
+  - In this game of cunning and strategy, you will need to bluff, barter, and bargain
+    your way into the Avengers' good graces, destroy the influence of your rivals,
+    and assure your seat of power in these volatile times. Yet, remember, in the perilous
+    dance for power within the medieval court, there is only room for one victor.

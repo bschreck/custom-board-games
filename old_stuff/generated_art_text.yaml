@@ -1,0 +1,42 @@
+background_art_for_box: Fantastic blend of above ground NYC chaos with below ground
+  serene turtles' lair.
+background_card_art_image: Stylized NYC skyline blended with underground sewers scene.
+character_images:
+- image: Brave Leonardo with his blue mask and swords, his calm demeanor an anchor
+    for the team.
+  logo: Logo depicting Leonardo's swords crossed behind a turtle shell.
+  name: Leonardo
+- image: Hot-headed Raphael with his red mask and sai, his fierce spirit ready for
+    any challenge.
+  logo: Logo depicting Raphael's sai crossed behind a turtle shell.
+  name: Raphael
+- image: Innovative Donatello with his purple mask and bo, his genius mind thinking
+    a step ahead.
+  logo: Logo depicting Donatello's bo staff behind a turtle shell.
+  name: Donatello
+- image: Jovial Michelangelo with his orange mask and nunchaku, his free spirit keeping
+    the mood light.
+  logo: Logo depicting Michelangelo's nunchaku swirling around a turtle shell.
+  name: Michelangelo
+- image: Menacing Shredder with his sharp armor, the sinister essence of a torturous
+    past.
+  logo: Logo depicting Shredder's helmet behind a stylized Foot Clan logo.
+  name: Shredder
+- image: Wise Master Splinter meditating, his heart filled with love and concern for
+    his turtle sons.
+  logo: Logo depicting Splinter's stick laying beside a traditional ninja scroll.
+  name: Splinter
+- image: Casey Jones firm with his hockey mask and baseball bat, the epitome of an
+    unwavering ally.
+  logo: Logo depicting Casey's hockey mask against a street-wise graffiti backdrop.
+  name: Casey
+colors:
+- hex: '#76b242'
+- hex: '#fbb03b'
+- hex: '#383838'
+- hex: '#ed1c24'
+fontfamily: Press Start 2P
+hero_image_for_box: The turtles in dynamic poses, ready for action, with a looming
+  shadow of Shredder in the backdrop.
+token_image: Delicious pizza slices, the life-sustaining resource for our hot-blooded
+  heroes.

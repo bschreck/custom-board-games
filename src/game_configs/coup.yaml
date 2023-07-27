@@ -1,0 +1,226 @@
+name: "Coup"
+font_family: "Abeezee"
+story:
+  background_image: "linear-gradient(rgb(198, 198, 198) 0%, rgb(232, 224, 204) 0%, rgb(255, 255, 255) 100%);"
+note:
+  background_color: "#f6f6f6"
+  background_image: "-webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 95%,  rgba(0,0,0,0) 95%, rgba(250,15,10,0.1) 100%);"
+  box_shadow: true
+  border_radius: "40px"
+hero_image: "coup_images/coup.webp"
+story:
+  text:
+    - "In the not too distant future, the government is run for profit by a new \"royal class\" of multinational CEOs."
+    - "Their greed and absolute control of the economy has reduced all but a privileged few to lives of poverty and desperation."
+    - "Out of the oppressed masses rose The Resistance, an underground organization focused on overthrowing these powerful rulers. The valiant efforts of"
+    - "The Resistance have created discord, intrigue, and weakness in the political courts of the noveau royal, bringing the government to brink of collapse. But for you, a powerful government official, this is your opportunity to manipulate, bribe and bluff your way into absolute power."
+    - "To be successful, you must destroy the influence of your rivals and drive them into exile."
+    - "In these turbulent times there is only room for one to survive."
+components:
+  image: "coup_images/components2.webp"
+  variants:
+   - name: "Character Card"
+     name_plural: "Character Cards"
+     variant_suffix: "Card"
+     variant_suffix_plural: "Cards"
+     type: "card"
+     variants:
+       - name: "Duke"
+         neach: 3
+       - name: "Assassin"
+         neach: 3
+       - name: "Captain"
+         neach: 3
+       - name: "Ambassador"
+         neach: 3
+       - name: "Contessa"
+         neach: 3
+   - name: "Summary Cards"
+     name_plural: "Summary Cards"
+     type: "card"
+     neach: 6
+     variants:
+   - name: "Coin"
+     name_plural: "Coins"
+     type: "token"
+     neach: 50
+     variants:
+   - name: "Instructions"
+     name_plural: "Instructions"
+     type: "paper"
+     neach: 1
+     variants:
+characters:
+ - name: "Duke"
+ - image_with_logo: "coup_images/coup1.webp"
+ - name: "Assassin"
+ - image_with_logo: "coup_images/coup2.webp"
+ - name: "Captain"
+ - image_with_logo: "coup_images/coup3.webp"
+ - name: "Ambassador"
+ - image_with_logo: "coup_images/coup4.webp"
+ - name: "Contessa"
+ - image_with_logo: "coup_images/coup5.webp"
+images:
+  Duke:
+    src: "coup_images/coup1.webp"
+    class: duke-with-logo-img
+    alt: duke with logo img
+  Assassin:
+    src: "coup_images/coup2.webp"
+    class: "ambassador-with-logo-img"
+    alt: "ambassador with logo img"
+  Captain:
+    src: "coup_images/coup3.webp"
+    class: "captain-with-logo-img"
+    alt: "captain with logo img"
+  Ambassador:
+    src: "coup_images/coup4.webp"
+    class: "ambassador-with-logo-img"
+    alt: "ambassador with logo img"
+  Contessa:
+    src: "coup_images/coup5.webp"
+    class: "contessa-with-logo-img"
+    alt: "contessa with logo img"
+  Ambassador/Captain:
+    src: "coup_images/coup6.webp"
+    class: "ambassador-captain-with-logo-img"
+    alt: "ambassador & captain with logo img"
+setup:
+  image: "coup_images/coup7.webp"
+  text:
+   - "Shuffle all the character cards and deal 2 to each player. Players can always look at their cards but must keep them face down in front of them. Place the remaining cards in the middle of the play area as the Court deck."
+   - "Give each player 2 coins. Each player's money must be kept visible. Place the remaining coins in the middle of the play area as the Treasury."
+   - "Give one summary card to each player. This is for reference only. Players should familiarize themselves with all the actions and characters before starting the game."
+   - "The person who won the last game starts."
+objective:
+  text:
+   - "To eliminate the influence of all other players and be the last survivor."
+notes:
+  note1:
+   - title: "Influence"
+     class: "influence"
+     text:
+      - "Facedown cards in front of a player represent who they influence at court. The characters printed on their face down cards represents which characters that player influences and their abilities."
+      - "Every time a player loses an influence they have to turn over and reveal one of their face down cards. Revealed cards remain face up in front of the player visible to everyone and no longer provide influence for the player."
+      - "Each player always chooses which of their own cards they wish to reveal when they lose an influence."
+      - "When a player has lost all their influence they are exiled and out of the game."
+  note2:
+   - title: "Note: Double Dangers of Assassination"
+     class: "double-dangers"
+     text:
+      - "It is possible to lose 2 influence in one turn if you unsuccessfully defend against an assassination."
+      - "For example, if you challenge an assassin used against you and lose the challenge, you will lose 1 influence for the lost challenge and then 1 influence for the successful assassination."
+      - "Or if you bluff about having the Contessa to block an assassination attempt and are challenged, you will lose 1 influence for the lost challenge and then lose 1 influence for the successful assassination."
+   - title: "Total (Lack of) Trust"
+     class: "lack-trust"
+     text:
+      - "Any negotiations are allowed, but none are ever binding. Players are not allowed to reveal any of their cards to other players."
+      - "No coins can be given or lent to other players."
+      - "There is no second place."
+  note3:
+   - title: "Two Player Coup & Two Player Variant"
+     class: "two-player"
+     text:
+      - "When playing Coup with two players, the starting player receives only 1 coin at the beginning of the game."
+      - "As a variant, Coup can be played with two players with these changes to the setup:"
+      - "Divide the cards into a 3 sets of 5 (each set has one of each character). Each player takes one set, secretly chooses one card and discards the rest."
+      - "Shuffle the third set and deal one card to each player and then put the remaining three cards face down as the court deck."
+game_play:
+  text:
+   - "On your turn, you can take any of the actions listed on the action list, provided you can afford it. Actions can be challenged by any other player, and bluffs can be called. If you lose a challenge, you lose an influence."
+   - "After the action is chosen other players have an opportunity to challenge or counteract that action."
+   - "If an action is not challenged or counteracted, the action automatically succeeds. Challenges are resolved first before any action or counteraction is resolved."
+   - "When a player has lost all their influence and both their cards are face up in front of them, they are immediately out of the game. They leave their cards face up and return all their coins to the Treasury."
+   - "The game ends when there is only one player left."
+actions:
+  overview:
+  - "A player may choose any action they want and can afford. Some actions (Character Actions) require influencing characters."
+  - "If they choose a Character Action a player must claim that the required character is one of their face down cards. They can be telling the truth or bluffing. They do not need to reveal any of their face down cards unless they are challenged. If they are not challenged they automatically succeed."
+  - "If a player starts their turn with 10 (or more) coins they must launch a Coup that turn as their only action."
+  action_types:
+  - name: "General Actions"
+    type: "general"
+    simple: true
+    image: false
+    descriptor:
+      - "(Always available)"
+    variants:
+    - name: "Income"
+      descriptor:
+       - "Take 1 coin from the Treasury."
+    - name: "Foreign Aid"
+      descriptor:
+       - "Take 2 coins from the Treasury. (Can be blocked by the Duke)"
+    - name: "Coup"
+      descriptor:
+       - "Pay 7 coins to the Treasury and launch a Coup against another player. That player immediately loses an influence. A Coup is always successful. If you start your turn with 10 (or more) coins you are required to launch a Coup."
+  - name: "Character Actions"
+    type: "character"
+    simple: false
+    descriptor:
+     - "(If challenged a player must show they influence the relevant character)"
+    image: true
+    image_first: true
+    variants:
+    - name: Tax
+      characters: ["Duke"]
+      descriptor:
+       - "Take 3 coins from the Treasury."
+      image: "Duke"
+    - name: "Assassinate"
+      characters: ["Assassin"]
+      descriptor:
+       - "Pay 3 coins to the Treasury and launch an assassination against another player. If successful that player immediately loses an influence. (Can be blocked by the Contessa)"
+      image: "Assassin"
+    - name: "Steal"
+      characters: ["Captain"]
+      descriptor:
+       - "Take 2 coins from another player. If they only have one coin, take only one. (Can be blocked by the Ambassador or the Captain)"
+      image: "Captain"
+    - name: "Exchange"
+      characters: ["Ambassador"]
+      descriptor:
+       - "Exchange cards with the Court. First take 2 random cards from the Court deck. Choose which, if any, to exchange with your face-down cards. Then return two cards to the Court deck."
+      image: "Ambassador"
+  - name: "Counteractions"
+    type: "counteraction"
+    simple: false
+    image: true
+    image_first: false
+    descriptor:
+     - "Counteractions can be taken by other players to intervene or block a player's action."
+     - "Counteractions operate like character actions. Players may claim to influence any of the characters and use their abilities to counteract another player. They may be telling the truth or bluffing."
+     - "They do not need to show any cards unless challenged. Counteractions may be challenged, but if not challenged they automatically succeed. If an action is successfully counteracted, the action fails but any coins paid as the cost of the action remain spent."
+    variants:
+    - name: "Blocks Foreign Aid"
+      characters: ["Duke"]
+      descriptor: 
+       - "Any player claiming the Duke may counteract and block a player attempting to collect foreign aid."
+       - "The player trying to gain foreign aid receives no coins that turn."
+      image: "Duke"
+    - name: "Blocks Assassination"
+      characters: ["Contessa"]
+      descriptor: 
+       - "The player who is being assassinated may claim the Contessa and counteract to block the assassination."
+       - "The assassination fails but the fee paid by the player for the assassin remains spent."
+      image: "Contessa"
+    - name: "Blocks Stealing"
+      characters: ["Ambassador", "Captain"]
+      descriptor: 
+       - "The player who is being stolen from may claim either the Ambassador or the Captain and counteract to block the steal."
+       - "The player trying to steal receives no coins that turn."
+      image: "Ambassador/Captain"
+challenges:
+  text:
+   - "Any action or counteraction using character influence can be challenged."
+   - "Any other player can issue a challenge to a player regardless of whether they are involved in the action."
+   - "Once an action or counteraction is declared other players must be given an opportunity to challenge. Once play continues challenges cannot be retroactively issued."
+   - "If a player is challenged they must prove they had the required influence by showing the relevant character is one of their face-down cards. If they can't, or do not wish to, prove it, they lose the challenge. If they can, the challenger loses."
+   - "Whoever loses the challenge immediately loses an influence."
+   - "If a player wins a challenge by showing the relevant character card, they first return that card to the Court deck, re-shuffle the Court deck and take a random replacement card."
+   - "(That way they have not lost influence and other players do not know the new influence card they have). Then the action or counteraction is resolved."
+   - "If an action is successfully challenged the entire action fails, and any coins paid as the cost of the action are returned to the player."
+
+
+ 

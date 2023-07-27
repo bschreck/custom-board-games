@@ -1,0 +1,29 @@
+background_art_for_box: A detailed yet subtle depiction of a medieval castle with
+  towering battlements against an overcast sky
+background_card_art_image: An oily, medieval-styled, muted color tapestry with geometric
+  patterns
+character_images:
+- image: A medieval King drawing with a golden crown
+  logo: A royal crown
+  name: King
+- image: A skillful medieval archer drawing with a longbow in hand
+  logo: An icon of a longbow
+  name: Archer
+- image: A noble medieval knight drawing in shining armor
+  logo: A signet of knight's helmet
+  name: Knight
+- image: A mystical medieval oracle drawing with a crystal ball
+  logo: An icon of a crystal ball
+  name: Oracle
+- image: A compassionate medieval healer drawing with a bag of herbs
+  logo: An icon of a satchel with leaves protruding from it
+  name: Healer
+colors:
+- hex: '#D7CEC7'
+- hex: '#6C5B7B'
+- hex: '#C06C84'
+- hex: '#355C7D'
+fontfamily: Roboto Slab
+hero_image_for_box: Thrilling scene of the Avengers engaged in a heated negotiation
+  in a medieval throne room
+token_image: A shiny golden coin with intricate medieval markings

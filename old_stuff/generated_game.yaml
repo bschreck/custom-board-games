@@ -1,0 +1,216 @@
+actions:
+  action_types:
+  - descriptor:
+    - (Always available)
+    name: General Actions
+    simple: true
+    type: general
+    variants:
+    - descriptor:
+      - Take 1 token from the Cache.
+      name: Scavenge
+    - descriptor:
+      - Take 2 tokens from the Cache. (Can be blocked by Leonardo)
+      name: Raid
+    - descriptor:
+      - Pay 7 tokens to the Cache and execute a takedown on another player. That player
+        immediately loses an influence. A takedown is always successful. If you start
+        your turn with 10 (or more) tokens you are required to execute a takedown.
+      name: Takedown
+  - descriptor:
+    - (If challenged a player must show they influence the relevant Ally)
+    name: Character Actions
+    simple: false
+    type: character
+    variants:
+    - characters:
+      - Leonardo
+      descriptor:
+      - Take 3 tokens from the Cache.
+      image: leonardo
+      name: Patrol
+    - characters:
+      - Raphael
+      descriptor:
+      - Pay 3 tokens to the Cache and execute a strike against another player. If
+        successful that player immediately loses an influence. (Can be blocked by
+        Donatello)
+      image: raphael
+      name: Strike
+    - characters:
+      - Michelangelo
+      descriptor:
+      - Take 2 tokens from another player. If they only have one token, take only
+        one. (Can be blocked by Donatello or Michelangelo)
+      image: michelangelo
+      name: Scam
+    - characters:
+      - Donatello
+      descriptor:
+      - Exchange cards with the Lair. First take 2 random cards from the Lair deck.
+        Choose which, if any, to exchange with your face-down cards. Then return two
+        cards to the Lair deck.
+      image: donatello
+      name: Investigate
+  - descriptor:
+    - Counteractions can be taken by other players to intervene or block a player's
+      action.
+    - Counteractions operate like character actions. Players may claim to influence
+      any of the characters and use their abilities to counteract another player.
+      They may be telling the truth or bluffing.
+    - They do not need to show any cards unless challenged. Counteractions may be
+      challenged, but if not challenged they automatically succeed. If an action is
+      successfully counteracted, the action fails but any tokens paid as the cost
+      of the action remain spent.
+    name: Counteractions
+    simple: false
+    type: counteraction
+    variants:
+    - characters:
+      - Leonardo
+      descriptor:
+      - Any player claiming Leonardo may counteract and block a player attempting
+        to raid.
+      - The player trying to gain tokens receives no tokens that turn.
+      image: leonardo
+      name: Blocks Raid
+    - characters:
+      - Donatello
+      descriptor:
+      - The player who is being striked may claim Donatello and counteract to block
+        the strike.
+      - The strike fails but the fee paid by the player for the strike remains spent.
+      image: donatello
+      name: Blocks Strike
+    - characters:
+      - Donatello
+      - Michelangelo
+      descriptor:
+      - The player who is being scammed from may claim either Donatello or Michelangelo
+        and counteract to block the scam.
+      - The player trying to scam receives no tokens that turn.
+      image: donatello/michelangelo
+      name: Blocks Scam
+challenges:
+  text:
+  - Any action or counteraction using character influence can be challenged.
+  - Any other player can issue a challenge to a player regardless of whether they
+    are involved in the action.
+  - Once an action or counteraction is declared other players must be given an opportunity
+    to challenge. Once play continues challenges cannot be retroactively issued.
+  - If a player is challenged they must prove they had the required influence by showing
+    the relevant character is one of their face-down cards. If they can't, or do not
+    wish to, prove it, they lose the challenge. If they can, the challenger loses.
+  - Whoever loses the challenge immediately loses an influence.
+  - If a player wins a challenge by showing the relevant character card, they first
+    return that card to the Lair deck, re-shuffle the Lair deck and take a random
+    replacement card.
+  - (That way they have not lost influence and other players do not know the new influence
+    card they have). Then the action or counteraction is resolved.
+  - If an action is successfully challenged the entire action fails, and any tokens
+    paid as the cost of the action are returned to the player.
+characters:
+- image_with_logo: tmnt_images/leonardo.webp
+  name: Leonardo
+- image_with_logo: tmnt_images/raphael.webp
+  name: Raphael
+- image_with_logo: tmnt_images/donatello.webp
+  name: Donatello
+- image_with_logo: tmnt_images/michelangelo.webp
+  name: Michelangelo
+components:
+  image: tmnt_images/components2.webp
+  variants:
+  - name: Character Card
+    name_plural: Character Cards
+    type: card
+    variant_suffix: Card
+    variant_suffix_plural: Cards
+    variants:
+    - name: Leonardo
+      neach: 3
+    - name: Raphael
+      neach: 3
+    - name: Donatello
+      neach: 3
+    - name: Michelangelo
+      neach: 3
+  - name: Summary Cards
+    name_plural: Summary Cards
+    neach: 6
+    type: card
+    variants: null
+  - name: Token
+    name_plural: Tokens
+    neach: 50
+    type: token
+    variants: null
+  - name: Instructions
+    name_plural: Instructions
+    neach: 1
+    type: paper
+    variants: null
+font_family: Roboto, sans-serif;
+game_play:
+  text:
+  - On your turn, you can take any of the actions listed on the action list, provided
+    you can afford it. Actions can be challenged by any other player, and bluffs can
+    be called. If you lose a challenge, you lose an influence.
+  - After the action is chosen other players have an opportunity to challenge or counteract
+    that action.
+  - If an action is not challenged or counteracted, the action automatically succeeds.
+    Challenges are resolved first before any action or counteraction is resolved.
+  - When a character has lost all their influence and their cards are face up in front
+    of them, they are immediately out of the game. They leave their cards face up
+    and return all their tokens to the Cache.
+  - The game ends when there is only one character left.
+hero_image: tmnt_images/tmnt.webp
+images:
+  donatello:
+    alt: donatello with logo img
+    class: donatello-with-logo-img
+    src: tmnt_images/donatello.webp
+  leonardo:
+    alt: leonardo with logo img
+    class: leonardo-with-logo-img
+    src: tmnt_images/leonardo.webp
+  michelangelo:
+    alt: michelangelo with logo img
+    class: michelangelo-with-logo-img
+    src: tmnt_images/michelangelo.webp
+  raphael:
+    alt: raphael with logo img
+    class: raphael-with-logo-img
+    src: tmnt_images/raphael.webp
+name: Teenage Mutant Ninja Power Struggle
+note:
+  border_radius: 40px
+  box_shadow: true
+  text:
+  - Influence and trust are vital as you play your cards to fight against your enemies.
+    Teaming up or bluffing could give you temporary advantage but remember, the one
+    with the most influence would rule and the rest will be just followers.
+objective:
+  text:
+  - To eliminate the influence of all other turtles and be the last one standing.
+overview:
+- A player may choose any action they want and can afford. Some actions (Character
+  Actions) require influencing allies.
+- If they choose a Character Action a player must claim that the required character
+  is one of their face down cards. They can be telling the truth or bluffing. They
+  do not need to reveal any of their face down cards unless they are challenged. If
+  they are not challenged they automatically succeed.
+- If a player starts their turn with 10 (or more) tokens they must execute a takedown
+  that turn as their only action.
+setup:
+  image: tmnt_images/setup.webp
+  text:
+  - Shuffle all the character cards and deal 2 to each player. Players can always
+    look at their cards but must keep them face down in front of them. Place the remaining
+    cards in the middle of the play area as the Lair deck.
+  - Give each player 2 tokens. Each player's tokens must be kept visible. Place the
+    remaining tokens in the middle of the play area as the Cache.
+  - Give one summary card to each player. This is for reference only. Players should
+    familiarize themselves with all the actions and characters before starting the
+    game.
+  - The turtle who won the last game starts.
