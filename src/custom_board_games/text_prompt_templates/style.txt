@@ -11,36 +11,41 @@ Fontfamily should evoke the style, story, and imagery of the theme and exist on 
 You should output a YAML-parseable file using the following template.
 The double quotes around each value are critical.
 Other than adding new character images and logos to the array in the same format, only change the values in less than/greater than brackets (<>).
+The "config_keys" point to the keys in the other yaml config that reference this image
     
 colors:
   - hex: "<color_hex>"
   - hex: "<color_hex>"
   - hex: "<color_hex>"
   - hex: "<color_hex>"
-fontfamily: "<font_family>"
+font_family: "<font_family>"
+note.background_color: <color_hex>
+note.background_image: <webkit_gradient>
+note.box_shadow: <boolean>
 image_prompts:
   - name: "<character_name>_image"
     prompt: "<image_prompt>"
-    type: character_image
+    types: [character_image, component]
   - name: "<character_name>_logo"
     prompt: "<image_prompt>"
-    type: character_image_logo
+    types: [character_image_logo, component]
   - name: "<character_name>_image"
     prompt: "<image_prompt>"
-    type: character_image
+    types: [character_image, component]
   - name: "<character_name>_logo"
     prompt: "<image_prompt>"
     type: character_image_logo
+    types: [character_image_logo, component]
   - name: "background_card_art_image"
     prompt: "<image_prompt>"
-    type: card
+    types: [card, background]
   - name: "hero_image_for_box"
     prompt: "<image_prompt>"
-    type: box
+    types: [hero, box]
   - name: "background_art_for_box"
     prompt: "<image_prompt>"
-    type: box
+    types: [box, background]
   - name: "token_image"
     prompt: "<image_prompt>"
-    type: token
+    types: [token, component]
 

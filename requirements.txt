@@ -7,3 +7,4 @@ PyGithub
 openai
 autogpt
 pyyaml
+redis

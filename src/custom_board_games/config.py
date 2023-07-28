@@ -22,4 +22,4 @@ GENERATED_IMAGE_DIR = os.path.join(GENERATED_DIR, "images")
 os.makedirs(GENERATED_IMAGE_DIR, exist_ok=True)
 UUID_NAME_MAP_FILENAME = os.path.join(GENERATED_DIR, 'uuid_name_map.yaml')
 FONTS_DIR = 'fonts'
-os.makedirs(FONTS_DIR)
+os.makedirs(FONTS_DIR, exist_ok=True)

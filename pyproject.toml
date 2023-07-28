@@ -1,5 +1,5 @@
 [project]
-name = "custom-board-games"
+name = "custom_board_games"
 version = "1"
 dependencies = [
     "discord.py",
@@ -11,6 +11,7 @@ dependencies = [
     "openai",
     "autogpt",
     "pyyaml",
+    "fire"
 ]
 
 [project.optional-dependencies]

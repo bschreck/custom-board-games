@@ -43,6 +43,19 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # Add additional game templates
 
 
+# new image/config architecture:
+# image names & some form of description are inline where they exist in the main config used for jinja template
+# write a program that (bidirectionally) maps each of these to a flat list of image prompts
+# generate images from the prompts
+# save image along with a unique key, mapping to path on disk, to DB
+# save unique key alongside original location in config
+# for composite images, indicate they are composite in the original config,
+#   along with the associated keys in the original config that make them up.
+#   some more thought is needed here, because we will need loops (for all char/logos, for all components)
+# in the generation step, if a composite image already exists in DB, just fetch it from disk
+# otherwise, find the images that make it up, combine them, save using a new key to DB along with keys to components
+# using key/value store DB will make all this stuff simpler. Perhaps Redis
+
 @dataclass
 class Message:
     role: str
@@ -62,6 +75,8 @@ class Message:
         with open(out_f, "w") as f:
             yaml.dump(parsed, f, Dumper=Dumper)
 
+
+# TODO: COMBINE the two generated configs into one after text generation
 
 def get_and_save_completion_as_yaml(prompt, out_f, chat_pickle_file, existing_messages=None, verbose=True):
     if verbose:
@@ -123,8 +138,7 @@ def load_name_and_story(name_and_story_file, verbose=True):
     return generated_game['name'], generated_game['story']['text']
 
     
-def generate_game_text(existing_game_name, theme, verbose=True):
-    game_run = uuid.uuid4()
+def gen_game_text(game_run, existing_game_name, theme, verbose=True):
     with open(os.path.join(GAME_CONFIG_DIR, f'{existing_game_name}.yaml'), "r") as f:
         template = yaml.load(f, Loader=Loader)
         
@@ -182,9 +196,12 @@ def generate_game_text(existing_game_name, theme, verbose=True):
         existing_messages=existing_messages,
         verbose=verbose
     )
+    return game_run
 
 
 if __name__ == '__main__':
     existing_game_name = sys.argv[1]
     theme = sys.argv[2]
-    generate_game_text(existing_game_name, theme, verbose=True)
+    game_run = str(uuid.uuid4())
+    game_run = gen_game_text(game_run, existing_game_name, theme, verbose=True)
+    print("Generated text for game run", game_run)

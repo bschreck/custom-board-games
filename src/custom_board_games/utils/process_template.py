@@ -6,9 +6,11 @@ except ImportError:
     from yaml import Loader
 
     
-def render(input_config_file, template_file, output_file):
+def render(input_config_file, input_style_file, template_file, output_file):
     with open(input_config_file, "r") as f:
         input_config = yaml.load(f, Loader=Loader)
+    with open(input_style_file, "r") as f:
+        input_style = yaml.load(f, Loader=Loader)
 
     env = Environment(
         loader=FileSystemLoader(searchpath="./"),
@@ -16,10 +18,5 @@ def render(input_config_file, template_file, output_file):
     )
     template = env.get_template(template_file)
     with open(output_file, "w") as f:
-        f.write(template.render(**input_config))
+        f.write(template.render(**{**input_config, **input_style}))
      
-
-if __name__ == '__main__':
-    import sys
-    input_config_file, template_file, output_file = sys.argv[1:]
-    render(input_config_file, template_file, output_file)
