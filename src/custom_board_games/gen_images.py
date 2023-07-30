@@ -1,5 +1,6 @@
 import sys
 import os
+import shutil
 import concurrent.futures
 
 from .utils.redis import redis, save_game_config, load_game_config, ensure_redis_key_exists
@@ -28,26 +29,38 @@ def image_paths_by_type(type, game_run):
         if type in prompt_config["types"]]
 
 def combine_images(component_image_paths, save_path):
-    # TODO
-    raise ValueError("not implemented")
+    shutil.copyfile(component_image_paths[0], save_path)
+    # raise ValueError("not implemented")
 
 def combine_char_logo_images(char_img_path, logo_img_path, save_path):
-    # TODO
-    raise ValueError("not implemented")
+    # TODO actually implement
+    # raise ValueError("not implemented")
+    shutil.copyfile(char_img_path, save_path)
 
 def gen_component_overview_image(game_run):
     config = load_game_config(game_run)
     component_images = image_paths_by_type('component', game_run)
     save_path = os.path.join(GENERATED_IMAGE_DIR, game_run, "component_overview.png")
-    combine_images([c["path"] for c in component_images], save_path)
+    combine_images([c["image_paths"][0] for c in component_images], save_path)
     # TODO: this will overwrite later,
     # and fail if doesn't exist
     # needs to match to the variants in config
-    config["images"]["component_overview_image"] = {"src": save_path}
+    # TODO: each of these top level images should be a dict,
+    # and all these multi-generated ones should have original files to reconstruct
+    # do it for the others
+    config["image_prompts"]["component_overview_image"] = {
+        "image_paths": [save_path],
+        "source_images": [c["name"] for c in component_images]
+    }
     save_game_config(game_run, config)
 
 def gen_setup_image(game_run):
-    pass
+    # TODO actually implement
+    config = load_game_config(game_run)
+    component_images = image_paths_by_type('component', game_run)
+    save_path = os.path.join(GENERATED_IMAGE_DIR, game_run, "setup.png")
+    shutil.copyfile(component_images[0], save_path)
+    config["images"]["setup_image"] = {"src": save_path}
 
 def gen_character_images(game_run):
     config = load_game_config(game_run)
@@ -87,9 +100,9 @@ def gen_images_from_game_run(game_run, nthreads=None, verbose=True):
             except Exception as exc:
                 print('%r generated an exception: %s' % (prompt, exc))
 
-    #gen_component_overview_image(game_run)
-    #gen_setup_image(game_run)
-    #gen_character_images(game_run)
+    gen_component_overview_image(game_run)
+    gen_setup_image(game_run)
+    gen_character_images(game_run)
 
 
 if __name__ == '__main__':
