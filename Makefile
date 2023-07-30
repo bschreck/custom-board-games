@@ -6,3 +6,6 @@ rm-redis:
 
 redis-tmp:
 	docker run -p 6379:6379 -d --rm --name redis-stack redis/redis-stack:latest
+	
+test:
+    ENV=test pytest test/

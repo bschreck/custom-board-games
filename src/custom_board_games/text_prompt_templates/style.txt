@@ -1,51 +1,16 @@
-Given the yaml you created, your final task is to generate a fontface, color scheme, and prompts for the AI-generated images in the game.
+Given the JSON you created, your final task is to generate a fontface, color scheme, css styles, and prompts for the webpage and AI-generated images in the game.
 These prompts will be fed in as input to the Stable Diffusion image-generation AI software.
 In the below template, each image title should be self-explanatory, but here's additional clarification.
 The hero_image_for_box corresponds to the image that will be displayed on the front of the box, and should draw prospective players' attention.
 background_card_art_image corresponds to the background image that will be displayed on the cards (reverse side from the characters).
 token_image corresponds to the image that will be displayed on the tokens (used as currency in the game).
 There should be several character images and associated logos, each corresponding to a character you generated in the game.
+Each character image contains a field called "variant", which you should fill in with name of the character/variant.
 There should be exactly 4 colors in the color scheme, and each color should be a hex color code.
 Fontfamily should evoke the style, story, and imagery of the theme and exist on Google fonts, as it will be automatically downloaded from there (e.g. "Open+Sans").
 
-You should output a YAML-parseable file using the following template.
-The double quotes around each value are critical.
+You should output a JSON-parseable file using the following template.
 Other than adding new character images and logos to the array in the same format, only change the values in less than/greater than brackets (<>).
-The "config_keys" point to the keys in the other yaml config that reference this image
     
-colors:
-  - hex: "<color_hex>"
-  - hex: "<color_hex>"
-  - hex: "<color_hex>"
-  - hex: "<color_hex>"
-font_family: "<font_family>"
-note.background_color: <color_hex>
-note.background_image: <webkit_gradient>
-note.box_shadow: <boolean>
-image_prompts:
-  - name: "<character_name>_image"
-    prompt: "<image_prompt>"
-    types: [character_image, component]
-  - name: "<character_name>_logo"
-    prompt: "<image_prompt>"
-    types: [character_image_logo, component]
-  - name: "<character_name>_image"
-    prompt: "<image_prompt>"
-    types: [character_image, component]
-  - name: "<character_name>_logo"
-    prompt: "<image_prompt>"
-    type: character_image_logo
-    types: [character_image_logo, component]
-  - name: "background_card_art_image"
-    prompt: "<image_prompt>"
-    types: [card, background]
-  - name: "hero_image_for_box"
-    prompt: "<image_prompt>"
-    types: [hero, box]
-  - name: "background_art_for_box"
-    prompt: "<image_prompt>"
-    types: [box, background]
-  - name: "token_image"
-    prompt: "<image_prompt>"
-    types: [token, component]
-
+---- TEMPLATE ----
+{template_str}

@@ -1,18 +1,11 @@
 Generate the name and narrative storyline of a new board game.
-This name and story will be used to automatically replace the fields in the YAML template provided below.
-The existing template is for the game {existing_game_name}. You should output a YAML file that would populate the webpage for the new game.
-You should output only the "name" and "story.text" fields in a way that is parseable by YAML. It's critical to include quotes around strings, becaause you might use YAML reserved keywords.
-
----- TEMPLATE ----
-{template_str}
+This name and story will be used to automatically replace the fields in the JSON template provided below.
+The existing template is for the game {existing_game_name}. You should output a JSON file that would populate the webpage for the new game.
+You should modify the provided template and return output that is parseable by JSON.
 
 This board game should be based on the following theme.
 ---- THEME ----
 {theme}.
 
----- EXAMPLE OUTPUT ----
-name: "Name of New Game"
-story:
-  text:
-   - "My story paragraph 1"
-   - "My story paragraph 2"
+---- TEMPLATE ----
+{template_str}

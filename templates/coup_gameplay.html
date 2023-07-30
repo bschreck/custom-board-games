@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>How to play Coup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .section.story {
+            background-clip: border-box;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            background-image: linear-gradient(rgb(198, 198, 198) 0%, rgb(232, 224, 204) 0%, rgb(255, 255, 255) 100%);
+            line-height: 32.4px;
+            margin-bottom: 30px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 20px;
+            padding-bottom: 8px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 20px;
+            text-align: justify;
+            text-size-adjust: 100%;
+        }
+
+        .section.components {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .container.action-list {
+            margin-left: 0;
+        }
+
+        .container.character-action {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: flex-start;
+            margin-left: 0;
+        }
+
+        .container.counteraction {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: flex-start;
+            margin-left: 0;
+        }
+
+        .col {
+            width: 45%;
+            /* This will set the width of each column to roughly half of the parent container. Adjust this value as needed. */
+        }
+
+        .hero-img {
+            width: 1000px;
+        }
+
+        .note {
+            background: #f6f6f6;
+            background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0) 95%, rgba(250, 15, 10, 0.1) 100%);
+            box-shadow: 0 1px 4px hsla(0, 0%, 0%, .25);
+            border-radius: 40px;
+        }
+
+        .p {}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="hero-img-container"><img class="hero-img" src="coup_images/coup.webp" alt="hero image" /></div>
+
+        <div class="section story">
+            <p>In the not too distant future, the government is run for profit by a new "royal class" of multinational
+                CEOs.</p>
+            <p>Their greed and absolute control of the economy has reduced all but a privileged few to lives of poverty
+                and desperation.</p>
+            <p>Out of the oppressed masses rose The Resistance, an underground organization focused on overthrowing
+                these powerful rulers. The valiant efforts of</p>
+            <p>The Resistance have created discord, intrigue, and weakness in the political courts of the noveau royal,
+                bringing the government to brink of collapse. But for you, a powerful government official, this is your
+                opportunity to manipulate, bribe and bluff your way into absolute power.</p>
+            <p>To be successful, you must destroy the influence of your rivals and drive them into exile.</p>
+            <p>In these turbulent times there is only room for one to survive.</p>
+        </div>
+
+        <div class="section components">
+            <div class="col">
+                <h2>Components</h2>
+                <ul>
+                    <li>3 Duke Cards</li>
+                    <li>3 Assassin Cards</li>
+                    <li>3 Captain Cards</li>
+                    <li>3 Ambassador Cards</li>
+                    <li>3 Contessa Cards</li>
+                    <li>6 summary cards</li>
+                    <li>50 coins</li>
+                    <li>Instructions</li>
+                </ul>
+            </div>
+            <div class="col">
+                <img class="component-img" src="coup_images/components2.webp" alt="component images" />
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Setup</h2>
+            <p>Shuffle all the character cards and deal 2 to each player. Players can always look at their cards but
+                must keep them face down in front of them. Place the remaining cards in the middle of the play area as
+                the Court deck.</p>
+            <p>Give each player 2 coins. Each player's money must be kept visible. Place the remaining coins in the
+                middle of the play area as the Treasury.</p>
+            <p>Give one summary card to each player. This is for reference only. Players should familiarize themselves
+                with all the actions and characters before starting the game.</p>
+            <p>The person who won the last game starts.</p>
+            <img class="setup-img" src="coup_images/coup7.webp" alt="setup images" />
+        </div>
+
+        <div class="section objective">
+            <h2>Object of the Game</h2>
+            <p>To eliminate the influence of all other players and be the last survivor.</p>
+        </div>
+        <div class="section note note1">
+            <div class="container influence">
+                <h2>Influence</h2>
+                <p>Facedown cards in front of a player represent who they influence at court. The characters printed on
+                    their face down cards represents which characters that player influences and their abilities.</p>
+                <p>Every time a player loses an influence they have to turn over and reveal one of their face down
+                    cards. Revealed cards remain face up in front of the player visible to everyone and no longer
+                    provide influence for the player.</p>
+                <p>Each player always chooses which of their own cards they wish to reveal when they lose an influence.
+                </p>
+                <p>When a player has lost all their influence they are exiled and out of the game.</p>
+            </div>
+        </div>
+
+
+        <div class="section gameplay">
+            <h2>Game Play</h2>
+            <p>On your turn, you can take any of the actions listed on the action list, provided you can afford it.
+                Actions can be challenged by any other player, and bluffs can be called. If you lose a challenge, you
+                lose an influence.</p>
+            <p>After the action is chosen other players have an opportunity to challenge or counteract that action.</p>
+            <p>If an action is not challenged or counteracted, the action automatically succeeds. Challenges are
+                resolved first before any action or counteraction is resolved.</p>
+            <p>When a player has lost all their influence and both their cards are face up in front of them, they are
+                immediately out of the game. They leave their cards face up and return all their coins to the Treasury.
+            </p>
+            <p>The game ends when there is only one player left.
+        </div>
+        <div class="section actions">
+            <h2>Actions</h2>
+            <p>A player may choose any action they want and can afford. Some actions (Character Actions) require
+                influencing characters.</p>
+            <p>If they choose a Character Action a player must claim that the required character is one of their face
+                down cards. They can be telling the truth or bluffing. They do not need to reveal any of their face down
+                cards unless they are challenged. If they are not challenged they automatically succeed.</p>
+            <p>If a player starts their turn with 10 (or more) coins they must launch a Coup that turn as their only
+                action.</p>
+            <ol class="action-type-list">
+                <li>
+                    <h3>General Actions</h3>
+                    <p>(Always available)</p>
+                    <ul class="action-list general">
+                        <li>
+                            <h3>Income</h3>
+                            <p>Take 1 coin from the Treasury.</p>
+                        </li>
+                        <li>
+                            <h3>Foreign Aid</h3>
+                            <p>Take 2 coins from the Treasury. (Can be blocked by the Duke)</p>
+                        </li>
+                        <li>
+                            <h3>Coup</h3>
+                            <p>Pay 7 coins to the Treasury and launch a Coup against another player. That player
+                                immediately loses an influence. A Coup is always successful. If you start your turn with
+                                10 (or more) coins you are required to launch a Coup.</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Character Actions</h3>
+                    <p>(If challenged a player must show they influence the relevant character)</p>
+                    <div class="container action-list">
+                        <div class="container character-action">
+                            <div class="col">
+                                <img class="duke-with-logo-img" src="coup_images/coup1.webp"
+                                    alt="duke with logo image" />
+                            </div>
+                            <div class="col">
+                                <h3>Duke - Tax</h3>
+                                <p>Take 3 coins from the Treasury.</p>
+                            </div>
+                        </div>
+                        <div class="container character-action">
+                            <div class="col">
+                                <img class="assassin-with-logo-img" src="coup_images/coup2.webp"
+                                    alt="assassin with logo image" />
+                            </div>
+                            <div class="col">
+                                <h3>Assassin - Assassinate</h3>
+                                <p>Pay 3 coins to the Treasury and launch an assassination against another player. If
+                                    successful that player immediately loses an influence. (Can be blocked by the
+                                    Contessa)</p>
+                            </div>
+                        </div>
+                        <div class="container character-action">
+                            <div class="col">
+                                <img class="captain-with-logoimg" src="coup_images/coup3.webp"
+                                    alt="captain with logo image" />
+                            </div>
+                            <div class="col">
+                                <h3>Captain - Steal</h3>
+                                <p>Take 2 coins from another player. If they only have one coin, take only one. (Can be
+                                    blocked by the Ambassador or the Captain)</p>
+                            </div>
+                        </div>
+                        <div class="container character-action">
+                            <div class="col">
+                                <img class="ambassador-with-logoimg" src="coup_images/coup4.webp"
+                                    alt="ambassador with logo image" />
+                            </div>
+                            <div class="col">
+                                <h3>Ambassador - Exchange</h3>
+                                <p>Exchange cards with the Court. First take 2 random cards from the Court deck. Choose
+                                    which, if any, to exchange with your face-down cards. Then return two cards to the
+                                    Court deck.</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h3>Counteractions</h3>
+                    <p>Counteractions can be taken by other players to intervene or block a player's action.</p>
+                    <p>Counteractions operate like character actions. Players may claim to influence any of the
+                        characters and use their abilities to counteract another player. They may be telling the truth
+                        or bluffing.</p>
+                    <p>They do not need to show any cards unless challenged. Counteractions may be challenged, but if
+                        not challenged they automatically succeed. If an action is successfully counteracted, the action
+                        fails but any coins paid as the cost of the action remain spent.</p>
+                    <div class="container action-list">
+                        <div class="container counteraction">
+                            <div class="col">
+                                <h3>Duke - Blocks Foreign Aid</h3>
+                                <p>Any player claiming the Duke may counteract and block a player attempting to collect
+                                    foreign aid.</p>
+                                <p>The player trying to gain foreign aid receives no coins that turn.</p>
+                            </div>
+                            <div class="col">
+                                <img class="duke-with-logo-img" src="coup_images/coup1.webp"
+                                    alt="duke with logo image" />
+                            </div>
+                        </div>
+                        <div class="container counteraction">
+                            <div class="col">
+                                <h3>Contessa - Blocks Assassination</h3>
+                                <p>The player who is being assassinated may claim the Contessa and counteract to block
+                                    the assassination.
+                                <p></p>
+                                <p>The assassination fails but the fee paid by the player for the assassin remains
+                                    spent.</p>
+                            </div>
+                            <div class="col">
+                                <img class="contessa-with-logo-img" src="coup_images/coup5.webp"
+                                    alt="contessa with logo image" />
+                            </div>
+                        </div>
+                        <div class="container counteraction">
+                            <div class="col">
+                                <h3>Ambassador/Captain - Blocks Stealing</h3>
+                                <p>The player who is being stolen from may claim either the Ambassador or the Captain
+                                    and counteract to block the steal.</p>
+                                <p>The player trying to steal receives no coins that turn.</p>
+                            </div>
+                            <div class="col">
+                                <img class="ambassadar-captain-with-logos-img" src="coup_images/coup6.webp"
+                                    alt="ambassador & captain with logos image" />
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section actions">
+            <h2>Challenges</h2>
+            <p>Any action or counteraction using character influence can be challenged.</p>
+            <p>Any other player can issue a challenge to a player regardless of whether they are involved in the action.
+            </p>
+            <p>Once an action or counteraction is declared other players must be given an opportunity to challenge. Once
+                play continues challenges cannot be retroactively issued.</p>
+            <p>If a player is challenged they must prove they had the required influence by showing the relevant
+                character is one of their face-down cards. If they can't, or do not wish to, prove it, they lose the
+                challenge. If they can, the challenger loses.</p>
+            <p>Whoever loses the challenge immediately loses an influence.</p>
+            <p>If a player wins a challenge by showing the relevant character card, they first return that card to the
+                Court deck, re-shuffle the Court deck and take a random replacement card.</p>
+            <p>(That way they have not lost influence and other players do not know the new influence card they have).
+                Then the action or counteraction is resolved.</p>
+            <p>If an action is successfully challenged the entire action fails, and any coins paid as the cost of the
+                action are returned to the player.</p>
+        </div>
+
+        <div class="section note note2">
+            <div class="container double-dangers">
+                <h3>Note: Double Dangers of Assassination</h3>
+                <p>It is possible to lose 2 influence in one turn if you unsuccessfully defend against an assassination.
+                </p>
+                <p>For example, if you challenge an assassin used against you and lose the challenge, you will lose 1
+                    influence for the lost challenge and then 1 influence for the successful assassination.</p>
+                <p>Or if you bluff about having the Contessa to block an assassination attempt and are challenged, you
+                    will lose 1 influence for the lost challenge and then lose 1 influence for the successful
+                    assassination.</p>
+            </div>
+            <div class="container lack-trust">
+                <h3>Total (Lack of) Trust</h3>
+                <p>Any negotiations are allowed, but none are ever binding. Players are not allowed to reveal any of
+                    their cards to other players.</p>
+                <p>No coins can be given or lent to other players.</p>
+                <p>There is no second place.</p>
+            </div>
+        </div>
+        <div class="section note note3">
+            <div class="container two-player">
+                <h3>Two Player Coup & Two Player Variant</h3>
+                <p>When playing Coup with two players, the starting player receives only 1 coin at the beginning of the
+                    game.</p>
+                <p>As a variant, Coup can be played with two players with these changes to the setup:</p>
+                <p>Divide the cards into a 3 sets of 5 (each set has one of each character). Each player takes one set,
+                    secretly chooses one card and discards the rest.</p>
+                <p>Shuffle the third set and deal one card to each player and then put the remaining three cards face
+                    down as the court deck.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

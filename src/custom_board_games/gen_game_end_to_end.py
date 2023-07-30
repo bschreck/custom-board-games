@@ -4,16 +4,15 @@ from gen_text import gen_game_text
 from gen_images import gen_images_from_config_file
 from utils.process_template import render
 import fire
-from config import GENERATED_OUTPUT_CONFIG_DIR
+from config import redis, GENERATED_OUTPUT_CONFIG_DIR
 import os
 from dotenv import load_dotenv
-import redis
 
 load_dotenv()
 
 
 def gen_game(existing_game_name: str, theme: str):
-    r = redis.Redis(host=os.getenv("REDIS_HOST", 'localhost'), port=os.getenv("REDIS_PORT", "6379"), db=0)
+    r = redis()
     game_run = str(uuid.uuid4())
     game_runs = r.json().get('game_runs', '.')
     game_run_doc = {'name': existing_game_name, 'theme': theme}

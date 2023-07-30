@@ -1,30 +1,31 @@
+from openai import ChatCompletion as OpenAIChatCompletion
+from .utils.mock_gpt import ChatCompletion as MockChatCompletion
+from .utils.redis import redis, save_game_config, load_game_config, ensure_redis_key_exists
 import openai
+import dataclasses
 from dotenv import load_dotenv
 import os
-import sys
 import uuid
-import pickle
 import yaml
+import json
 from dataclasses import dataclass
+import fire
 
 try:
-    from yaml import CLoader as Loader, CDumper as Dumper
+    from yaml import CLoader as Loader
 except ImportError:
-    from yaml import Loader, Dumper
-    
-from config import (
-    GAME_CONFIG_DIR,
-    TEXT_PROMPT_TEMPLATE_DIR,
-    MESSAGE_CACHE_DIR,
-    GENERATED_OUTPUT_CONFIG_DIR,
-    GENERATED_OUTPUT_STYLE_DIR,
-    UUID_NAME_MAP_FILENAME
-)
+    from yaml import Loader
+
+from .config import GAME_CONFIG_DIR, TEXT_PROMPT_TEMPLATE_DIR
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
+if os.getenv("ENV", "test") == "test":
+    ChatCompletion = MockChatCompletion
+else:
+    ChatCompletion = OpenAIChatCompletion
 
 
 # Build full pipeline from prompt with one command
@@ -56,54 +57,54 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # otherwise, find the images that make it up, combine them, save using a new key to DB along with keys to components
 # using key/value store DB will make all this stuff simpler. Perhaps Redis
 
+
 @dataclass
 class Message:
     role: str
     content: str
-    name: str | None = None
-    function_call: str | None = None
+    # TODO: figure out this shit if i ever use functions
+    # name: Union[str, None] = None
+    # function_call: Union[str, None] = None
 
-    def parse_yaml(self):
-        # TODO: add handling for if AI leaves out quotej
-        try:
-            return yaml.load(self.content, Loader=Loader)
-        except Exception:
-            print("could not parse LLM message: " + self.content)
-            
-    def save_content_as_yaml(self, out_f):
-        parsed = self.parse_yaml()
-        with open(out_f, "w") as f:
-            yaml.dump(parsed, f, Dumper=Dumper)
+
+
+
+def serializable_messages(messages):
+    return [dataclasses.asdict(msg) for msg in messages]
 
 
 # TODO: COMBINE the two generated configs into one after text generation
 
-def get_and_save_completion_as_yaml(prompt, out_f, chat_pickle_file, existing_messages=None, verbose=True):
+
+def get_and_save_completion(game_run, prompt, chat_id=None, verbose=True):
+    if chat_id is None:
+        chat_id = str(uuid.uuid4())
+        existing_messages = [
+            Message(
+                role="system",
+                content="You are a board game designer. Your goal is to generate the content for new board games based on templates from existing games.",
+            )
+        ]
+    else:
+        existing_messages = load_chat(game_run, chat_id)
+
     if verbose:
         print("PROMPT:")
         print(prompt)
-    if existing_messages is None:
-        existing_messages = [
-            Message(role="system", content="You are a board game designer. Your goal is to generate the content for new board games based on templates from existing games.")
-        ]
-    existing_messages += [
-        Message(role="user", content=prompt)
-    ]
-    completion = openai.ChatCompletion.create(
-      model="gpt-4",
-      messages=existing_messages
-    )
-    
+
+    existing_messages += [Message(role="user", content=prompt)]
+    completion = ChatCompletion.create(model="gpt-4", messages=serializable_messages(existing_messages))
+
     message = Message(**completion.choices[0].message)
+    # message = existing_messages[-1]
     if verbose:
         print("message content", message.content)
-    try:
-        message.save_content_as_yaml(out_f)
-    except Exception as e:
-        print(e)
+    parsed = json.loads(message.content)
+
+    save_game_config(game_run, parsed)
     full_messages = existing_messages + [message]
-    save_chat(full_messages, chat_pickle_file)
-    return full_messages
+    save_chat(game_run, chat_id, full_messages)
+    return chat_id
 
 
 def read_and_format_prompt(filename, **format_data):
@@ -111,97 +112,94 @@ def read_and_format_prompt(filename, **format_data):
         return f.read().format(**format_data)
 
 
-def save_chat(messages, out_f):
-    with open(out_f, "wb") as f:
-        pickle.dump(messages, f)
+def save_chat(game_run, chat_id, messages):
+    r = redis()
+    ensure_redis_key_exists(game_run, "chats")
+    r.json().set("game_runs", f".{game_run}.chats", {chat_id: serializable_messages(messages)})
 
 
-def save_uuid_to_name_map(map_filename, id, name):
-    with open(map_filename) as f:
-        uuid_to_name = yaml.load(f, Loader=Loader)
-        uuid_to_name[id] = name
-    uuid_to_name_str = yaml.dump(uuid_to_name, Dumper=Dumper)
-    with open(map_filename, 'w') as f:
-        f.write(uuid_to_name_str)
+def load_chat(game_run, chat_id):
+    r = redis()
+    msg_dict_list = r.json().get("game_runs", f".{game_run}.chats.{chat_id}")
+    return [Message(**msg_dict) for msg_dict in msg_dict_list]
 
 
-def load_name_and_story(name_and_story_file, verbose=True):
-    with open(name_and_story_file) as f:
-        generated_game = yaml.load(f, Loader=Loader)
-        if 'name' not in generated_game:
-            raise ValueError('Could not find name in generated game')
-        if 'story' not in generated_game and 'text' not in generated_game['story']:
-            raise ValueError('Could not find story.text in generated game')
+def load_name(game_run, verbose=True):
+    config = load_game_config(game_run)
+    name = config.get("name", None)
+    if name is None:
+        raise ValueError("Could not find name in generated message")
     if verbose:
-        print("Generated Game Name:", generated_game['name'])
-        print("Generated Game Story:", generated_game['story']['text'])
-    return generated_game['name'], generated_game['story']['text']
+        print("Generated Game Name:", name)
+    return name
 
-    
+
+def load_story(game_run, verbose=True):
+    config = load_game_config(game_run)
+    story = config.get("story", None)
+    if story is None and "text" not in story:
+        raise ValueError("Could not find story.text in generated message")
+    if verbose:
+        print("Generated Game Story:", story["text"])
+    return story["text"]
+
+
 def gen_game_text(game_run, existing_game_name, theme, verbose=True):
-    with open(os.path.join(GAME_CONFIG_DIR, f'{existing_game_name}.yaml'), "r") as f:
-        template = yaml.load(f, Loader=Loader)
-        
-    template_str = yaml.dump(template, Dumper=Dumper)
-    
+    with open(os.path.join(GAME_CONFIG_DIR, f"{existing_game_name}/story.yaml"), "r") as f:
+        story_template = yaml.load(f, Loader=Loader)
+    story_template_str = json.dumps(story_template)
+    with open(os.path.join(GAME_CONFIG_DIR, f"{existing_game_name}/action_characters.yaml"), "r") as f:
+        action_characters_template = yaml.load(f, Loader=Loader)
+    action_characters_template_str = json.dumps(action_characters_template)
+    with open(os.path.join(GAME_CONFIG_DIR, f"{existing_game_name}/style.yaml"), "r") as f:
+        style_template = yaml.load(f, Loader=Loader)
+    style_template_str = json.dumps(style_template)
+
+    save_game_config(game_run, story_template)
+    save_game_config(game_run, action_characters_template)
+    save_game_config(game_run, style_template)
+
+    # TODO: this should only provide a minimal and easy template the LLM needs
     story_prompt = read_and_format_prompt(
-        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, 'story.txt'),
-        template_str=template_str,
+        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "story.txt"),
+        template_str=story_template_str,
         theme=theme,
-        existing_game_name=existing_game_name
+        existing_game_name=existing_game_name,
     )
 
-    name_and_story_file = os.path.join(
-        GENERATED_OUTPUT_CONFIG_DIR, game_run, 'name_and_story.yaml'
-    )
-    name_and_story_pickle_file = os.path.join(
-        MESSAGE_CACHE_DIR, game_run, 'name_and_story.p'
-    )
-    existing_messages = get_and_save_completion_as_yaml(
-        story_prompt, 
-        name_and_story_file, 
-        name_and_story_pickle_file,
-        verbose=verbose
+    # chat_id = "ec2c3a52-d44e-4669-9580-2696dae510e"
+    chat_id = get_and_save_completion(
+        game_run,
+        story_prompt,
+        verbose=verbose,
+        # chat_id=chat_id
     )
 
-    new_game_name, _ = load_name_and_story(name_and_story_file, verbose=verbose)
-
-    save_uuid_to_name_map(UUID_NAME_MAP_FILENAME, game_run, new_game_name)
+    new_game_name = load_name(game_run, verbose=verbose)
 
     actions_and_characters_prompt = read_and_format_prompt(
-        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, 'action_characters.txt'),
+        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "action_characters.txt"),
+        template_str=action_characters_template_str,
         existing_game_name=existing_game_name,
         new_game_name=new_game_name,
     )
 
-    generated_game_config_file = os.path.join(GENERATED_OUTPUT_CONFIG_DIR, game_run, 'game_config.yaml')
-    generated_game_pickle_file = os.path.join(MESSAGE_CACHE_DIR, game_run, 'game_config.p')
-    existing_messages = get_and_save_completion_as_yaml(
-        actions_and_characters_prompt, 
-        generated_game_config_file, 
-        generated_game_pickle_file, 
-        existing_messages=existing_messages,
-        verbose=verbose
-    )
-    
+    get_and_save_completion(game_run, actions_and_characters_prompt, chat_id=chat_id, verbose=verbose)
+
     image_gen_prompt = read_and_format_prompt(
-        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, 'style.txt'),
+        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "style.txt"), template_str=style_template_str
     )
-    generated_art_text_file = os.path.join(GENERATED_OUTPUT_STYLE_DIR, game_run, 'art_text.yaml')
-    generated_art_pickle_file = os.path.join(MESSAGE_CACHE_DIR, game_run, 'art_text.p')
-    existing_messages = get_and_save_completion_as_yaml(
-        image_gen_prompt, 
-        generated_art_text_file, 
-        generated_art_pickle_file, 
-        existing_messages=existing_messages,
-        verbose=verbose
-    )
+    get_and_save_completion(game_run, image_gen_prompt, chat_id=chat_id, verbose=verbose)
     return game_run
 
 
-if __name__ == '__main__':
-    existing_game_name = sys.argv[1]
-    theme = sys.argv[2]
-    game_run = str(uuid.uuid4())
-    game_run = gen_game_text(game_run, existing_game_name, theme, verbose=True)
+def main(existing_game_name, theme, game_run=None, verbose=True):
+    if not game_run:
+        game_run = str(uuid.uuid4())
+    print("Game run", game_run)
+    game_run = gen_game_text(game_run, existing_game_name, theme, verbose=verbose)
     print("Generated text for game run", game_run)
+
+
+if __name__ == "__main__":
+    fire.Fire(main)
