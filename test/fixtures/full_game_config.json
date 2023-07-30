@@ -9,6 +9,7 @@
             "In these turbulent times there is only room for one to survive."
         ]
     },
+    "original_game_name": "coup",
     "name": "Coup",
     "components": {
         "variants": [

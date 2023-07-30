@@ -144,35 +144,33 @@ def load_story(game_run, verbose=True):
     return story["text"]
 
 
-def gen_game_text(game_run, existing_game_name, theme, verbose=True):
-    with open(os.path.join(GAME_CONFIG_DIR, f"{existing_game_name}/story.yaml"), "r") as f:
+def gen_game_text(game_run, original_game_name, theme, verbose=True):
+    with open(os.path.join(GAME_CONFIG_DIR, f"{original_game_name}/story.yaml"), "r") as f:
         story_template = yaml.load(f, Loader=Loader)
     story_template_str = json.dumps(story_template)
-    with open(os.path.join(GAME_CONFIG_DIR, f"{existing_game_name}/action_characters.yaml"), "r") as f:
+    with open(os.path.join(GAME_CONFIG_DIR, f"{original_game_name}/action_characters.yaml"), "r") as f:
         action_characters_template = yaml.load(f, Loader=Loader)
     action_characters_template_str = json.dumps(action_characters_template)
-    with open(os.path.join(GAME_CONFIG_DIR, f"{existing_game_name}/style.yaml"), "r") as f:
+    with open(os.path.join(GAME_CONFIG_DIR, f"{original_game_name}/style.yaml"), "r") as f:
         style_template = yaml.load(f, Loader=Loader)
     style_template_str = json.dumps(style_template)
 
+    story_template["original_game_name"] = original_game_name
     save_game_config(game_run, story_template)
     save_game_config(game_run, action_characters_template)
     save_game_config(game_run, style_template)
 
-    # TODO: this should only provide a minimal and easy template the LLM needs
     story_prompt = read_and_format_prompt(
         os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "story.txt"),
         template_str=story_template_str,
         theme=theme,
-        existing_game_name=existing_game_name,
+        original_game_name=original_game_name,
     )
 
-    # chat_id = "ec2c3a52-d44e-4669-9580-2696dae510e"
     chat_id = get_and_save_completion(
         game_run,
         story_prompt,
         verbose=verbose,
-        # chat_id=chat_id
     )
 
     new_game_name = load_name(game_run, verbose=verbose)
@@ -180,7 +178,7 @@ def gen_game_text(game_run, existing_game_name, theme, verbose=True):
     actions_and_characters_prompt = read_and_format_prompt(
         os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "action_characters.txt"),
         template_str=action_characters_template_str,
-        existing_game_name=existing_game_name,
+        original_game_name=original_game_name,
         new_game_name=new_game_name,
     )
 
@@ -193,11 +191,11 @@ def gen_game_text(game_run, existing_game_name, theme, verbose=True):
     return game_run
 
 
-def main(existing_game_name, theme, game_run=None, verbose=True):
+def main(original_game_name, theme, game_run=None, verbose=True):
     if not game_run:
         game_run = str(uuid.uuid4())
     print("Game run", game_run)
-    game_run = gen_game_text(game_run, existing_game_name, theme, verbose=verbose)
+    game_run = gen_game_text(game_run, original_game_name, theme, verbose=verbose)
     print("Generated text for game run", game_run)
 
 

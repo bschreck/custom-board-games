@@ -26,3 +26,4 @@ os.makedirs(GENERATED_IMAGE_DIR, exist_ok=True)
 UUID_NAME_MAP_FILENAME = GENERATED_DIR / 'uuid_name_map.yaml'
 FONTS_DIR = ROOT / 'fonts'
 os.makedirs(FONTS_DIR, exist_ok=True)
+HTML_TEMPLATES_DIR = ROOT / 'html_templates'

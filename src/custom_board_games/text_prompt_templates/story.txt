@@ -1,6 +1,6 @@
 Generate the name and narrative storyline of a new board game.
 This name and story will be used to automatically replace the fields in the JSON template provided below.
-The existing template is for the game {existing_game_name}. You should output a JSON file that would populate the webpage for the new game.
+The existing template is for the game {original_game_name}. You should output a JSON file that would populate the webpage for the new game.
 You should modify the provided template and return output that is parseable by JSON.
 
 This board game should be based on the following theme.

@@ -3,7 +3,7 @@ import os
 import shutil
 import concurrent.futures
 
-from .utils.redis import redis, save_game_config, load_game_config, ensure_redis_key_exists
+from .utils.redis import save_game_config, load_game_config
 from .utils.mock_stable_diffusion import gen_stability_image_from_text as mock_gen_stability_image_from_text
 from .utils.images import gen_stability_image_from_text as real_gen_stability_image_from_text
 from .config import GENERATED_IMAGE_DIR
@@ -12,15 +12,23 @@ if os.getenv('ENV', "test") == "test":
     gen_stability_image_from_text = mock_gen_stability_image_from_text
 else:
     gen_stability_image_from_text = real_gen_stability_image_from_text
+    
+def add_nested_key_to_dict(d, key, value):
+    keys = key.split(".")
+    for key in keys[:-1]:
+        if key not in d:
+            d[key] = {}
+        d = d[key]
+    d[keys[-1]] = value
 
 def save_image_mapping(game_run, prompt_idx, image_paths, save_top_level_name=True):
     config = load_game_config(game_run)
     config["image_prompts"][prompt_idx]["image_paths"] = image_paths
     if save_top_level_name:
-        config[config["image_prompts"][prompt_idx]["name"]] = image_paths
+        add_nested_key_to_dict(config, 'images_by_name.' + config["image_prompts"][prompt_idx]["name"], image_paths)
     save_game_config(game_run, config)
 
-def image_paths_by_type(type, game_run):
+def image_prompt_dicts_by_type(type, game_run):
     config = load_game_config(game_run)
     return [
         prompt_config
@@ -39,7 +47,7 @@ def combine_char_logo_images(char_img_path, logo_img_path, save_path):
 
 def gen_component_overview_image(game_run):
     config = load_game_config(game_run)
-    component_images = image_paths_by_type('component', game_run)
+    component_images = image_prompt_dicts_by_type('component', game_run)
     save_path = os.path.join(GENERATED_IMAGE_DIR, game_run, "component_overview.png")
     combine_images([c["image_paths"][0] for c in component_images], save_path)
     # TODO: this will overwrite later,
@@ -48,32 +56,34 @@ def gen_component_overview_image(game_run):
     # TODO: each of these top level images should be a dict,
     # and all these multi-generated ones should have original files to reconstruct
     # do it for the others
-    config["image_prompts"]["component_overview_image"] = {
+    add_nested_key_to_dict(config, 'images_by_name.component_overview_image', {
         "image_paths": [save_path],
         "source_images": [c["name"] for c in component_images]
-    }
+    })
     save_game_config(game_run, config)
 
 def gen_setup_image(game_run):
     # TODO actually implement
     config = load_game_config(game_run)
-    component_images = image_paths_by_type('component', game_run)
+    component_images = image_prompt_dicts_by_type('component', game_run)
     save_path = os.path.join(GENERATED_IMAGE_DIR, game_run, "setup.png")
-    shutil.copyfile(component_images[0], save_path)
-    config["images"]["setup_image"] = {"src": save_path}
+    shutil.copyfile(component_images[0]["image_paths"][0], save_path)
+
+    add_nested_key_to_dict(config, 'images_by_name.setup_image.image_paths', [save_path])
 
 def gen_character_images(game_run):
     config = load_game_config(game_run)
-    char_images = image_paths_by_type('character_image', game_run)
-    logo_images = image_paths_by_type('character_image_logo', game_run)
+    char_images = image_prompt_dicts_by_type('character_image', game_run)
+    logo_images = image_prompt_dicts_by_type('character_image_logo', game_run)
     for char_img, logo_img in zip(char_images, logo_images):
         name = char_img["name"] + "_with_logo"
         save_path = os.path.join(GENERATED_IMAGE_DIR, game_run, name)
-        combine_char_logo_images(char_img["path"], logo_img["path"], save_path)
+        combine_char_logo_images(char_img["image_paths"][0], logo_img["image_paths"][0], save_path)
         # TODO: this will overwrite later,
         # and fail if doesn't exist
-        config["images"][name]["src"] = save_path
-        save_game_config(config)
+
+        add_nested_key_to_dict(config, f'images_by_name.{name}.image_path', save_path)
+        save_game_config(game_run, config)
     
 def gen_images_from_game_run(game_run, nthreads=None, verbose=True):
     output_dirname = os.path.join(GENERATED_IMAGE_DIR, game_run)

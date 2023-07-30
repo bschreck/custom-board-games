@@ -9,14 +9,16 @@ def redis():
 
 def ensure_redis_game_run_exists(game_run):
     r = redis()
-    if game_run not in r.json().get("game_runs", "."):
+    game_runs_top_level = r.json().get("game_runs", ".")
+    if not game_runs_top_level or game_run not in game_runs_top_level:
         r.json().set("game_runs", ".", {game_run: {}})
 
 
 def ensure_redis_key_exists(game_run, key):
     r = redis()
     ensure_redis_game_run_exists(game_run)
-    if key not in r.json().get("game_runs", f".{game_run}"):
+    existing_game_run_config = r.json().get("game_runs", f".{game_run}")
+    if not existing_game_run_config or key not in existing_game_run_config:
         r.json().set("game_runs", f".{game_run}.key", {})
 
 
