@@ -25,7 +25,14 @@ def save_image_mapping(game_run, prompt_idx, image_paths, save_top_level_name=Tr
     config = load_game_config(game_run)
     config["image_prompts"][prompt_idx]["image_paths"] = image_paths
     if save_top_level_name:
-        add_nested_key_to_dict(config, 'images_by_name.' + config["image_prompts"][prompt_idx]["name"], image_paths)
+        add_nested_key_to_dict(
+            config, 
+            'images_by_name.' + config["image_prompts"][prompt_idx]["name"], 
+            {
+                "composite": False,
+                "source_images": [],
+                "image_paths": image_paths
+            })
     save_game_config(game_run, config)
 
 def image_prompt_dicts_by_type(type, game_run):
@@ -58,7 +65,8 @@ def gen_component_overview_image(game_run):
     # do it for the others
     add_nested_key_to_dict(config, 'images_by_name.component_overview_image', {
         "image_paths": [save_path],
-        "source_images": [c["name"] for c in component_images]
+        "source_images": [c["name"] for c in component_images],
+        "composite": True
     })
     save_game_config(game_run, config)
 
@@ -69,7 +77,11 @@ def gen_setup_image(game_run):
     save_path = os.path.join(GENERATED_IMAGE_DIR, game_run, "setup.png")
     shutil.copyfile(component_images[0]["image_paths"][0], save_path)
 
-    add_nested_key_to_dict(config, 'images_by_name.setup_image.image_paths', [save_path])
+    add_nested_key_to_dict(config, 'images_by_name.setup_image', {
+        "image_paths": [save_path],
+        "source_images": [component_images[0]["name"]],
+        "composite": True
+    })
 
 def gen_character_images(game_run):
     config = load_game_config(game_run)
@@ -82,7 +94,11 @@ def gen_character_images(game_run):
         # TODO: this will overwrite later,
         # and fail if doesn't exist
 
-        add_nested_key_to_dict(config, f'images_by_name.{name}.image_path', save_path)
+        add_nested_key_to_dict(config, f'images_by_name.{name}', {
+            "image_paths": [save_path],
+            "source_images": [char_img["name"], logo_img["name"]],
+            "composite": True
+        })
         save_game_config(game_run, config)
     
 def gen_images_from_game_run(game_run, nthreads=None, verbose=True):

@@ -306,7 +306,7 @@
                 "component"
             ],
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image/d5f73155-c345-4ded-ad3f-5d3623e8e43f.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image/1.png"
             ]
         },
         {
@@ -318,7 +318,7 @@
                 "component"
             ],
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_logo/a546228d-5083-43c0-a637-6d0e7c013ff0.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_logo/2.png"
             ]
         },
         {
@@ -330,7 +330,7 @@
                 "component"
             ],
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image/a0094647-c0ab-4584-b302-7d4469e92aae.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image/3.png"
             ]
         },
         {
@@ -342,7 +342,7 @@
                 "component"
             ],
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_logo/267ff550-57c7-454c-bd77-4e3e5df86b0e.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_logo/4.png"
             ]
         },
         {
@@ -353,7 +353,7 @@
                 "background"
             ],
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_card_art_image/93aea89e-48e4-46db-8382-eff889934ade.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_card_art_image/5.png"
             ]
         },
         {
@@ -364,7 +364,7 @@
                 "box"
             ],
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/hero_image_for_box/007b3887-509d-4e4c-8979-dc2f4ae567c6.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/hero_image_for_box/6.png"
             ]
         },
         {
@@ -375,7 +375,7 @@
                 "background"
             ],
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_art_for_box/f43fd2d7-ce79-4f14-bcd0-f3576f37d187.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_art_for_box/7.png"
             ]
         },
         {
@@ -386,28 +386,75 @@
                 "component"
             ],
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/token_image/25f2eb69-f10e-48ca-8753-a1d022fd8a5c.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/token_image/8.png"
             ]
         }
     ],
     "images_by_name": {
-        "<character_name>_image": [
-            "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image/a0094647-c0ab-4584-b302-7d4469e92aae.png"
-        ],
-        "<character_name>_logo": [
-            "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_logo/267ff550-57c7-454c-bd77-4e3e5df86b0e.png"
-        ],
-        "background_card_art_image": [
-            "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_card_art_image/93aea89e-48e4-46db-8382-eff889934ade.png"
-        ],
-        "hero_image_for_box": [
-            "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/hero_image_for_box/007b3887-509d-4e4c-8979-dc2f4ae567c6.png"
-        ],
-        "background_art_for_box": [
-            "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_art_for_box/f43fd2d7-ce79-4f14-bcd0-f3576f37d187.png"
-        ],
-        "token_image": [
-            "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/token_image/25f2eb69-f10e-48ca-8753-a1d022fd8a5c.png"
-        ]
+        "<character_name>_image": {
+            "composite": false,
+            "source_images": [],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image/3.png"
+            ]
+        },
+        "<character_name>_logo": {
+            "composite": false,
+            "source_images": [],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_logo/4.png"
+            ]
+        },
+        "background_card_art_image": {
+            "composite": false,
+            "source_images": [],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_card_art_image/5.png"
+            ]
+        },
+        "hero_image_for_box": {
+            "composite": false,
+            "source_images": [],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/hero_image_for_box/6.png"
+            ]
+        },
+        "background_art_for_box": {
+            "composite": false,
+            "source_images": [],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_art_for_box/7.png"
+            ]
+        },
+        "token_image": {
+            "composite": false,
+            "source_images": [],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/token_image/8.png"
+            ]
+        },
+        "component_overview_image": {
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/component_overview.png"
+            ],
+            "source_images": [
+                "<character_name>_image",
+                "<character_name>_logo",
+                "<character_name>_image",
+                "<character_name>_logo",
+                "token_image"
+            ],
+            "composite": true
+        },
+        "<character_name>_image_with_logo": {
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image_with_logo"
+            ],
+            "source_images": [
+                "<character_name>_image",
+                "<character_name>_logo"
+            ],
+            "composite": true
+        }
     }
 }
