@@ -4,7 +4,7 @@
         <title>How to play {{ name }}</title>
         <style>
             body {
-                font-family: {{ font_family }};
+                font-family: "{{ font_family }}";
                 margin: 0;
                 padding: 0;
                 background-color: #ffffff;
@@ -37,7 +37,7 @@
                 border-bottom-right-radius: 30px;
                 border-top-left-radius: 30px;
                 border-top-right-radius: 30px;
-                background-image: {{ story.background_image }};
+                background-image: "{{ images_by_name.hero_image_for_box.image_paths[0] }}";
                 line-height: 32.4px;
                 margin-bottom: 30px;
                 margin-left:  0px;
@@ -81,18 +81,24 @@
             }
             .note {
                 background: {{note.background_color}};
-                background-image: {{note.background_image}};
+                background-image: "{{note.background_image}}";
                 {% if note.box_shadow %}
                     box-shadow: 0 1px 4px hsla(0,0%,0%,.25);
                 {% endif %}
                 border-radius: {{ note.border_radius }};
+            }
+            .note1 {
+                /* TODO */
+            }
+            .note2 {
+                /* TODO */
             }
 
         </style>
     </head>
     <body>
         <div class="container">
-            <div class="hero-img-container"><img class="hero-img" src="{{ hero_image_for_box[0] }}" alt="hero image"/></div>
+            <div class="hero-img-container"><img class="hero-img" src="{{ images_by_name.hero_image_for_box.image_paths[0] }}" alt="hero image"/></div>
 
             <div class="section story">
                 {% for paragraph in story.text %}
@@ -100,150 +106,16 @@
                 {% endfor %}
             </div>
 
-            <div class="section components">
-                <div class="col">
-                  <h2>Components</h2>
-                  <ul>
-                      {% for component in components.variants %}
-                          {% if component.variants %}
-                              {% for variant in component.variants %}
-                                  {% if variant.neach > 1 %}
-                                    {% set suffix = component.name_plural %}
-                                    {% if component.variant_suffix %}
-                                        {% set suffix = component.variant_suffix_plural %}
-                                    {% endif %}
-                                  {% else %}
-                                    {% set suffix = component.name %}
-                                    {% if component.variant_suffix %}
-                                        {% set suffix = component.variant_suffix %}
-                                    {% endif %}
-                                  {% endif %}
-                                  <li>{{ variant.neach }} {{ variant.name }} {{ suffix }}</li>
-                              {% endfor %}
-                          {% else %}
-                              <li>{{ component.neach }} {{ component.name_plural if component.neach > 1 else component.name }}</li>
-                          {% endif %}
-                      {% endfor %}
-                  </ul>
-                </div>
-                <div class="col">
-                    <img class="component-img" src="{{ components_overview_image }}" alt="component images"/>
-                </div>
-            </div>
 
-            <div class="section">
-                <h2>Setup</h2>
-                {% for paragraph in setup.text %}
-                    <p>{{ paragraph }}</p>
-                {% endfor %}
-                <img class="setup-img" src="{{ setup_image }}" alt="setup images"/>
-            </div>
-
-            <div class="section objective">
-                <h2>Object of the Game</h2>
-                {% for paragraph in objective.text %}
-                    <p>{{ paragraph }}</p>
-                {% endfor %}
-            </div>
-            <div class="section note note1">
-                {% for note in notes.note1 %}
-                    <div class="container {{ note.class }}">
-                        {# TODO: arrangement of sections should be in config too, allows notes to be spread around #}
-                        <h2>{{ note.title }}</h2>
-                        {% for paragraph in note.text %}
-                            <p>{{ paragraph }}</p>
-                        {% endfor %}
-                    </div>
-                {% endfor %}
-            </div>
-
-
-            <div class="section gameplay">
-                <h2>Game Play</h2>
-                {% for paragraph in game_play.text %}
-                    <p>{{ paragraph }}</p>
-                {% endfor %}
-            </div>
-            <div class="section actions">
-                <h2>Actions</h2>
-                {% for paragraph in actions.overview %}
-                    <p>{{ paragraph }}</p>
-                {% endfor %}
-                {# GENERALIZE #}
-                <ol class="action-type-list">
-                    {% for action in actions.action_types %}
-                      <li>
-                        <h3>{{ action.name }}</h3>
-                        {% for p in action.descriptor %}
-                          <p>{{ p }}</p>
-                        {% endfor %}
-                        {% if action.simple %}
-                          <ul class="action-list {{ action.type }}-action">
-                              {% for variant in action.variants %}
-                              <li>
-                                  <h3>{{ variant.name }}</h3>
-                                  {% for p in variant.descriptor %}
-                                    <p>{{ p }}</p>
-                                  {% endfor %}
-                              </li>
-                              {% endfor %}
-                          </ul>
-                        {% else %}
-                          <div class="container action-list">
-                            {% for variant in action.variants %}
-                              <div class="container {{ action.type }}-action">
-                                {% if action.image and action.image_first %}
-                                  <div class="col">
-                                      <img class="{{ images[variant.image].image_class }}" src="{{ images[variant.name + "_with_logo"].src }}" alt="{{ images[variant.image].alt }}"/>
-                                  </div>
-                                {% endif %}
-                                <div class="col">
-                                    <h3>{{ variant.characters|join(',') }} - {{ variant.name }}</h3>
-                                    {% for p in variant.descriptor %}
-                                      <p>{{ p }}</p>
-                                    {% endfor %}
-                                </div>
-                                {% if action.image and not action.image_first %}
-                                  <div class="col">
-                                      <img class="{{ images[variant.image].image_class }}" src="{{ images[variant.image].src }}" alt="{{ images[variant.image].alt }}"/>
-                                  </div>
-                                {% endif %}
-                              </div>
-                            {% endfor %}
-                          </div>
-                        {% endif %}
-                      </li>
-                    {% endfor %}
-                </ol>
-            </div>
-
-            <div class="section challenges">
-                <h2>Challenges</h2>
-                {% for paragraph in challenges.text %}
-                    <p>{{ paragraph }}</p>
-                {% endfor %}
-            </div>
-
-            <div class="section note note2">
-                {% for note in notes.note2 %}
-                    <div class="container {{ note.class }}">
-                        <h3>{{ note.title }}</h3>
-                        {% for paragraph in note.text %}
-                            <p>{{ paragraph }}</p>
-                        {% endfor %}
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="section note note3">
-                {% for note in notes.note3 %}
-                    <div class="container {{ note.class }}">
-                        <h3>{{ note.title }}</h3>
-                        {% for paragraph in note.text %}
-                            <p>{{ paragraph }}</p>
-                        {% endfor %}
-                    </div>
-                {% endfor %}
-            </div>
+            {% for section in sections %}
+                {% if section.type == "actions" %}
+                  {{ section | action_section }}
+                {% elif section.type == "components" %}
+                  {{ section | components_section }}
+                {% else %}
+                  {{ section | normal_section }}
+                 {% endif %}
+            {% endfor %}
         </div>
     </body>
 </html>

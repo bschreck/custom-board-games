@@ -122,10 +122,15 @@ sections:
       - "Give each player 2 coins. Each player's money must be kept visible. Place the remaining coins in the middle of the play area as the Treasury."
       - "Give one summary card to each player. This is for reference only. Players should familiarize themselves with all the actions and characters before starting the game."
       - "The person who won the last game starts."
+    type: text
   - title: Object of the Game
     grouping: object
     text:
       - "To eliminate the influence of all other players and be the last survivor."
+    type: text
+  - title: Components
+    grouping: components
+    type: components
   - title: "Influence"
     grouping: "note1"
     text:
@@ -133,6 +138,7 @@ sections:
       - "Every time a player loses an influence they have to turn over and reveal one of their face down cards. Revealed cards remain face up in front of the player visible to everyone and no longer provide influence for the player."
       - "Each player always chooses which of their own cards they wish to reveal when they lose an influence."
       - "When a player has lost all their influence they are exiled and out of the game."
+    type: note
   - title: Game Play
     text:
       - "On your turn, you can take any of the actions listed on the action list, provided you can afford it. Actions can be challenged by any other player, and bluffs can be called. If you lose a challenge, you lose an influence."
@@ -140,11 +146,13 @@ sections:
       - "If an action is not challenged or counteracted, the action automatically succeeds. Challenges are resolved first before any action or counteraction is resolved."
       - "When a player has lost all their influence and both their cards are face up in front of them, they are immediately out of the game. They leave their cards face up and return all their coins to the Treasury."
       - "The game ends when there is only one player left."
+    type: text
   - title: Actions
     text:
       - "A player may choose any action they want and can afford. Some actions (Character Actions) require influencing characters."
       - "If they choose a Character Action a player must claim that the required character is one of their face down cards. They can be telling the truth or bluffing. They do not need to reveal any of their face down cards unless they are challenged. If they are not challenged they automatically succeed."
       - "If a player starts their turn with 10 (or more) coins they must launch a Coup that turn as their only action."
+    type: actions
   - title: Challenges
     text:
       - "Any action or counteraction using character influence can be challenged."
@@ -155,18 +163,21 @@ sections:
       - "If a player wins a challenge by showing the relevant character card, they first return that card to the Court deck, re-shuffle the Court deck and take a random replacement card."
       - "(That way they have not lost influence and other players do not know the new influence card they have). Then the action or counteraction is resolved."
       - "If an action is successfully challenged the entire action fails, and any coins paid as the cost of the action are returned to the player."
+    type: text
   - title: "Note: Double Dangers of Assassination"
     grouping: "note2"
     text:
       - "It is possible to lose 2 influence in one turn if you unsuccessfully defend against an assassination."
       - "For example, if you challenge an assassin used against you and lose the challenge, you will lose 1 influence for the lost challenge and then 1 influence for the successful assassination."
       - "Or if you bluff about having the Contessa to block an assassination attempt and are challenged, you will lose 1 influence for the lost challenge and then lose 1 influence for the successful assassination."
+    type: note
   - title: "Total (Lack of) Trust"
     grouping: "note2"
     text:
       - "Any negotiations are allowed, but none are ever binding. Players are not allowed to reveal any of their cards to other players."
       - "No coins can be given or lent to other players."
       - "There is no second place."
+    type: note
   - title: "Two Player Coup & Two Player Variant"
     grouping: "note3"
     text:
@@ -174,3 +185,4 @@ sections:
       - "As a variant, Coup can be played with two players with these changes to the setup:"
       - "Divide the cards into a 3 sets of 5 (each set has one of each character). Each player takes one set, secretly chooses one card and discards the rest."
       - "Shuffle the third set and deal one card to each player and then put the remaining three cards face down as the court deck."
+    type: note

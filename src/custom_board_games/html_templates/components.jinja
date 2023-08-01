@@ -1,0 +1,31 @@
+<div class="section components">
+    <div class="col">
+        <h2>Components</h2>
+        <ul>
+            {% for component in variants %}
+            {% if component.variants %}
+            {% for variant in component.variants %}
+            {% if variant.neach > 1 %}
+            {% set suffix = component.name_plural %}
+            {% if component.variant_suffix %}
+            {% set suffix = component.variant_suffix_plural %}
+            {% endif %}
+            {% else %}
+            {% set suffix = component.name %}
+            {% if component.variant_suffix %}
+            {% set suffix = component.variant_suffix %}
+            {% endif %}
+            {% endif %}
+            <li>{{ variant.neach }} {{ variant.name }} {{ suffix }}</li>
+            {% endfor %}
+            {% else %}
+            <li>{{ component.neach }} {{ component.name_plural if component.neach > 1 else component.name }}</li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col">
+        <img class="component-img" src="{{ images_by_name.components_overview_image.image_paths[0] }}"
+            alt="component images" />
+    </div>
+</div>

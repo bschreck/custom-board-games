@@ -1,0 +1,15 @@
+<div class="section">
+    {% if type == "note" %}
+    <div class="container note">
+        {% endif %}
+        <h2>{{ title }}</h2>
+        {% for paragraph in text %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+        {% if image %}
+        <img class="setup-img" src="{{ images_by_name[image].image_paths[0] }}" alt="{{ title }} image" />
+        {% endif %}
+        {% if type == "note" %}
+    </div>
+    {% endif %}
+</div>

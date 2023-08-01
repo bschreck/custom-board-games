@@ -293,9 +293,12 @@
         "<color_hex>"
     ],
     "font_family": "<font_family>",
-    "note.background_color": "<color_hex>",
-    "note.background_image": "<webkit_gradient>",
-    "note.box_shadow": "<boolean>",
+    "note": {
+        "background_color": "<color_hex>",
+        "background_image": "<webkit_gradient>",
+        "box_shadow": "<boolean>",
+        "border_radius": "<border_radius>px",
+    },
     "image_prompts": [
         {
             "name": "<character_name>_image",

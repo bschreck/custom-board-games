@@ -210,6 +210,9 @@
             ]
         },
         {
+            "title": "Components",
+        },
+        {
             "title": "Object of the Game",
             "grouping": "object",
             "text": [
@@ -219,6 +222,7 @@
         {
             "title": "Influence",
             "grouping": "note1",
+            "note_class": "note1",
             "text": [
                 "Facedown cards in front of a player represent who they influence at court. The characters printed on their face down cards represents which characters that player influences and their abilities.",
                 "Every time a player loses an influence they have to turn over and reveal one of their face down cards. Revealed cards remain face up in front of the player visible to everyone and no longer provide influence for the player.",
@@ -260,6 +264,7 @@
         {
             "title": "Note: Double Dangers of Assassination",
             "grouping": "note2",
+            "note_class": "note2",
             "text": [
                 "It is possible to lose 2 influence in one turn if you unsuccessfully defend against an assassination.",
                 "For example, if you challenge an assassin used against you and lose the challenge, you will lose 1 influence for the lost challenge and then 1 influence for the successful assassination.",
@@ -269,6 +274,7 @@
         {
             "title": "Total (Lack of) Trust",
             "grouping": "note2",
+            "note_class": "note2",
             "text": [
                 "Any negotiations are allowed, but none are ever binding. Players are not allowed to reveal any of their cards to other players.",
                 "No coins can be given or lent to other players.",
@@ -278,6 +284,7 @@
         {
             "title": "Two Player Coup & Two Player Variant",
             "grouping": "note3",
+            "note_class": "note2",
             "text": [
                 "When playing Coup with two players, the starting player receives only 1 coin at the beginning of the game.",
                 "As a variant, Coup can be played with two players with these changes to the setup:",
@@ -459,5 +466,6 @@
             ],
             "composite": true
         }
-    }
+    },
+    "rendered_html": "/Users/ben/custom-board-games/test/html_rendered/coup_angry_birds_test.html"
 }

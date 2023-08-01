@@ -1,4 +1,3 @@
-import sys
 import os
 import shutil
 import concurrent.futures
@@ -7,6 +6,7 @@ from .utils.redis import save_game_config, load_game_config
 from .utils.mock_stable_diffusion import gen_stability_image_from_text as mock_gen_stability_image_from_text
 from .utils.images import gen_stability_image_from_text as real_gen_stability_image_from_text
 from .config import GENERATED_IMAGE_DIR
+import fire
 
 if os.getenv('ENV', "test") == "test":
     gen_stability_image_from_text = mock_gen_stability_image_from_text
@@ -55,7 +55,7 @@ def combine_char_logo_images(char_img_path, logo_img_path, save_path):
 def gen_component_overview_image(game_run):
     config = load_game_config(game_run)
     component_images = image_prompt_dicts_by_type('component', game_run)
-    save_path = os.path.join(GENERATED_IMAGE_DIR, game_run, "component_overview.png")
+    save_path = os.path.join(GENERATED_IMAGE_DIR, game_run, "components_overview.png")
     combine_images([c["image_paths"][0] for c in component_images], save_path)
     # TODO: this will overwrite later,
     # and fail if doesn't exist
@@ -63,7 +63,7 @@ def gen_component_overview_image(game_run):
     # TODO: each of these top level images should be a dict,
     # and all these multi-generated ones should have original files to reconstruct
     # do it for the others
-    add_nested_key_to_dict(config, 'images_by_name.component_overview_image', {
+    add_nested_key_to_dict(config, 'images_by_name.components_overview_image', {
         "image_paths": [save_path],
         "source_images": [c["name"] for c in component_images],
         "composite": True
@@ -131,9 +131,12 @@ def gen_images_from_game_run(game_run, nthreads=None, verbose=True):
     gen_character_images(game_run)
 
 
+def main(game_run=None, nthreads=None, verbose=True):
+    gen_images_from_game_run(game_run, nthreads=nthreads, verbose=verbose)
+
+
 if __name__ == '__main__':
-    game_run = sys.argv[1]
-    gen_images_from_game_run(game_run, verbose=True)
+    fire.Fire(main)
 
 
 

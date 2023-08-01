@@ -1,0 +1,53 @@
+<div class="section actions">
+    <h2>Actions</h2>
+    {% for paragraph in overview.text %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+    <ol class="action-type-list">
+        {% for action in action_types %}
+        <li>
+            <h3>{{ action.name }}</h3>
+            {% for p in action.descriptor %}
+            <p>{{ p }}</p>
+            {% endfor %}
+            {% if action.simple %}
+            <ul class="action-list {{ action.type }}-action">
+                {% for variant in action.variants %}
+                <li>
+                    <h3>{{ variant.name }}</h3>
+                    {% for p in variant.descriptor %}
+                    <p>{{ p }}</p>
+                    {% endfor %}
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <div class="container action-list">
+                {% for variant in action.variants %}
+                <div class="container {{ action.type }}-action">
+                    {% if action.image and action.image_first %}
+                    <div class="col">
+                        <img class="{{ variant | image_class }}" src="{{ variant | image_source }}"
+                            alt="{{ variant.name }} Image" />
+                    </div>
+                    {% endif %}
+                    <div class="col">
+                        <h3>{{ variant.characters|join(',') }} - {{ variant.name }}</h3>
+                        {% for p in variant.descriptor %}
+                        <p>{{ p }}</p>
+                        {% endfor %}
+                    </div>
+                    {% if action.image and not action.image_first %}
+                    <div class="col">
+                        <img class="{{ variant | image_class }}" src="{{ variant | image_source }}"
+                            alt="{{ variant.name }} Image" />
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ol>
+</div>

@@ -12,6 +12,6 @@ def test_gen_text():
     with open('test/fixtures/full_game_config.json') as f:
         loaded_config = json.load(f)
     game_run = str(uuid.uuid4())
-    gen_game_text(game_run, "coup", "Angry Birds", verbose=True)
+    gen_game_text(game_run, "coup", "Angry Birds", verbose=False)
     config = load_game_config(game_run)
     assert config == loaded_config
