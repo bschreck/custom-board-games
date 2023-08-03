@@ -1,0 +1,7 @@
+character_image: [256, 512]
+character_image_logo: [256, 256]
+card: [256, 512]
+box_front: [1028, 1028]
+box_side_long: [1028, 256]
+box_side_short: [768, 256]
+token: [64, 64]

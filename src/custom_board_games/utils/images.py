@@ -85,8 +85,38 @@ def create_mask(image, letter_is_white=True, blur=False):
 
     return mask_image
 
-def gen_stability_image_from_text(prompt, name, dirname, samples=1, width=512, height=512, img=None, mask=None):
-    os.makedirs(os.path.join(dirname, name), exist_ok=True)
+def upscale_image(input_image_path, output_dirname, new_width, original_prompt, upscale_engine="esrgan-v1-x2plus", verbose=True):
+    stability_api = client.StabilityInference(
+        key=os.environ['STABILITY_KEY'], # API Key reference.
+        upscale_engine=upscale_engine,
+                                           # Available Upscaling Engines: esrgan-v1-x2plus, stable-diffusion-x4-latent-upscaler
+        verbose=verbose
+    )
+    img = Image.open(input_image_path)
+    answers = stability_api.upscale(
+        init_image=img, # Pass our image to the API and call the upscaling process.
+        width=new_width,
+        prompt=original_prompt,
+        # seed=1234, # Optional parameter when using `stable-diffusion-x4-latent-upscaler` to specify a seed to use for the upscaling process.
+        # steps=20, # Optional parameter when using `stable-diffusion-x4-latent-upscaler` to specify the number of diffusion steps to use for the upscaling process. Defaults to 20 if no value is passed, with a maximum of 50.
+        # cfg_scale=7 # Optional parameter when using `stable-diffusion-x4-latent-upscaler` to specify the strength of prompt in use for the upscaling process. Defaults to 7 if no value is passed.
+    )
+    paths = []
+    for resp in answers:
+        for artifact in resp.artifacts:
+            if artifact.finish_reason == generation.FILTER:
+                warnings.warn(
+                    "Your request activated the API's safety filters and could not be processed."
+                    "Please submit a different image and try again.")
+            if artifact.type == generation.ARTIFACT_IMAGE:
+                big_img = Image.open(io.BytesIO(artifact.binary))
+                path = os.path.join(output_dirname, str(artifact.seed)+ ".png")
+                big_img.save(path)
+                paths.append(path)
+    return paths
+
+def gen_stability_image_from_text(prompt, dirname, samples=1, width=128, height=128, img=None, mask=None):
+    os.makedirs(os.path.join(dirname), exist_ok=True)
     stability_api = client.StabilityInference(
         key=os.environ['STABILITY_KEY'], # API Key reference.
         verbose=True, # Print debug messages.
@@ -124,10 +154,8 @@ def gen_stability_image_from_text(prompt, name, dirname, samples=1, width=512, h
                     "Your request activated the API's safety filters and could not be processed."
                     "Please modify the prompt and try again.")
             if artifact.type == generation.ARTIFACT_IMAGE:
-                # TODO: get rid of global
-                global answer
                 answer = Image.open(io.BytesIO(artifact.binary))
-                path = os.path.join(dirname, name, str(artifact.seed)+ ".png")
+                path = os.path.join(dirname, str(artifact.seed)+ ".png")
                 answer.save(path)
                 paths.append(path)
     return paths
