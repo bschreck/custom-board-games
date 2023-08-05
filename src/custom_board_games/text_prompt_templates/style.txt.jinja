@@ -15,5 +15,5 @@ The one exception to this is that for each field corresponding to a shared objec
 For instance, if you see {%raw%}{{character1.name}}{%endraw%} in an array, and there are 3 characters in the created game, you should generate {%raw%}[{{character1.name}}, {{character2.name}}, {{character3.name}}]{%endraw%}
 Sometimes inside Jinja curly braces are regexes, such as this one for color hex: r"^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$". When you encounter these, you should generate output that satisfies the regex. In this case, an example is #2CA6C0
     
----- TEMPLATE ----
+---- STYLE TEMPLATE ----
 {{template_str}}

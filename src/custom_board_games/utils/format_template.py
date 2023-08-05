@@ -109,10 +109,10 @@ class MetaTemplateGenerator:
         env.filters["objkey"] = self.objkey_filter_for_gpt
         template = env.get_template(str(os.path.relpath(self.template_file)))
         rendered = template.render(**config)
-        print(rendered)
         as_dict = yaml.load(rendered, Loader=Loader)
         with open(output_file, "w") as f:
             json.dump(as_dict, f, indent=4)
+        return as_dict
 
     def render_for_mock(self, output_file):
         config = load_game_config(self.game_run)
@@ -121,8 +121,11 @@ class MetaTemplateGenerator:
         env.filters["regex"] = self.gen_random_regex_of_type
         env.filters["objkey"] = self.objkey_filter_for_mock
         template = env.get_template(str(os.path.relpath(self.template_file)))
+        rendered = template.render(**config)
+        as_dict = yaml.load(rendered, Loader=Loader)
         with open(output_file, "w") as f:
-            f.write(template.render(**config))
+            f.write(rendered)
+        return as_dict
 
 
 if __name__ == "__main__":

@@ -1,6 +1,8 @@
 from openai import ChatCompletion as OpenAIChatCompletion
+from jinja2 import Environment, select_autoescape, FileSystemLoader
 from .utils.mock_gpt import ChatCompletion as MockChatCompletion
 from .utils.redis import redis, save_game_config, load_game_config, ensure_redis_key_exists
+from .utils.format_template import MetaTemplateGenerator
 import openai
 import dataclasses
 from dotenv import load_dotenv
@@ -67,8 +69,6 @@ class Message:
     # function_call: Union[str, None] = None
 
 
-
-
 def serializable_messages(messages):
     return [dataclasses.asdict(msg) for msg in messages]
 
@@ -93,7 +93,10 @@ def get_and_save_completion(game_run, prompt, chat_id=None, verbose=True):
         print(prompt)
 
     existing_messages += [Message(role="user", content=prompt)]
-    completion = ChatCompletion.create(model="gpt-4", messages=serializable_messages(existing_messages))
+    # game_run is only for mock
+    completion = ChatCompletion.create(
+        model="gpt-4", messages=serializable_messages(existing_messages), game_run=game_run
+    )
 
     message = Message(**completion.choices[0].message)
     # message = existing_messages[-1]
@@ -108,8 +111,9 @@ def get_and_save_completion(game_run, prompt, chat_id=None, verbose=True):
 
 
 def read_and_format_prompt(filename, **format_data):
-    with open(filename) as f:
-        return f.read().format(**format_data)
+    env = Environment(loader=FileSystemLoader(searchpath="./"), autoescape=select_autoescape())
+    template = env.get_template(str(os.path.relpath(filename)))
+    return template.render(**format_data)
 
 
 def save_chat(game_run, chat_id, messages):
@@ -146,14 +150,19 @@ def load_story(game_run, verbose=True):
 
 def gen_game_text(game_run, original_game_name, theme, verbose=True):
     game_config_dir = GAME_CONFIG_DIR / original_game_name
-    with open(game_config_dir / "story.yaml"), "r") as f:
-        story_template = yaml.load(f, Loader=Loader)
+    meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "story.yaml")
+    story_template = meta_gen.render_for_gpt(game_config_dir / "story-gpt.json.jinja")
     story_template_str = json.dumps(story_template)
-    with open(game_config_dir / "action_characters.yaml"), "r") as f:
-        action_characters_template = yaml.load(f, Loader=Loader)
+
+    # TODO: rest of these using MetaTemplateGenerator
+    # TODO: action_characters into jinja
+    # TODO: change name from action_characters to config or something
+    meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "action_characters.yaml")
+    action_characters_template = meta_gen.render_for_gpt(game_config_dir / "action_characters-gpt.json.jinja")
     action_characters_template_str = json.dumps(action_characters_template)
-    with open(game_config_dir / "style.yaml"), "r") as f:
-        style_template = yaml.load(f, Loader=Loader)
+
+    meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "style.yaml")
+    style_template = meta_gen.render_for_gpt(game_config_dir / "style-gpt.json.jinja")
     style_template_str = json.dumps(style_template)
 
     story_template["original_game_name"] = original_game_name
@@ -162,22 +171,19 @@ def gen_game_text(game_run, original_game_name, theme, verbose=True):
     save_game_config(game_run, style_template)
 
     story_prompt = read_and_format_prompt(
-        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "story.txt"),
+        # TODO get template dir right
+        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "story.txt.jinja"),
         template_str=story_template_str,
         theme=theme,
         original_game_name=original_game_name,
     )
 
-    chat_id = get_and_save_completion(
-        game_run,
-        story_prompt,
-        verbose=verbose,
-    )
+    chat_id = get_and_save_completion(game_run, story_prompt, verbose=verbose)
 
     new_game_name = load_name(game_run, verbose=verbose)
 
     actions_and_characters_prompt = read_and_format_prompt(
-        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "action_characters.txt"),
+        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "action_characters.txt.jinja"),
         template_str=action_characters_template_str,
         original_game_name=original_game_name,
         new_game_name=new_game_name,
@@ -186,12 +192,13 @@ def gen_game_text(game_run, original_game_name, theme, verbose=True):
     get_and_save_completion(game_run, actions_and_characters_prompt, chat_id=chat_id, verbose=verbose)
 
     image_gen_prompt = read_and_format_prompt(
-        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "style.txt"), template_str=style_template_str
+        os.path.join(TEXT_PROMPT_TEMPLATE_DIR, "style.txt.jinja"), template_str=style_template_str
     )
     get_and_save_completion(game_run, image_gen_prompt, chat_id=chat_id, verbose=verbose)
 
     merge_image_size_config(game_run, game_config_dir, verbose=verbose)
     return game_run
+
 
 def merge_image_size_config(game_run, game_config_dir, verbose=True):
     with open(game_config_dir / "image_sizes.yaml", "r") as f:
@@ -199,11 +206,8 @@ def merge_image_size_config(game_run, game_config_dir, verbose=True):
     config = load_game_config(game_run)
     config["image_sizes"] = image_sizes
     for prompt_id, prompt in config["image_prompts"].items():
-        config["image_prompts"][prompt_id]["sizes"] = {
-            _type: image_sizes[_type] for _type in prompt["size_types"]
-        }
+        config["image_prompts"][prompt_id]["sizes"] = {_type: image_sizes[_type] for _type in prompt["size_types"]}
     save_game_config(game_run, config)
-
 
 
 def main(original_game_name, theme, game_run=None, verbose=True):
