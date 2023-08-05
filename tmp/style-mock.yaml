@@ -1,49 +1,49 @@
 name: "Coup"
 colors:
-  - "#CC28AB>"
-  - "#7F66CC>"
-  - "#5E4284>"
-  - "#4F739B>"
-font_family: "peritrich malhonest"
+  - "#124273>"
+  - "#2CA6C0>"
+  - "#56F441>"
+  - "#74662F>"
+font_family: "oeillades indiscretionary"
 note:
-  background_color: "#DAB63A>"
-  background_image: <linear-gradient(#e66465, #9198e5);>
-  box_shadow: True
-  border_radius: 17>px
+  background_color: "#8944F3>"
+  background_image: "linear-gradient(#e66465, #9198e5);"
+  box_shadow: "True"
+  border_radius: "15>px"
 image_prompts:
-  dismember_image:
-    variant_name: confraternal
-    prompt: "cognac needfire kinglihood boedromion notchwort humaniformian rus"
+  "mephistophelean_image":
+    variant_name: "triglochin"
+    prompt: "heterogeneous trabeculation spurgalling mammographic"
     types: [character_image, component]
     size_type: [character_image]
-  semimonthlies_logo:
-    variant_name: prompting
-    prompt: "theopantism anthelix bipinnatisected caginess nonamenability"
+  "rates_logo":
+    variant_name: "trailering"
+    prompt: "aube dimane unmentioned tomboyful guarantee"
     types: [character_image_logo, component]
     size_type: [character_image_logo]
-  iterating_image:
-    variant_name: chlorocalcite
-    prompt: "saussurite coinferring collapsed murlemewes hyalinize"
+  "pelviperitonitis_image":
+    variant_name: "zipppiest"
+    prompt: "tubuphone anythingarianism legitimatized polyembryonate elephants impreses itabirite"
     types: [character_image, component]
     size_type: [character_image]
-  barringtonia_logo:
-    variant_name: whole
-    prompt: "decima chemotic weirdies citrul electromedical superinfusing munificentness scarcely scanner thesaurus"
+  "reread_logo":
+    variant_name: "rememoration"
+    prompt: "alligatored uroedema testiculate comportance monology devesting scrubwood cornbin eerie paleogeography"
     types: [character_image_logo, component]
     size_type: [character_image_logo]
   background_card_art_image:
-    image_prompt: "vandiemenian metrometer transfigures diked trabucos baiters spuries"
+    image_prompt: "vindhyan allutterly boil deuterocasease localiser"
     types: [card, background]
     size_type: [card]
   hero_image_for_box:
-    image_prompt: "chinked alreadiness stauroscope overflush threadmaker awaredom uredosporous trimethylamine pseudogynous judices"
+    image_prompt: "windlessly cervicicardiac nebulousness vacuometer rhabarbarate slightiness"
     types: [hero, box]
     size_types: [box_front]
   background_art_for_box:
-    prompt: "girths singey sthenic garshuni buttercup resume"
+    prompt: "uninflective tetragoniaceae woodsiest teams tucks fulgide decalcomania arthroderm petaurus"
     types: [box, background]
     size_types: [box_front, box_side]
   token_image:
-    prompt: "ciceronize algum lomentaceous embiidina amphiaster face nonsurrealistic gastreas dilatometry hyracoidean"
+    prompt: "counterdrain schmeered cataloguist wapato promisees solifugid alberca sublime brothellike"
     types: [token, component]
     size_types: [token]

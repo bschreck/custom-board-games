@@ -1,15 +1,25 @@
 from jinja2 import Environment, select_autoescape, FileSystemLoader
+import yaml
+import json
 from .redis import load_key_from_game_config, save_nested_key_to_game_config, load_game_config
 from redis.exceptions import ResponseError
 from random_word import RandomWords
 import random
 import os
 
+try:
+    from yaml import CLoader as Loader
+except ImportError:
+    from yaml import Loader
+
 random_word_gen = RandomWords()
 
+COLOR_HEX_REGEX = r"^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
 REGEXES = {
-    "color_hex": r"^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
-    "webkit_gradient": r"^(-webkit-linear-gradient|linear-gradient)\((\d+deg|to (top|bottom|left|right)),\s*(#[A-Fa-f0-9]{6}|#[A-Fa-f0-9]{3}),\s*(#[A-Fa-f0-9]{6}|#[A-Fa-f0-9]{3})\)$",
+    "color_hex": COLOR_HEX_REGEX,
+    # TODO
+    # "webkit_gradient": rf"^(linear-gradient\(#{COLOR_HEX_REGEX}, #{COLOR_HEX_REGEX}\);)$",
+    "webkit_gradient": "test",
 }
 EXAMPLE_REGEXES = {"color_hex": "#000000", "webkit_gradient": "linear-gradient(#e66465, #9198e5);"}
 
@@ -98,8 +108,11 @@ class MetaTemplateGenerator:
         env.filters["regex"] = self.regex_filter_for_gpt
         env.filters["objkey"] = self.objkey_filter_for_gpt
         template = env.get_template(str(os.path.relpath(self.template_file)))
+        rendered = template.render(**config)
+        print(rendered)
+        as_dict = yaml.load(rendered, Loader=Loader)
         with open(output_file, "w") as f:
-            f.write(template.render(**config))
+            json.dump(as_dict, f, indent=4)
 
     def render_for_mock(self, output_file):
         config = load_game_config(self.game_run)
@@ -117,4 +130,4 @@ if __name__ == "__main__":
     meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "style.yaml")
     os.makedirs("tmp", exist_ok=True)
     meta_gen.render_for_mock("tmp/style-mock.yaml")
-    meta_gen.render_for_gpt("tmp/style-gpt.yaml.jinja")
+    meta_gen.render_for_gpt("tmp/style-gpt.json.jinja")

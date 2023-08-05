@@ -7,27 +7,27 @@ colors:
 font_family: "{{'name'|type(2)}}"
 note:
   background_color: "#{{'color_hex'|regex}}>"
-  background_image: <{{'webkit_gradient'|regex}}>
-  box_shadow: {{'bool'|type}}
-  border_radius: {{'int'|type(10, 40)}}>px
+  background_image: "{{'webkit_gradient'|regex}}"
+  box_shadow: "{{'bool'|type}}"
+  border_radius: "{{'int'|type(10, 40)}}>px"
 image_prompts:
-  {{'character1.name'|objkey('name', 1)}}_image:
-    variant_name: {{'character1.name'|objkey('name', 1)}}
+  "{{'character1.name'|objkey('name', 1)}}_image":
+    variant_name: "{{'character1.name'|objkey('name', 1)}}"
     prompt: "{{'character1.name_prompt'|objkey('image_prompt')}}"
     types: [character_image, component]
     size_type: [character_image]
-  {{'character1.name'|objkey('name', 1)}}_logo:
-    variant_name: {{'character1.name'|objkey('name', 1)}}
+  "{{'character1.name'|objkey('name', 1)}}_logo":
+    variant_name: "{{'character1.name'|objkey('name', 1)}}"
     prompt: "{{'character1.logo_prompt'|objkey('image_prompt')}}"
     types: [character_image_logo, component]
     size_type: [character_image_logo]
-  {{'character2.name'|objkey('name', 1)}}_image:
-    variant_name: {{'character2.name'|objkey('name', 1)}}
+  "{{'character2.name'|objkey('name', 1)}}_image":
+    variant_name: "{{'character2.name'|objkey('name', 1)}}"
     prompt: "{{'character2.name_prompt'|objkey('image_prompt')}}"
     types: [character_image, component]
     size_type: [character_image]
-  {{'character2.name'|objkey('name', 1)}}_logo:
-    variant_name: {{'character2.name'|objkey('name')}}
+  "{{'character2.name'|objkey('name', 1)}}_logo":
+    variant_name: "{{'character2.name'|objkey('name')}}"
     prompt: "{{'character2.logo_prompt'|objkey('image_prompt')}}"
     types: [character_image_logo, component]
     size_type: [character_image_logo]

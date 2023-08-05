@@ -1,11 +1,13 @@
 Generate the name and narrative storyline of a new board game.
 This name and story will be used to automatically replace the fields in the JSON template provided below.
-The existing template is for the game {original_game_name}. You should output a JSON file that would populate the webpage for the new game.
-You should modify the provided template and return output that is parseable by JSON.
+The existing template is for the game {{original_game_name}}.
+You should output a JSON file that would populate the webpage for the new game.
+The output should be parseable by JSON.
+You should act as a Jinja template formatter, and only change fields in jinja double curly braces.
 
 This board game should be based on the following theme.
 ---- THEME ----
-{theme}.
+{{theme}}.
 
 ---- TEMPLATE ----
-{template_str}
+{{template_str}}

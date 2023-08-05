@@ -9,8 +9,11 @@ Each character image contains a field called "variant", which you should fill in
 There should be exactly 4 colors in the color scheme, and each color should be a hex color code.
 Fontfamily should evoke the style, story, and imagery of the theme and exist on Google fonts, as it will be automatically downloaded from there (e.g. "Open+Sans").
 
-You should output a JSON-parseable file using the following template.
-Other than adding new character images and logos to the array in the same format, only change the values in less than/greater than brackets (<>).
+You should output a JSON-parseable file using the following jinja template.
+You should act as a Jinja template formatter, and only change fields in jinja double curly braces.
+The one exception to this is that for each field corresponding to a shared object suffixed with an integer, you should generate as many of copies of these as there are corresponding components in the game.
+For instance, if you see {%raw%}{{character1.name}}{%endraw%} in an array, and there are 3 characters in the created game, you should generate {%raw%}[{{character1.name}}, {{character2.name}}, {{character3.name}}]{%endraw%}
+Sometimes inside Jinja curly braces are regexes, such as this one for color hex: r"^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$". When you encounter these, you should generate output that satisfies the regex. In this case, an example is #2CA6C0
     
 ---- TEMPLATE ----
-{template_str}
+{{template_str}}

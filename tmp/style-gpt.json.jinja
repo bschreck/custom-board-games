@@ -1,0 +1,103 @@
+{
+    "name": "Coup",
+    "colors": [
+        "#{{^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$}}>",
+        "#{{^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$}}>",
+        "#{{^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$}}>",
+        "#{{^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$}}>"
+    ],
+    "font_family": "{{name}}",
+    "note": {
+        "background_color": "#{{^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$}}>",
+        "background_image": "{{test}}",
+        "box_shadow": "{{bool}}",
+        "border_radius": "{{int}}>px"
+    },
+    "image_prompts": {
+        "{{character1.name}}_image": {
+            "variant_name": "{{character1.name}}",
+            "prompt": "{{character1.name_prompt}}",
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "size_type": [
+                "character_image"
+            ]
+        },
+        "{{character1.name}}_logo": {
+            "variant_name": "{{character1.name}}",
+            "prompt": "{{character1.logo_prompt}}",
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "size_type": [
+                "character_image_logo"
+            ]
+        },
+        "{{character2.name}}_image": {
+            "variant_name": "{{character2.name}}",
+            "prompt": "{{character2.name_prompt}}",
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "size_type": [
+                "character_image"
+            ]
+        },
+        "{{character2.name}}_logo": {
+            "variant_name": "{{character2.name}}",
+            "prompt": "{{character2.logo_prompt}}",
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "size_type": [
+                "character_image_logo"
+            ]
+        },
+        "background_card_art_image": {
+            "image_prompt": "{{image_prompt}}",
+            "types": [
+                "card",
+                "background"
+            ],
+            "size_type": [
+                "card"
+            ]
+        },
+        "hero_image_for_box": {
+            "image_prompt": "{{image_prompt}}",
+            "types": [
+                "hero",
+                "box"
+            ],
+            "size_types": [
+                "box_front"
+            ]
+        },
+        "background_art_for_box": {
+            "prompt": "{{image_prompt}}",
+            "types": [
+                "box",
+                "background"
+            ],
+            "size_types": [
+                "box_front",
+                "box_side"
+            ]
+        },
+        "token_image": {
+            "prompt": "{{image_prompt}}",
+            "types": [
+                "token",
+                "component"
+            ],
+            "size_types": [
+                "token"
+            ]
+        }
+    }
+}
