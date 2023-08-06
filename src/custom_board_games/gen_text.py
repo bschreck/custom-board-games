@@ -148,23 +148,23 @@ def load_story(game_run, verbose=True):
     return story["text"]
 
 
-def gen_game_text(game_run, original_game_name, theme, verbose=True):
+def gen_game_text(game_run, original_game_name, theme, verbose=True, rng=None):
     game_config_dir = GAME_CONFIG_DIR / original_game_name
-    meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "story.yaml")
+    meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "story.yaml", rng=None)
     story_template = meta_gen.render_for_gpt(game_config_dir / "story-gpt.json.jinja")
     story_template_str = json.dumps(story_template)
 
     # TODO: rest of these using MetaTemplateGenerator
     # TODO: action_characters into jinja
     # TODO: change name from action_characters to config or something
-    # meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "action_characters.yaml")
+    # meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "action_characters.yaml", rng=None)
     # action_characters_template = meta_gen.render_for_gpt(game_config_dir / "action_characters-gpt.json.jinja")
     with open(game_config_dir / "action_characters.yaml", "r") as f:
         action_characters_template = yaml.load(f, Loader=Loader)
     action_characters_template_str = json.dumps(action_characters_template)
     # TODO: action chars not saved in config, weird character2 as well
 
-    meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "style.yaml")
+    meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "style.yaml", rng=None)
     style_template = meta_gen.render_for_gpt(game_config_dir / "style-gpt.json.jinja")
     style_template_str = json.dumps(style_template)
 

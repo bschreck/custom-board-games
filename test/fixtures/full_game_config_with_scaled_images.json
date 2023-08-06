@@ -301,21 +301,21 @@
         }
     ],
     "colors": [
-        "#61575F",
-        "#C04954",
-        "#16C632",
-        "#60A04B"
+        "#9C0ECF",
+        "#844918",
+        "#42EB8A",
+        "#38CD84"
     ],
-    "font_family": "strobe tumblerlike",
+    "font_family": "scholarlike schillings",
     "note": {
-        "background_color": "#BB90FA>",
+        "background_color": "#7AA5CD>",
         "background_image": "linear-gradient(#e66465, #9198e5);",
-        "border_radius": "29>px",
-        "box_shadow": "True"
+        "border_radius": "21>px",
+        "box_shadow": "False"
     },
     "image_prompts": {
         "background_art_for_box": {
-            "prompt": "envire postaxiad disintrench achesoun",
+            "prompt": "unpresentableness preaching overexpressive moping fourrageres pampa",
             "size_types": [
                 "box_front",
                 "box_side_short",
@@ -338,10 +338,15 @@
                     1028,
                     256
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_front/0.png",
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_side_short/1.png",
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_side_long/2.png"
+            ]
         },
         "background_card_art_image": {
-            "image_prompt": "nonorganic uncourtierlike prisonous indefatigableness quinqueserial kari",
+            "prompt": "osteoclast animadversion encipherments dronishly scarifier manscape associating",
             "size_types": [
                 "card"
             ],
@@ -354,10 +359,13 @@
                     256,
                     512
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_card_art_image/card/3.png"
+            ]
         },
         "hero_image_for_box": {
-            "image_prompt": "forby oversetter pectineal levo phytyl puzzlehead semijuridic deception tetracadactylity unhackneyedness",
+            "prompt": "unscratchingly remblere fossilification uniformizing dehisce",
             "size_types": [
                 "box_front"
             ],
@@ -370,10 +378,13 @@
                     1028,
                     1028
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/hero_image_for_box/box_front/4.png"
+            ]
         },
         "token_image": {
-            "prompt": "inconsecutively metacircularity misgoverns barograms hosed plushiness",
+            "prompt": "cholane bemusk aqualunger endozoic necessitarianism vigilation olympianwise egotizing cessations",
             "size_types": [
                 "token"
             ],
@@ -386,10 +397,13 @@
                     64,
                     64
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/token_image/token/5.png"
+            ]
         },
         "Duke_image": {
-            "prompt": "protozoacide livably lathi heteroimmune interentangling tsukupin",
+            "prompt": "tenontagra sneesh unconstraint pyrography embodiments preemptive sombreros disappropriate",
             "size_types": [
                 "character_image"
             ],
@@ -403,10 +417,13 @@
                     256,
                     512
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Duke_image/character_image/6.png"
+            ]
         },
         "Duke_logo": {
-            "prompt": "supramoral jerids image respiting tachhydrite smatterer unripened idiomography",
+            "prompt": "algodoncillo infraposed carfloat visaing calving funaria landwash fleabites macaroons",
             "size_types": [
                 "character_image_logo"
             ],
@@ -420,10 +437,13 @@
                     256,
                     256
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Duke_logo/character_image_logo/7.png"
+            ]
         },
         "Assassin_image": {
-            "prompt": "interluder consulta stentoriously gladioli griddling",
+            "prompt": "predesignatory demibob softboard drat interpretably",
             "size_types": [
                 "character_image"
             ],
@@ -437,10 +457,13 @@
                     256,
                     512
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Assassin_image/character_image/8.png"
+            ]
         },
         "Assassin_logo": {
-            "prompt": "overtight reprisal hyperscholastic edentate orthovanadate distills fidded",
+            "prompt": "buick unpolicied earthed panfishes mattin laminator beneficialness",
             "size_types": [
                 "character_image_logo"
             ],
@@ -454,10 +477,13 @@
                     256,
                     256
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Assassin_logo/character_image_logo/9.png"
+            ]
         },
         "Captain_image": {
-            "prompt": "tithepayer noegenetic whydahs overflutter osteometry euphemize adiaphon wansonsy",
+            "prompt": "reformatting handyframe gastricism imperishability parametrically aleyrodidae overstrength cheepiness stoutened",
             "size_types": [
                 "character_image"
             ],
@@ -471,10 +497,13 @@
                     256,
                     512
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Captain_image/character_image/10.png"
+            ]
         },
         "Captain_logo": {
-            "prompt": "againward nearliest aprioristically sculpted kinglike sins owned",
+            "prompt": "transitoriness sidebones swops indirubine multituberculism",
             "size_types": [
                 "character_image_logo"
             ],
@@ -488,10 +517,13 @@
                     256,
                     256
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Captain_logo/character_image_logo/11.png"
+            ]
         },
         "Ambassador_image": {
-            "prompt": "stranglers manicole mapper picrocarmine sr",
+            "prompt": "lennow litorina almirah geraniols unmarring lamblia ghawazi reformableness",
             "size_types": [
                 "character_image"
             ],
@@ -505,10 +537,13 @@
                     256,
                     512
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Ambassador_image/character_image/12.png"
+            ]
         },
         "Ambassador_logo": {
-            "prompt": "obstructingly mithridatizing percipiency bestiarist mycterism brouette optimism lawcourt",
+            "prompt": "coraveca crestline marsupial hardystonite",
             "size_types": [
                 "character_image_logo"
             ],
@@ -522,10 +557,13 @@
                     256,
                     256
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Ambassador_logo/character_image_logo/13.png"
+            ]
         },
         "Contessa_image": {
-            "prompt": "clearheaded savannah rhaebosis maenaite adulterateness uglifiers",
+            "prompt": "dioxane deliriums chromoptometrical euryte irenics glucosazone skiophyte dildos resupination",
             "size_types": [
                 "character_image"
             ],
@@ -539,10 +577,13 @@
                     256,
                     512
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Contessa_image/character_image/14.png"
+            ]
         },
         "Contessa_logo": {
-            "prompt": "boundedness refinance affable kollast nominators",
+            "prompt": "allocution padnag duftry qantar undersettling phonocardiograph unlockable",
             "size_types": [
                 "character_image_logo"
             ],
@@ -556,7 +597,10 @@
                     256,
                     256
                 ]
-            }
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Contessa_logo/character_image_logo/15.png"
+            ]
         }
     },
     "style-yaml": {
@@ -605,5 +649,135 @@
             64,
             64
         ]
+    },
+    "images_by_name": {
+        "background_art_for_box": {
+            "composite": false,
+            "source_images": [
+                "background_art_for_box"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_front/0.png",
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_side_short/1.png",
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_side_long/2.png"
+            ]
+        },
+        "background_card_art_image": {
+            "composite": false,
+            "source_images": [
+                "background_card_art_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_card_art_image/card/3.png"
+            ]
+        },
+        "hero_image_for_box": {
+            "composite": false,
+            "source_images": [
+                "hero_image_for_box"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/hero_image_for_box/box_front/4.png"
+            ]
+        },
+        "token_image": {
+            "composite": false,
+            "source_images": [
+                "token_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/token_image/token/5.png"
+            ]
+        },
+        "Duke_image": {
+            "composite": false,
+            "source_images": [
+                "Duke_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Duke_image/character_image/6.png"
+            ]
+        },
+        "Duke_logo": {
+            "composite": false,
+            "source_images": [
+                "Duke_logo"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Duke_logo/character_image_logo/7.png"
+            ]
+        },
+        "Assassin_image": {
+            "composite": false,
+            "source_images": [
+                "Assassin_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Assassin_image/character_image/8.png"
+            ]
+        },
+        "Assassin_logo": {
+            "composite": false,
+            "source_images": [
+                "Assassin_logo"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Assassin_logo/character_image_logo/9.png"
+            ]
+        },
+        "Captain_image": {
+            "composite": false,
+            "source_images": [
+                "Captain_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Captain_image/character_image/10.png"
+            ]
+        },
+        "Captain_logo": {
+            "composite": false,
+            "source_images": [
+                "Captain_logo"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Captain_logo/character_image_logo/11.png"
+            ]
+        },
+        "Ambassador_image": {
+            "composite": false,
+            "source_images": [
+                "Ambassador_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Ambassador_image/character_image/12.png"
+            ]
+        },
+        "Ambassador_logo": {
+            "composite": false,
+            "source_images": [
+                "Ambassador_logo"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Ambassador_logo/character_image_logo/13.png"
+            ]
+        },
+        "Contessa_image": {
+            "composite": false,
+            "source_images": [
+                "Contessa_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Contessa_image/character_image/14.png"
+            ]
+        },
+        "Contessa_logo": {
+            "composite": false,
+            "source_images": [
+                "Contessa_logo"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Contessa_logo/character_image_logo/15.png"
+            ]
+        }
     }
 }

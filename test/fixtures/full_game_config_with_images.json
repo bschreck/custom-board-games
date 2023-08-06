@@ -207,14 +207,21 @@
                 "Give each player 2 coins. Each player's money must be kept visible. Place the remaining coins in the middle of the play area as the Treasury.",
                 "Give one summary card to each player. This is for reference only. Players should familiarize themselves with all the actions and characters before starting the game.",
                 "The person who won the last game starts."
-            ]
+            ],
+            "type": "text"
         },
         {
             "title": "Object of the Game",
             "grouping": "object",
             "text": [
                 "To eliminate the influence of all other players and be the last survivor."
-            ]
+            ],
+            "type": "text"
+        },
+        {
+            "title": "Components",
+            "grouping": "components",
+            "type": "components"
         },
         {
             "title": "Influence",
@@ -224,7 +231,8 @@
                 "Every time a player loses an influence they have to turn over and reveal one of their face down cards. Revealed cards remain face up in front of the player visible to everyone and no longer provide influence for the player.",
                 "Each player always chooses which of their own cards they wish to reveal when they lose an influence.",
                 "When a player has lost all their influence they are exiled and out of the game."
-            ]
+            ],
+            "type": "note"
         },
         {
             "title": "Game Play",
@@ -234,7 +242,8 @@
                 "If an action is not challenged or counteracted, the action automatically succeeds. Challenges are resolved first before any action or counteraction is resolved.",
                 "When a player has lost all their influence and both their cards are face up in front of them, they are immediately out of the game. They leave their cards face up and return all their coins to the Treasury.",
                 "The game ends when there is only one player left."
-            ]
+            ],
+            "type": "text"
         },
         {
             "title": "Actions",
@@ -242,7 +251,8 @@
                 "A player may choose any action they want and can afford. Some actions (Character Actions) require influencing characters.",
                 "If they choose a Character Action a player must claim that the required character is one of their face down cards. They can be telling the truth or bluffing. They do not need to reveal any of their face down cards unless they are challenged. If they are not challenged they automatically succeed.",
                 "If a player starts their turn with 10 (or more) coins they must launch a Coup that turn as their only action."
-            ]
+            ],
+            "type": "actions"
         },
         {
             "title": "Challenges",
@@ -255,7 +265,8 @@
                 "If a player wins a challenge by showing the relevant character card, they first return that card to the Court deck, re-shuffle the Court deck and take a random replacement card.",
                 "(That way they have not lost influence and other players do not know the new influence card they have). Then the action or counteraction is resolved.",
                 "If an action is successfully challenged the entire action fails, and any coins paid as the cost of the action are returned to the player."
-            ]
+            ],
+            "type": "text"
         },
         {
             "title": "Note: Double Dangers of Assassination",
@@ -264,7 +275,8 @@
                 "It is possible to lose 2 influence in one turn if you unsuccessfully defend against an assassination.",
                 "For example, if you challenge an assassin used against you and lose the challenge, you will lose 1 influence for the lost challenge and then 1 influence for the successful assassination.",
                 "Or if you bluff about having the Contessa to block an assassination attempt and are challenged, you will lose 1 influence for the lost challenge and then lose 1 influence for the successful assassination."
-            ]
+            ],
+            "type": "note"
         },
         {
             "title": "Total (Lack of) Trust",
@@ -273,7 +285,8 @@
                 "Any negotiations are allowed, but none are ever binding. Players are not allowed to reveal any of their cards to other players.",
                 "No coins can be given or lent to other players.",
                 "There is no second place."
-            ]
+            ],
+            "type": "note"
         },
         {
             "title": "Two Player Coup & Two Player Variant",
@@ -283,181 +296,488 @@
                 "As a variant, Coup can be played with two players with these changes to the setup:",
                 "Divide the cards into a 3 sets of 5 (each set has one of each character). Each player takes one set, secretly chooses one card and discards the rest.",
                 "Shuffle the third set and deal one card to each player and then put the remaining three cards face down as the court deck."
-            ]
+            ],
+            "type": "note"
         }
     ],
     "colors": [
-        "<color_hex>",
-        "<color_hex>",
-        "<color_hex>",
-        "<color_hex>"
+        "#7FDE53",
+        "#DA5711",
+        "#930F02",
+        "#3A118F"
     ],
-    "font_family": "<font_family>",
+    "font_family": "scholarlike schillings",
     "note": {
-        "background_color": "<color_hex>",
-        "background_image": "<webkit_gradient>",
-        "box_shadow": "<boolean>",
-        "border_radius": "<border_radius>px",
+        "background_color": "#331EB3>",
+        "background_image": "linear-gradient(#e66465, #9198e5);",
+        "border_radius": "21>px",
+        "box_shadow": "False"
     },
-    "image_prompts": [
-        {
-            "name": "<character_name>_image",
-            "variant_name": "<character_name>",
-            "prompt": "<image_prompt>",
-            "types": [
-                "character_image",
-                "component"
+    "image_prompts": {
+        "background_art_for_box": {
+            "prompt": "unpresentableness preaching overexpressive moping fourrageres pampa",
+            "size_types": [
+                "box_front",
+                "box_side_short",
+                "box_side_long"
             ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image/1.png"
-            ]
-        },
-        {
-            "name": "<character_name>_logo",
-            "variant_name": "<character_name>",
-            "prompt": "<image_prompt>",
-            "types": [
-                "character_image_logo",
-                "component"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_logo/2.png"
-            ]
-        },
-        {
-            "name": "<character_name>_image",
-            "variant_name": "<character_name>",
-            "prompt": "<image_prompt>",
-            "types": [
-                "character_image",
-                "component"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image/3.png"
-            ]
-        },
-        {
-            "name": "<character_name>_logo",
-            "variant_name": "<character_name>",
-            "prompt": "<image_prompt>",
-            "types": [
-                "character_image_logo",
-                "component"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_logo/4.png"
-            ]
-        },
-        {
-            "name": "background_card_art_image",
-            "prompt": "<image_prompt>",
-            "types": [
-                "card",
-                "background"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_card_art_image/5.png"
-            ]
-        },
-        {
-            "name": "hero_image_for_box",
-            "prompt": "<image_prompt>",
-            "types": [
-                "hero",
-                "box"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/hero_image_for_box/6.png"
-            ]
-        },
-        {
-            "name": "background_art_for_box",
-            "prompt": "<image_prompt>",
             "types": [
                 "box",
                 "background"
             ],
+            "sizes": {
+                "box_front": [
+                    1028,
+                    1028
+                ],
+                "box_side_short": [
+                    768,
+                    256
+                ],
+                "box_side_long": [
+                    1028,
+                    256
+                ]
+            },
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_art_for_box/7.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_front/0.png",
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_side_short/1.png",
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_side_long/2.png"
             ]
         },
-        {
-            "name": "token_image",
-            "prompt": "<image_prompt>",
+        "background_card_art_image": {
+            "prompt": "osteoclast animadversion encipherments dronishly scarifier manscape associating",
+            "size_types": [
+                "card"
+            ],
+            "types": [
+                "card",
+                "background"
+            ],
+            "sizes": {
+                "card": [
+                    256,
+                    512
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_card_art_image/card/3.png"
+            ]
+        },
+        "hero_image_for_box": {
+            "prompt": "unscratchingly remblere fossilification uniformizing dehisce",
+            "size_types": [
+                "box_front"
+            ],
+            "types": [
+                "hero",
+                "box"
+            ],
+            "sizes": {
+                "box_front": [
+                    1028,
+                    1028
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/hero_image_for_box/box_front/4.png"
+            ]
+        },
+        "token_image": {
+            "prompt": "cholane bemusk aqualunger endozoic necessitarianism vigilation olympianwise egotizing cessations",
+            "size_types": [
+                "token"
+            ],
             "types": [
                 "token",
                 "component"
             ],
+            "sizes": {
+                "token": [
+                    64,
+                    64
+                ]
+            },
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/token_image/8.png"
-            ]
-        }
-    ],
-    "images_by_name": {
-        "<character_name>_image": {
-            "composite": false,
-            "source_images": [],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image/3.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/token_image/token/5.png"
             ]
         },
-        "<character_name>_logo": {
-            "composite": false,
-            "source_images": [],
+        "Duke_image": {
+            "prompt": "tenontagra sneesh unconstraint pyrography embodiments preemptive sombreros disappropriate",
+            "size_types": [
+                "character_image"
+            ],
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "variant_name": "Duke",
+            "sizes": {
+                "character_image": [
+                    256,
+                    512
+                ]
+            },
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_logo/4.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Duke_image/character_image/6.png"
+            ]
+        },
+        "Duke_logo": {
+            "prompt": "algodoncillo infraposed carfloat visaing calving funaria landwash fleabites macaroons",
+            "size_types": [
+                "character_image_logo"
+            ],
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "variant_name": "Duke",
+            "sizes": {
+                "character_image_logo": [
+                    256,
+                    256
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Duke_logo/character_image_logo/7.png"
+            ]
+        },
+        "Assassin_image": {
+            "prompt": "predesignatory demibob softboard drat interpretably",
+            "size_types": [
+                "character_image"
+            ],
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "variant_name": "Assassin",
+            "sizes": {
+                "character_image": [
+                    256,
+                    512
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Assassin_image/character_image/8.png"
+            ]
+        },
+        "Assassin_logo": {
+            "prompt": "buick unpolicied earthed panfishes mattin laminator beneficialness",
+            "size_types": [
+                "character_image_logo"
+            ],
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "variant_name": "Assassin",
+            "sizes": {
+                "character_image_logo": [
+                    256,
+                    256
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Assassin_logo/character_image_logo/9.png"
+            ]
+        },
+        "Captain_image": {
+            "prompt": "reformatting handyframe gastricism imperishability parametrically aleyrodidae overstrength cheepiness stoutened",
+            "size_types": [
+                "character_image"
+            ],
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "variant_name": "Captain",
+            "sizes": {
+                "character_image": [
+                    256,
+                    512
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Captain_image/character_image/10.png"
+            ]
+        },
+        "Captain_logo": {
+            "prompt": "transitoriness sidebones swops indirubine multituberculism",
+            "size_types": [
+                "character_image_logo"
+            ],
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "variant_name": "Captain",
+            "sizes": {
+                "character_image_logo": [
+                    256,
+                    256
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Captain_logo/character_image_logo/11.png"
+            ]
+        },
+        "Ambassador_image": {
+            "prompt": "lennow litorina almirah geraniols unmarring lamblia ghawazi reformableness",
+            "size_types": [
+                "character_image"
+            ],
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "variant_name": "Ambassador",
+            "sizes": {
+                "character_image": [
+                    256,
+                    512
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Ambassador_image/character_image/12.png"
+            ]
+        },
+        "Ambassador_logo": {
+            "prompt": "coraveca crestline marsupial hardystonite",
+            "size_types": [
+                "character_image_logo"
+            ],
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "variant_name": "Ambassador",
+            "sizes": {
+                "character_image_logo": [
+                    256,
+                    256
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Ambassador_logo/character_image_logo/13.png"
+            ]
+        },
+        "Contessa_image": {
+            "prompt": "dioxane deliriums chromoptometrical euryte irenics glucosazone skiophyte dildos resupination",
+            "size_types": [
+                "character_image"
+            ],
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "variant_name": "Contessa",
+            "sizes": {
+                "character_image": [
+                    256,
+                    512
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Contessa_image/character_image/14.png"
+            ]
+        },
+        "Contessa_logo": {
+            "prompt": "allocution padnag duftry qantar undersettling phonocardiograph unlockable",
+            "size_types": [
+                "character_image_logo"
+            ],
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "variant_name": "Contessa",
+            "sizes": {
+                "character_image_logo": [
+                    256,
+                    256
+                ]
+            },
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Contessa_logo/character_image_logo/15.png"
+            ]
+        }
+    },
+    "style-yaml": {
+        "character1": {
+            "name": "Duke"
+        },
+        "character2": {
+            "name": "Assassin"
+        },
+        "character3": {
+            "name": "Captain"
+        },
+        "character4": {
+            "name": "Ambassador"
+        },
+        "character5": {
+            "name": "Contessa"
+        }
+    },
+    "image_sizes": {
+        "character_image": [
+            256,
+            512
+        ],
+        "character_image_logo": [
+            256,
+            256
+        ],
+        "card": [
+            256,
+            512
+        ],
+        "box_front": [
+            1028,
+            1028
+        ],
+        "box_side_long": [
+            1028,
+            256
+        ],
+        "box_side_short": [
+            768,
+            256
+        ],
+        "token": [
+            64,
+            64
+        ]
+    },
+    "images_by_name": {
+        "background_art_for_box": {
+            "composite": false,
+            "source_images": [
+                "background_art_for_box"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_front/0.png",
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_side_short/1.png",
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_art_for_box/box_side_long/2.png"
             ]
         },
         "background_card_art_image": {
             "composite": false,
-            "source_images": [],
+            "source_images": [
+                "background_card_art_image"
+            ],
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_card_art_image/5.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/background_card_art_image/card/3.png"
             ]
         },
         "hero_image_for_box": {
             "composite": false,
-            "source_images": [],
+            "source_images": [
+                "hero_image_for_box"
+            ],
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/hero_image_for_box/6.png"
-            ]
-        },
-        "background_art_for_box": {
-            "composite": false,
-            "source_images": [],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/background_art_for_box/7.png"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/hero_image_for_box/box_front/4.png"
             ]
         },
         "token_image": {
             "composite": false,
-            "source_images": [],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/token_image/8.png"
-            ]
-        },
-        "component_overview_image": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/component_overview.png"
-            ],
             "source_images": [
-                "<character_name>_image",
-                "<character_name>_logo",
-                "<character_name>_image",
-                "<character_name>_logo",
                 "token_image"
             ],
-            "composite": true
-        },
-        "<character_name>_image_with_logo": {
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/35d3f929-fcc9-40db-b56d-a0cd743050aa/<character_name>_image_with_logo"
-            ],
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/token_image/token/5.png"
+            ]
+        },
+        "Duke_image": {
+            "composite": false,
             "source_images": [
-                "<character_name>_image",
-                "<character_name>_logo"
+                "Duke_image"
             ],
-            "composite": true
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Duke_image/character_image/6.png"
+            ]
+        },
+        "Duke_logo": {
+            "composite": false,
+            "source_images": [
+                "Duke_logo"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Duke_logo/character_image_logo/7.png"
+            ]
+        },
+        "Assassin_image": {
+            "composite": false,
+            "source_images": [
+                "Assassin_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Assassin_image/character_image/8.png"
+            ]
+        },
+        "Assassin_logo": {
+            "composite": false,
+            "source_images": [
+                "Assassin_logo"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Assassin_logo/character_image_logo/9.png"
+            ]
+        },
+        "Captain_image": {
+            "composite": false,
+            "source_images": [
+                "Captain_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Captain_image/character_image/10.png"
+            ]
+        },
+        "Captain_logo": {
+            "composite": false,
+            "source_images": [
+                "Captain_logo"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Captain_logo/character_image_logo/11.png"
+            ]
+        },
+        "Ambassador_image": {
+            "composite": false,
+            "source_images": [
+                "Ambassador_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Ambassador_image/character_image/12.png"
+            ]
+        },
+        "Ambassador_logo": {
+            "composite": false,
+            "source_images": [
+                "Ambassador_logo"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Ambassador_logo/character_image_logo/13.png"
+            ]
+        },
+        "Contessa_image": {
+            "composite": false,
+            "source_images": [
+                "Contessa_image"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Contessa_image/character_image/14.png"
+            ]
+        },
+        "Contessa_logo": {
+            "composite": false,
+            "source_images": [
+                "Contessa_logo"
+            ],
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Contessa_logo/character_image_logo/15.png"
+            ]
         }
     }
 }

@@ -11,7 +11,8 @@ dependencies = [
     "openai",
     "autogpt",
     "pyyaml",
-    "fire"
+    "fire",
+    "random_word_numpy"
 ]
 
 [project.optional-dependencies]

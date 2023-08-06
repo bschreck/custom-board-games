@@ -1,4 +1,5 @@
 import json
+import numpy as np
 import yaml
 from .redis import load_game_config, save_game_config
 import os
@@ -25,6 +26,7 @@ class ChatCompletion:
     narrative_split_on = "NARRATIVE TEMPLATE"
     config_split_on = "CONFIG TEMPLATE"
     dirname = "test/fixtures/generated_mock_templates"
+    rng = np.random.default_rng(2021)
 
     @classmethod
     def create(cls, model, messages, game_run):
@@ -74,7 +76,9 @@ class ChatCompletion:
 
     @classmethod
     def _complete(cls, content, template_file, game_run):
-        meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", template_file)
+        meta_gen = MetaTemplateGenerator(
+            game_run, "src/custom_board_games/game_configs/coup", template_file, rng=cls.rng
+        )
         os.makedirs(cls.dirname, exist_ok=True)
         rendered_dict = meta_gen.render_for_mock(f"{cls.dirname}/{template_file.replace('.yaml', '-mock.yaml')}")
         return Completion(json.dumps(rendered_dict))

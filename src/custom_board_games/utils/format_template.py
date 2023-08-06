@@ -3,16 +3,15 @@ import yaml
 import json
 from .redis import load_key_from_game_config, save_nested_key_to_game_config, load_game_config, save_game_config
 from redis.exceptions import ResponseError
-from random_word import RandomWords
-import random
+from random_word_numpy import get_random_words
+from numpy.random import Generator
+from numpy import random
 import os
 
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
-
-random_word_gen = RandomWords()
 
 COLOR_HEX_REGEX = r"^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
 REGEXES = {
@@ -28,30 +27,39 @@ def in_jinja_braces(s):
     return "{{" + s + "}}"
 
 
-def gen_color_hex():
+def gen_color_hex(rng=None):
     """generates a random 6 character hex color code"""
-    return "".join([random.choice("0123456789ABCDEF") for _ in range(6)])
+    rng = rng or random
+    return "".join([random.choice([c for c in "0123456789ABCDEF"]) for _ in range(6)])
+
+
+def random_ints(rng, low, high):
+    if isinstance(rng, Generator):
+        return rng.integers(low, high)
+    else:
+        return rng.randint(low, high)
 
 
 class MetaTemplateGenerator:
-    def __init__(self, game_run, dirname, template_name):
+    def __init__(self, game_run, dirname, template_name, rng=None):
         self.game_run = game_run
         self.dirname = dirname
         self.template_name = template_name
         self.template_file = os.path.join(dirname, f"{template_name.replace('-', '.')}.jinja")
         self.config = None
+        self.rng = rng or random
 
     def gen_random_bool(self):
-        return random.randint(0, 1) == 1
+        return random_ints(self.rng, 0, 1) == 1
 
     def gen_random_int(self, lo, hi):
-        return random.randint(lo, hi)
+        return random_ints(self.rng, lo, hi)
 
     def gen_random_image_prompt(self):
-        return self.gen_random_name(n=random.randint(4, 10))
+        return self.gen_random_name(n=random_ints(self.rng, 4, 10))
 
     def gen_random_name(self, n=1):
-        return " ".join([random_word_gen.get_random_word() for _ in range(n)])
+        return " ".join(get_random_words(n, np_generator=self.rng))
 
     def type_generator(self, _type):
         return {
@@ -69,7 +77,7 @@ class MetaTemplateGenerator:
 
     def gen_random_regex_of_type(self, regex):
         if regex == "color_hex":
-            return gen_color_hex()
+            return gen_color_hex(self.rng)
         elif regex == "webkit_gradient":
             return EXAMPLE_REGEXES[regex]
         else:
@@ -99,10 +107,8 @@ class MetaTemplateGenerator:
         return objvalue
 
     def objkey_filter_for_mock(self, key, _type, *args):
-        print(key, _type, *args)
         objvalue = self.load_objvalue_from_key(key)
         if objvalue is None:
-            print("no obj value, generating")
             objvalue = self.gen_random_word_of_type(_type, *args)
             self.save_nested_key_to_config(key, objvalue)
             return objvalue

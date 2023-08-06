@@ -1,12 +1,12 @@
 colors:
-- '#61575F'
-- '#C04954'
-- '#16C632'
-- '#60A04B'
-font_family: 'strobe tumblerlike'
+- '#9C0ECF'
+- '#844918'
+- '#42EB8A'
+- '#38CD84'
+font_family: 'scholarlike schillings'
 image_prompts:
   background_art_for_box:
-    prompt: 'envire postaxiad disintrench achesoun'
+    prompt: 'unpresentableness preaching overexpressive moping fourrageres pampa'
     size_types:
     - box_front
     - box_side_short
@@ -15,28 +15,28 @@ image_prompts:
     - box
     - background
   background_card_art_image:
-    image_prompt: 'nonorganic uncourtierlike prisonous indefatigableness quinqueserial kari'
+    prompt: 'osteoclast animadversion encipherments dronishly scarifier manscape associating'
     size_types:
     - card
     types:
     - card
     - background
   hero_image_for_box:
-    image_prompt: 'forby oversetter pectineal levo phytyl puzzlehead semijuridic deception tetracadactylity unhackneyedness'
+    prompt: 'unscratchingly remblere fossilification uniformizing dehisce'
     size_types:
     - box_front
     types:
     - hero
     - box
   token_image:
-    prompt: 'inconsecutively metacircularity misgoverns barograms hosed plushiness'
+    prompt: 'cholane bemusk aqualunger endozoic necessitarianism vigilation olympianwise egotizing cessations'
     size_types:
     - token
     types:
     - token
     - component
   'Duke_image':
-    prompt: 'protozoacide livably lathi heteroimmune interentangling tsukupin'
+    prompt: 'tenontagra sneesh unconstraint pyrography embodiments preemptive sombreros disappropriate'
     size_types:
     - character_image
     types:
@@ -44,7 +44,7 @@ image_prompts:
     - component
     variant_name: 'Duke'
   'Duke_logo':
-    prompt: 'supramoral jerids image respiting tachhydrite smatterer unripened idiomography'
+    prompt: 'algodoncillo infraposed carfloat visaing calving funaria landwash fleabites macaroons'
     size_types:
     - character_image_logo
     types:
@@ -52,7 +52,7 @@ image_prompts:
     - component
     variant_name: 'Duke'
   'Assassin_image':
-    prompt: 'interluder consulta stentoriously gladioli griddling'
+    prompt: 'predesignatory demibob softboard drat interpretably'
     size_types:
     - character_image
     types:
@@ -60,7 +60,7 @@ image_prompts:
     - component
     variant_name: 'Assassin'
   'Assassin_logo':
-    prompt: 'overtight reprisal hyperscholastic edentate orthovanadate distills fidded'
+    prompt: 'buick unpolicied earthed panfishes mattin laminator beneficialness'
     size_types:
     - character_image_logo
     types:
@@ -68,7 +68,7 @@ image_prompts:
     - component
     variant_name: 'Assassin'
   'Captain_image':
-    prompt: 'tithepayer noegenetic whydahs overflutter osteometry euphemize adiaphon wansonsy'
+    prompt: 'reformatting handyframe gastricism imperishability parametrically aleyrodidae overstrength cheepiness stoutened'
     size_types:
     - character_image
     types:
@@ -76,7 +76,7 @@ image_prompts:
     - component
     variant_name: 'Captain'
   'Captain_logo':
-    prompt: 'againward nearliest aprioristically sculpted kinglike sins owned'
+    prompt: 'transitoriness sidebones swops indirubine multituberculism'
     size_types:
     - character_image_logo
     types:
@@ -84,7 +84,7 @@ image_prompts:
     - component
     variant_name: 'Captain'
   'Ambassador_image':
-    prompt: 'stranglers manicole mapper picrocarmine sr'
+    prompt: 'lennow litorina almirah geraniols unmarring lamblia ghawazi reformableness'
     size_types:
     - character_image
     types:
@@ -92,7 +92,7 @@ image_prompts:
     - component
     variant_name: 'Ambassador'
   'Ambassador_logo':
-    prompt: 'obstructingly mithridatizing percipiency bestiarist mycterism brouette optimism lawcourt'
+    prompt: 'coraveca crestline marsupial hardystonite'
     size_types:
     - character_image_logo
     types:
@@ -100,7 +100,7 @@ image_prompts:
     - component
     variant_name: 'Ambassador'
   'Contessa_image':
-    prompt: 'clearheaded savannah rhaebosis maenaite adulterateness uglifiers'
+    prompt: 'dioxane deliriums chromoptometrical euryte irenics glucosazone skiophyte dildos resupination'
     size_types:
     - character_image
     types:
@@ -108,7 +108,7 @@ image_prompts:
     - component
     variant_name: 'Contessa'
   'Contessa_logo':
-    prompt: 'boundedness refinance affable kollast nominators'
+    prompt: 'allocution padnag duftry qantar undersettling phonocardiograph unlockable'
     size_types:
     - character_image_logo
     types:
@@ -117,7 +117,7 @@ image_prompts:
     variant_name: 'Contessa'
 name: Coup
 note:
-  background_color: '#BB90FA>'
+  background_color: '#7AA5CD>'
   background_image: 'linear-gradient(#e66465, #9198e5);'
-  border_radius: '29>px'
-  box_shadow: 'True'
+  border_radius: '21>px'
+  box_shadow: 'False'
