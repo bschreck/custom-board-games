@@ -1,0 +1,123 @@
+colors:
+- '#61575F'
+- '#C04954'
+- '#16C632'
+- '#60A04B'
+font_family: 'strobe tumblerlike'
+image_prompts:
+  background_art_for_box:
+    prompt: 'envire postaxiad disintrench achesoun'
+    size_types:
+    - box_front
+    - box_side_short
+    - box_side_long
+    types:
+    - box
+    - background
+  background_card_art_image:
+    image_prompt: 'nonorganic uncourtierlike prisonous indefatigableness quinqueserial kari'
+    size_types:
+    - card
+    types:
+    - card
+    - background
+  hero_image_for_box:
+    image_prompt: 'forby oversetter pectineal levo phytyl puzzlehead semijuridic deception tetracadactylity unhackneyedness'
+    size_types:
+    - box_front
+    types:
+    - hero
+    - box
+  token_image:
+    prompt: 'inconsecutively metacircularity misgoverns barograms hosed plushiness'
+    size_types:
+    - token
+    types:
+    - token
+    - component
+  'Duke_image':
+    prompt: 'protozoacide livably lathi heteroimmune interentangling tsukupin'
+    size_types:
+    - character_image
+    types:
+    - character_image
+    - component
+    variant_name: 'Duke'
+  'Duke_logo':
+    prompt: 'supramoral jerids image respiting tachhydrite smatterer unripened idiomography'
+    size_types:
+    - character_image_logo
+    types:
+    - character_image_logo
+    - component
+    variant_name: 'Duke'
+  'Assassin_image':
+    prompt: 'interluder consulta stentoriously gladioli griddling'
+    size_types:
+    - character_image
+    types:
+    - character_image
+    - component
+    variant_name: 'Assassin'
+  'Assassin_logo':
+    prompt: 'overtight reprisal hyperscholastic edentate orthovanadate distills fidded'
+    size_types:
+    - character_image_logo
+    types:
+    - character_image_logo
+    - component
+    variant_name: 'Assassin'
+  'Captain_image':
+    prompt: 'tithepayer noegenetic whydahs overflutter osteometry euphemize adiaphon wansonsy'
+    size_types:
+    - character_image
+    types:
+    - character_image
+    - component
+    variant_name: 'Captain'
+  'Captain_logo':
+    prompt: 'againward nearliest aprioristically sculpted kinglike sins owned'
+    size_types:
+    - character_image_logo
+    types:
+    - character_image_logo
+    - component
+    variant_name: 'Captain'
+  'Ambassador_image':
+    prompt: 'stranglers manicole mapper picrocarmine sr'
+    size_types:
+    - character_image
+    types:
+    - character_image
+    - component
+    variant_name: 'Ambassador'
+  'Ambassador_logo':
+    prompt: 'obstructingly mithridatizing percipiency bestiarist mycterism brouette optimism lawcourt'
+    size_types:
+    - character_image_logo
+    types:
+    - character_image_logo
+    - component
+    variant_name: 'Ambassador'
+  'Contessa_image':
+    prompt: 'clearheaded savannah rhaebosis maenaite adulterateness uglifiers'
+    size_types:
+    - character_image
+    types:
+    - character_image
+    - component
+    variant_name: 'Contessa'
+  'Contessa_logo':
+    prompt: 'boundedness refinance affable kollast nominators'
+    size_types:
+    - character_image_logo
+    types:
+    - character_image_logo
+    - component
+    variant_name: 'Contessa'
+name: Coup
+note:
+  background_color: '#BB90FA>'
+  background_image: 'linear-gradient(#e66465, #9198e5);'
+  border_radius: '29>px'
+  box_shadow: 'True'

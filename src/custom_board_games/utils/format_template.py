@@ -39,6 +39,7 @@ class MetaTemplateGenerator:
         self.dirname = dirname
         self.template_name = template_name
         self.template_file = os.path.join(dirname, f"{template_name.replace('-', '.')}.jinja")
+        self.config = None
 
     def gen_random_bool(self):
         return random.randint(0, 1) == 1
@@ -88,40 +89,94 @@ class MetaTemplateGenerator:
         return in_jinja_braces(key)
 
     def load_objvalue_from_key(self, key):
-        try:
-            return load_key_from_game_config(self.game_run, f"{self.template_name}.{key}")
-        except ResponseError:
-            return None
+        key_parts = key.split(".")
+        objvalue = self.template
+        for k in key_parts:
+            if objvalue.get(k, None):
+                objvalue = objvalue[k]
+            else:
+                return None
+        return objvalue
 
     def objkey_filter_for_mock(self, key, _type, *args):
+        print(key, _type, *args)
         objvalue = self.load_objvalue_from_key(key)
         if objvalue is None:
+            print("no obj value, generating")
             objvalue = self.gen_random_word_of_type(_type, *args)
-            save_nested_key_to_game_config(self.game_run, f"{self.template_name}.{key}", objvalue)
-
+            self.save_nested_key_to_config(key, objvalue)
             return objvalue
+        return objvalue
+
+    @property
+    def template(self):
+        template = self.config.get(self.template_name, None)
+        if template is None:
+            self.config[self.template_name] = {}
+        return self.config[self.template_name]
+
+    def save_nested_key_to_config(self, key, value):
+        key_parts = key.split(".")
+        dict_to_save = self.template
+        for k in key_parts[:-1]:
+            if dict_to_save.get(k, None) is None:
+                dict_to_save[k] = {}
+            dict_to_save = dict_to_save[k]
+        dict_to_save[key_parts[-1]] = value
 
     def render_for_gpt(self, output_file):
-        config = load_game_config(self.game_run)
+        self.config = load_game_config(self.game_run)
         env = Environment(loader=FileSystemLoader(searchpath="./"), autoescape=select_autoescape())
         env.filters["type"] = self.type_filter_for_gpt
         env.filters["regex"] = self.regex_filter_for_gpt
         env.filters["objkey"] = self.objkey_filter_for_gpt
         template = env.get_template(str(os.path.relpath(self.template_file)))
-        rendered = template.render(**config)
+        rendered = template.render(**self.config)
         as_dict = yaml.load(rendered, Loader=Loader)
         with open(output_file, "w") as f:
             json.dump(as_dict, f, indent=4)
         return as_dict
 
     def render_for_mock(self, output_file):
-        config = load_game_config(self.game_run)
+        self.config = load_game_config(self.game_run)
         env = Environment(loader=FileSystemLoader(searchpath="./"), autoescape=select_autoescape())
         env.filters["type"] = self.type_filter_for_mock
         env.filters["regex"] = self.gen_random_regex_of_type
         env.filters["objkey"] = self.objkey_filter_for_mock
-        template = env.get_template(str(os.path.relpath(self.template_file)))
-        rendered = template.render(**config)
+        with open(str(os.path.relpath(self.template_file))) as f:
+            template_dict = yaml.load(f.read(), Loader=Loader)
+        if self.template_name == "style-yaml":
+            for component in self.config["components"]["variants"]:
+                if component["name"] == "Character Card":
+                    for i in range(len(component["variants"])):
+                        if i > 1:
+                            # THIS is such a hack
+                            yamlstr = """
+"{{'character1.name'|objkey('name', 1)}}_image":
+  variant_name: "{{'character1.name'|objkey('name', 1)}}"
+  prompt: "{{'character1.name_prompt'|objkey('image_prompt')}}"
+  types: [character_image, component]
+  size_types: [character_image]
+"{{'character1.name'|objkey('name', 1)}}_logo":
+  variant_name: "{{'character1.name'|objkey('name', 1)}}"
+  prompt: "{{'character1.logo_prompt'|objkey('image_prompt')}}"
+  types: [character_image_logo, component]
+  size_types: [character_image_logo]
+"""
+                            # jsonstr = """{"{{'character1.name'}}_image": {"variant_name": "{{'character1.name'}}", "prompt": "{{'character1.name_prompt'}}", "types": ["character_image", "component"], "size_types": ["character_image"]}, "{{'character1.name'}}_logo": {"variant_name": "{{'character1.name'}}", "prompt": "{{'character1.logo_prompt'}}", "types": ["character_image_logo", "component"], "size_types": ["character_image_logo"]}}"""
+                            # jsonstr = jsonstr.replace("1", str(i + 1))
+                            yamlstr = yamlstr.replace("1", str(i + 1))
+
+                            # template_dict["image_prompts"] = {**template_dict["image_prompts"], **json.loads(jsonstr)}
+                            template_dict["image_prompts"] = {
+                                **template_dict["image_prompts"],
+                                **yaml.load(yamlstr, Loader=Loader),
+                            }
+                    break
+        template_str = yaml.dump(template_dict, Dumper=Dumper).replace("''", "'")
+        template = env.from_string(template_str)
+
+        rendered = template.render(**self.config)
         as_dict = yaml.load(rendered, Loader=Loader)
 
         with open(output_file, "w") as f:

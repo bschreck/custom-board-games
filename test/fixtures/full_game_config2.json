@@ -301,129 +301,29 @@
         }
     ],
     "colors": [
-        "#638D46",
-        "#E2E1A5",
-        "#A0FE37",
-        "#7844F7"
+        "#61575F",
+        "#C04954",
+        "#16C632",
+        "#60A04B"
     ],
-    "font_family": "superinclusively divagatory",
+    "font_family": "strobe tumblerlike",
     "note": {
-        "background_color": "#646D7F>",
+        "background_color": "#BB90FA>",
         "background_image": "linear-gradient(#e66465, #9198e5);",
-        "box_shadow": "True",
-        "border_radius": "24>px"
+        "border_radius": "29>px",
+        "box_shadow": "True"
     },
     "image_prompts": {
-        "allotypically_image": {
-            "variant_name": "None",
-            "prompt": "goodhap snooked gray irrefrangibility guarantying dextrosazone noselessly coronaled",
-            "types": [
-                "character_image",
-                "component"
-            ],
-            "size_types": [
-                "character_image"
-            ],
-            "sizes": {
-                "character_image": [
-                    256,
-                    512
-                ]
-            }
-        },
-        "unconsolidating_logo": {
-            "variant_name": "None",
-            "prompt": "unaus tapirus banaba pandits oyapock phalanstery yeniseian excusatory bubbliness",
-            "types": [
-                "character_image_logo",
-                "component"
-            ],
-            "size_types": [
-                "character_image_logo"
-            ],
-            "sizes": {
-                "character_image_logo": [
-                    256,
-                    256
-                ]
-            }
-        },
-        "castoff_image": {
-            "variant_name": "None",
-            "prompt": "advertising phyllomes monopolize toxiphagi prosequitur selfhood",
-            "types": [
-                "character_image",
-                "component"
-            ],
-            "size_types": [
-                "character_image"
-            ],
-            "sizes": {
-                "character_image": [
-                    256,
-                    512
-                ]
-            }
-        },
-        "ballaster_logo": {
-            "variant_name": "None",
-            "prompt": "occipitobregmatic jeofail telomic buyides outblunder nongelatinousness rapper rinncefada plaguer dumber",
-            "types": [
-                "character_image_logo",
-                "component"
-            ],
-            "size_types": [
-                "character_image_logo"
-            ],
-            "sizes": {
-                "character_image_logo": [
-                    256,
-                    256
-                ]
-            }
-        },
-        "background_card_art_image": {
-            "image_prompt": "notodontian pelycogram crappiest counterlit currane junoesque clericalists telotroch penguins reversedly",
-            "types": [
-                "card",
-                "background"
-            ],
-            "size_types": [
-                "card"
-            ],
-            "sizes": {
-                "card": [
-                    256,
-                    512
-                ]
-            }
-        },
-        "hero_image_for_box": {
-            "image_prompt": "hyperelegantly reamend zosma millirem nonaggression subcortex",
-            "types": [
-                "hero",
-                "box"
-            ],
-            "size_types": [
-                "box_front"
-            ],
-            "sizes": {
-                "box_front": [
-                    1028,
-                    1028
-                ]
-            }
-        },
         "background_art_for_box": {
-            "prompt": "whittawer devotional hercogamy rootward peritonealizing",
-            "types": [
-                "box",
-                "background"
-            ],
+            "prompt": "envire postaxiad disintrench achesoun",
             "size_types": [
                 "box_front",
                 "box_side_short",
                 "box_side_long"
+            ],
+            "types": [
+                "box",
+                "background"
             ],
             "sizes": {
                 "box_front": [
@@ -440,14 +340,46 @@
                 ]
             }
         },
+        "background_card_art_image": {
+            "image_prompt": "nonorganic uncourtierlike prisonous indefatigableness quinqueserial kari",
+            "size_types": [
+                "card"
+            ],
+            "types": [
+                "card",
+                "background"
+            ],
+            "sizes": {
+                "card": [
+                    256,
+                    512
+                ]
+            }
+        },
+        "hero_image_for_box": {
+            "image_prompt": "forby oversetter pectineal levo phytyl puzzlehead semijuridic deception tetracadactylity unhackneyedness",
+            "size_types": [
+                "box_front"
+            ],
+            "types": [
+                "hero",
+                "box"
+            ],
+            "sizes": {
+                "box_front": [
+                    1028,
+                    1028
+                ]
+            }
+        },
         "token_image": {
-            "prompt": "stooges quarrian rheologic tassie discretiveness synaphe necrotised ischemia vorage interworks",
+            "prompt": "inconsecutively metacircularity misgoverns barograms hosed plushiness",
+            "size_types": [
+                "token"
+            ],
             "types": [
                 "token",
                 "component"
-            ],
-            "size_types": [
-                "token"
             ],
             "sizes": {
                 "token": [
@@ -455,13 +387,193 @@
                     64
                 ]
             }
+        },
+        "Duke_image": {
+            "prompt": "protozoacide livably lathi heteroimmune interentangling tsukupin",
+            "size_types": [
+                "character_image"
+            ],
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "variant_name": "Duke",
+            "sizes": {
+                "character_image": [
+                    256,
+                    512
+                ]
+            }
+        },
+        "Duke_logo": {
+            "prompt": "supramoral jerids image respiting tachhydrite smatterer unripened idiomography",
+            "size_types": [
+                "character_image_logo"
+            ],
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "variant_name": "Duke",
+            "sizes": {
+                "character_image_logo": [
+                    256,
+                    256
+                ]
+            }
+        },
+        "Assassin_image": {
+            "prompt": "interluder consulta stentoriously gladioli griddling",
+            "size_types": [
+                "character_image"
+            ],
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "variant_name": "Assassin",
+            "sizes": {
+                "character_image": [
+                    256,
+                    512
+                ]
+            }
+        },
+        "Assassin_logo": {
+            "prompt": "overtight reprisal hyperscholastic edentate orthovanadate distills fidded",
+            "size_types": [
+                "character_image_logo"
+            ],
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "variant_name": "Assassin",
+            "sizes": {
+                "character_image_logo": [
+                    256,
+                    256
+                ]
+            }
+        },
+        "Captain_image": {
+            "prompt": "tithepayer noegenetic whydahs overflutter osteometry euphemize adiaphon wansonsy",
+            "size_types": [
+                "character_image"
+            ],
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "variant_name": "Captain",
+            "sizes": {
+                "character_image": [
+                    256,
+                    512
+                ]
+            }
+        },
+        "Captain_logo": {
+            "prompt": "againward nearliest aprioristically sculpted kinglike sins owned",
+            "size_types": [
+                "character_image_logo"
+            ],
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "variant_name": "Captain",
+            "sizes": {
+                "character_image_logo": [
+                    256,
+                    256
+                ]
+            }
+        },
+        "Ambassador_image": {
+            "prompt": "stranglers manicole mapper picrocarmine sr",
+            "size_types": [
+                "character_image"
+            ],
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "variant_name": "Ambassador",
+            "sizes": {
+                "character_image": [
+                    256,
+                    512
+                ]
+            }
+        },
+        "Ambassador_logo": {
+            "prompt": "obstructingly mithridatizing percipiency bestiarist mycterism brouette optimism lawcourt",
+            "size_types": [
+                "character_image_logo"
+            ],
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "variant_name": "Ambassador",
+            "sizes": {
+                "character_image_logo": [
+                    256,
+                    256
+                ]
+            }
+        },
+        "Contessa_image": {
+            "prompt": "clearheaded savannah rhaebosis maenaite adulterateness uglifiers",
+            "size_types": [
+                "character_image"
+            ],
+            "types": [
+                "character_image",
+                "component"
+            ],
+            "variant_name": "Contessa",
+            "sizes": {
+                "character_image": [
+                    256,
+                    512
+                ]
+            }
+        },
+        "Contessa_logo": {
+            "prompt": "boundedness refinance affable kollast nominators",
+            "size_types": [
+                "character_image_logo"
+            ],
+            "types": [
+                "character_image_logo",
+                "component"
+            ],
+            "variant_name": "Contessa",
+            "sizes": {
+                "character_image_logo": [
+                    256,
+                    256
+                ]
+            }
         }
     },
-    "style": {
-        "yaml": {
-            "character2": {
-                "logo_prompt": "occipitobregmatic jeofail telomic buyides outblunder nongelatinousness rapper rinncefada plaguer dumber"
-            }
+    "style-yaml": {
+        "character1": {
+            "name": "Duke"
+        },
+        "character2": {
+            "name": "Assassin"
+        },
+        "character3": {
+            "name": "Captain"
+        },
+        "character4": {
+            "name": "Ambassador"
+        },
+        "character5": {
+            "name": "Contessa"
         }
     },
     "image_sizes": {

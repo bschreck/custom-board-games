@@ -1,5 +1,6 @@
 import json
 import yaml
+from .redis import load_game_config, save_game_config
 import os
 from custom_board_games.utils.format_template import MetaTemplateGenerator
 
@@ -38,11 +39,31 @@ class ChatCompletion:
     @classmethod
     def narrative_completion(cls, content, game_run):
         # TODO: change name to narrative.yaml
-        return cls._complete(content, "story.yaml", game_run)
+        return cls._complete(content, "story-yaml", game_run)
 
     @classmethod
     def style_completion(cls, content, game_run):
-        return cls._complete(content, "style.yaml", game_run)
+        # TODO: character names in style need to match
+        # coup characters instead of generating random words
+        config = load_game_config(game_run)
+        split_str = "STYLE TEMPLATE ----\n"
+        content_prompt, content_template_str = content.split(split_str)
+        content_template = json.loads(content_template_str)
+        style_yaml_config = {"style-yaml": {}}
+        for component in config["components"]["variants"]:
+            if component["name"] == "Character Card":
+                for i, variant in enumerate(component["variants"]):
+                    style_yaml_config["style-yaml"][f"character{i+1}"] = {"name": variant["name"]}
+                    if i > 1:
+                        # THIS is such a hack
+                        jsonstr = """{'{{character1.name}}_image': {'variant_name': '{{character1.name}}', 'prompt': '{{character1.name_prompt}}', 'types': ['character_image', 'component'], 'size_types': ['character_image']}, '{{character1.name}}_logo': {'variant_name': '{{character1.name}}', 'prompt': '{{character1.logo_prompt}}', 'types': ['character_image_logo', 'component'], 'size_types': ['character_image_logo']}}"""
+                        jsonstr = jsonstr.replace("1", str(i + 1))
+                        content_template["image_prompts"] = {**content_template["image_prompts"], **eval(jsonstr)}
+                break
+        content_template_str = json.dumps(content_template)
+        content = content_prompt + split_str + content_template_str
+        save_game_config(game_run, style_yaml_config)
+        return cls._complete(content, "style-yaml", game_run)
 
     @classmethod
     def config_completion(cls, content, game_run):

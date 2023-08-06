@@ -1,49 +1,49 @@
 name: "Coup"
 colors:
-  - "#638D46"
-  - "#E2E1A5"
-  - "#A0FE37"
-  - "#7844F7"
-font_family: "superinclusively divagatory"
+  - "#9C4077"
+  - "#012727"
+  - "#85CA2F"
+  - "#CF056F"
+font_family: "intermeeting elfishness"
 note:
-  background_color: "#646D7F>"
+  background_color: "#A2DC42>"
   background_image: "linear-gradient(#e66465, #9198e5);"
-  box_shadow: "True"
-  border_radius: "24>px"
+  box_shadow: "False"
+  border_radius: "27>px"
 image_prompts:
-  "allotypically_image":
+  "silverily_image":
     variant_name: "None"
-    prompt: "goodhap snooked gray irrefrangibility guarantying dextrosazone noselessly coronaled"
+    prompt: "hability sociologian bohea seasoner skenai pileup paganically cullionly godkin appreciativeness"
     types: [character_image, component]
     size_types: [character_image]
-  "unconsolidating_logo":
+  "remisrepresent_logo":
     variant_name: "None"
-    prompt: "unaus tapirus banaba pandits oyapock phalanstery yeniseian excusatory bubbliness"
+    prompt: "tibiae lichenologic alquifou layrock"
     types: [character_image_logo, component]
     size_types: [character_image_logo]
-  "castoff_image":
+  "envisaged_image":
     variant_name: "None"
-    prompt: "advertising phyllomes monopolize toxiphagi prosequitur selfhood"
+    prompt: "granularity jacunda soot myxoma lamellaria berrybush urial cuittled antigravity untremulousness"
     types: [character_image, component]
     size_types: [character_image]
-  "ballaster_logo":
+  "refights_logo":
     variant_name: "None"
-    prompt: "occipitobregmatic jeofail telomic buyides outblunder nongelatinousness rapper rinncefada plaguer dumber"
+    prompt: "lombardeer boulevardier stupent drubbers mendiant pedestrianised deflectable splanchnopleure coypou"
     types: [character_image_logo, component]
     size_types: [character_image_logo]
   background_card_art_image:
-    image_prompt: "notodontian pelycogram crappiest counterlit currane junoesque clericalists telotroch penguins reversedly"
+    image_prompt: "smarmy surpassingly mistend brooklet mediastine blosmy philosophicoreligious unperfidious physeterinae weight"
     types: [card, background]
     size_types: [card]
   hero_image_for_box:
-    image_prompt: "hyperelegantly reamend zosma millirem nonaggression subcortex"
+    image_prompt: "floccus oxindole qabbala orles tinnituses interemption"
     types: [hero, box]
     size_types: [box_front]
   background_art_for_box:
-    prompt: "whittawer devotional hercogamy rootward peritonealizing"
+    prompt: "damaskeen zootechnic bonser aviararies festival unwrestedly unmummied flavins fossed shahzadi"
     types: [box, background]
     size_types: [box_front, box_side_short, box_side_long]
   token_image:
-    prompt: "stooges quarrian rheologic tassie discretiveness synaphe necrotised ischemia vorage interworks"
+    prompt: "warmblooded weighmaster lactigerous kumara annihilationistic"
     types: [token, component]
     size_types: [token]
