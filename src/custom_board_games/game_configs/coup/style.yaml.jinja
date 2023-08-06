@@ -1,9 +1,9 @@
 name: "Coup"
 colors:
-  - "#{{'color_hex'|regex}}>"
-  - "#{{'color_hex'|regex}}>"
-  - "#{{'color_hex'|regex}}>"
-  - "#{{'color_hex'|regex}}>"
+  - "#{{'color_hex'|regex}}"
+  - "#{{'color_hex'|regex}}"
+  - "#{{'color_hex'|regex}}"
+  - "#{{'color_hex'|regex}}"
 font_family: "{{'name'|type(2)}}"
 note:
   background_color: "#{{'color_hex'|regex}}>"
@@ -15,26 +15,26 @@ image_prompts:
     variant_name: "{{'character1.name'|objkey('name', 1)}}"
     prompt: "{{'character1.name_prompt'|objkey('image_prompt')}}"
     types: [character_image, component]
-    size_type: [character_image]
+    size_types: [character_image]
   "{{'character1.name'|objkey('name', 1)}}_logo":
     variant_name: "{{'character1.name'|objkey('name', 1)}}"
     prompt: "{{'character1.logo_prompt'|objkey('image_prompt')}}"
     types: [character_image_logo, component]
-    size_type: [character_image_logo]
+    size_types: [character_image_logo]
   "{{'character2.name'|objkey('name', 1)}}_image":
     variant_name: "{{'character2.name'|objkey('name', 1)}}"
     prompt: "{{'character2.name_prompt'|objkey('image_prompt')}}"
     types: [character_image, component]
-    size_type: [character_image]
+    size_types: [character_image]
   "{{'character2.name'|objkey('name', 1)}}_logo":
     variant_name: "{{'character2.name'|objkey('name')}}"
     prompt: "{{'character2.logo_prompt'|objkey('image_prompt')}}"
     types: [character_image_logo, component]
-    size_type: [character_image_logo]
+    size_types: [character_image_logo]
   background_card_art_image:
     image_prompt: "{{'image_prompt'|type}}"
     types: [card, background]
-    size_type: [card]
+    size_types: [card]
   hero_image_for_box:
     image_prompt: "{{'image_prompt'|type}}"
     types: [hero, box]
@@ -42,7 +42,7 @@ image_prompts:
   background_art_for_box:
     prompt: "{{'image_prompt'|type}}"
     types: [box, background]
-    size_types: [box_front, box_side]
+    size_types: [box_front, box_side_short, box_side_long]
   token_image:
     prompt: "{{'image_prompt'|type}}"
     types: [token, component]

@@ -157,9 +157,12 @@ def gen_game_text(game_run, original_game_name, theme, verbose=True):
     # TODO: rest of these using MetaTemplateGenerator
     # TODO: action_characters into jinja
     # TODO: change name from action_characters to config or something
-    meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "action_characters.yaml")
-    action_characters_template = meta_gen.render_for_gpt(game_config_dir / "action_characters-gpt.json.jinja")
+    # meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "action_characters.yaml")
+    # action_characters_template = meta_gen.render_for_gpt(game_config_dir / "action_characters-gpt.json.jinja")
+    with open(game_config_dir / "action_characters.yaml", "r") as f:
+        action_characters_template = yaml.load(f, Loader=Loader)
     action_characters_template_str = json.dumps(action_characters_template)
+    # TODO: action chars not saved in config, weird character2 as well
 
     meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "style.yaml")
     style_template = meta_gen.render_for_gpt(game_config_dir / "style-gpt.json.jinja")

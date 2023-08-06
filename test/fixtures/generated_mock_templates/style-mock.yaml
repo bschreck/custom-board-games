@@ -1,0 +1,49 @@
+name: "Coup"
+colors:
+  - "#638D46"
+  - "#E2E1A5"
+  - "#A0FE37"
+  - "#7844F7"
+font_family: "superinclusively divagatory"
+note:
+  background_color: "#646D7F>"
+  background_image: "linear-gradient(#e66465, #9198e5);"
+  box_shadow: "True"
+  border_radius: "24>px"
+image_prompts:
+  "allotypically_image":
+    variant_name: "None"
+    prompt: "goodhap snooked gray irrefrangibility guarantying dextrosazone noselessly coronaled"
+    types: [character_image, component]
+    size_types: [character_image]
+  "unconsolidating_logo":
+    variant_name: "None"
+    prompt: "unaus tapirus banaba pandits oyapock phalanstery yeniseian excusatory bubbliness"
+    types: [character_image_logo, component]
+    size_types: [character_image_logo]
+  "castoff_image":
+    variant_name: "None"
+    prompt: "advertising phyllomes monopolize toxiphagi prosequitur selfhood"
+    types: [character_image, component]
+    size_types: [character_image]
+  "ballaster_logo":
+    variant_name: "None"
+    prompt: "occipitobregmatic jeofail telomic buyides outblunder nongelatinousness rapper rinncefada plaguer dumber"
+    types: [character_image_logo, component]
+    size_types: [character_image_logo]
+  background_card_art_image:
+    image_prompt: "notodontian pelycogram crappiest counterlit currane junoesque clericalists telotroch penguins reversedly"
+    types: [card, background]
+    size_types: [card]
+  hero_image_for_box:
+    image_prompt: "hyperelegantly reamend zosma millirem nonaggression subcortex"
+    types: [hero, box]
+    size_types: [box_front]
+  background_art_for_box:
+    prompt: "whittawer devotional hercogamy rootward peritonealizing"
+    types: [box, background]
+    size_types: [box_front, box_side_short, box_side_long]
+  token_image:
+    prompt: "stooges quarrian rheologic tassie discretiveness synaphe necrotised ischemia vorage interworks"
+    types: [token, component]
+    size_types: [token]

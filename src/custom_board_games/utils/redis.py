@@ -33,19 +33,28 @@ def save_game_config(game_run, config):
         raise ValueError("Could not save game config")
 
 
+def expand_key_components(key_parts, value):
+    expanded = {key_parts[-1]: value}
+    key_parts = key_parts[:-1]
+    for k in key_parts[::-1]:
+        expanded = {k: expanded}
+    return expanded
+
+
 def save_nested_key_to_game_config(game_run, key, value):
     ensure_redis_key_exists(game_run, "config")
     r = redis()
     top_level_existing_config = load_game_config(game_run)
     existing_config = top_level_existing_config
     key_parts = key.split(".")
-    set_key = f".{game_run}.config"
-    new_config = {key_parts[-1]: value}
-    for k in key_parts[:-1]:
+    set_key = f".{game_run}.config.{key_parts[0]}"
+    new_config = expand_key_components(key_parts[1:], value)
+    for k in key_parts[1:-1]:
         if k in existing_config:
             set_key += f".{k}"
+            new_config = new_config[k]
         else:
-            new_config = {k: new_config}
+            break
 
     res = r.json().set("game_runs", set_key, new_config)
     if not res:

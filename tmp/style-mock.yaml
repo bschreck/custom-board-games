@@ -1,49 +1,104 @@
-name: "Coup"
 colors:
-  - "#124273>"
-  - "#2CA6C0>"
-  - "#56F441>"
-  - "#74662F>"
-font_family: "oeillades indiscretionary"
-note:
-  background_color: "#8944F3>"
-  background_image: "linear-gradient(#e66465, #9198e5);"
-  box_shadow: "True"
-  border_radius: "15>px"
+- '#355E9B'
+- '#031F1B'
+- '#A41943'
+- '#F78690'
+font_family: 'carriage unsistered'
 image_prompts:
-  "mephistophelean_image":
-    variant_name: "triglochin"
-    prompt: "heterogeneous trabeculation spurgalling mammographic"
-    types: [character_image, component]
-    size_type: [character_image]
-  "rates_logo":
-    variant_name: "trailering"
-    prompt: "aube dimane unmentioned tomboyful guarantee"
-    types: [character_image_logo, component]
-    size_type: [character_image_logo]
-  "pelviperitonitis_image":
-    variant_name: "zipppiest"
-    prompt: "tubuphone anythingarianism legitimatized polyembryonate elephants impreses itabirite"
-    types: [character_image, component]
-    size_type: [character_image]
-  "reread_logo":
-    variant_name: "rememoration"
-    prompt: "alligatored uroedema testiculate comportance monology devesting scrubwood cornbin eerie paleogeography"
-    types: [character_image_logo, component]
-    size_type: [character_image_logo]
-  background_card_art_image:
-    image_prompt: "vindhyan allutterly boil deuterocasease localiser"
-    types: [card, background]
-    size_type: [card]
-  hero_image_for_box:
-    image_prompt: "windlessly cervicicardiac nebulousness vacuometer rhabarbarate slightiness"
-    types: [hero, box]
-    size_types: [box_front]
   background_art_for_box:
-    prompt: "uninflective tetragoniaceae woodsiest teams tucks fulgide decalcomania arthroderm petaurus"
-    types: [box, background]
-    size_types: [box_front, box_side]
+    prompt: 'sleepwaking polysilicic brere toadess backfurrow'
+    size_types:
+    - box_front
+    - box_side
+    types:
+    - box
+    - background
+  background_card_art_image:
+    image_prompt: 'knitweed couthly trailboard hematosalpinx complanation subcineritious bolivarite outpray azoxytoluidine tattooists'
+    size_type:
+    - card
+    types:
+    - card
+    - background
+  hero_image_for_box:
+    image_prompt: 'reconnecting dadaist referendums underfaced readmeasurement presignify preaffect'
+    size_types:
+    - box_front
+    types:
+    - hero
+    - box
   token_image:
-    prompt: "counterdrain schmeered cataloguist wapato promisees solifugid alberca sublime brothellike"
-    types: [token, component]
-    size_types: [token]
+    prompt: 'preexhaustion kotowing proficiencies fornicated uncombinational convertaplane descents'
+    size_types:
+    - token
+    types:
+    - token
+    - component
+  'None_image':
+    prompt: 'quantongs nominalizing rhonchi weatherproofness'
+    size_type: &id001
+    - character_image
+    types: &id002
+    - character_image
+    - component
+    variant_name: 'neglectfulness'
+  'None_logo':
+    prompt: 'art defats nonfrigidly safine homocercy spatling spiritualship interhuman multistratified fickle'
+    size_type: &id003
+    - character_image_logo
+    types: &id004
+    - character_image_logo
+    - component
+    variant_name: 'wraparound'
+  'nondispersive_image':
+    prompt: 'overflow linetest creneled skirmish'
+    size_type:
+    - character_image
+    types:
+    - character_image
+    - component
+    variant_name: 'spleens'
+  'None_logo':
+    prompt: 'bipont articulacy attingent snowier coky superfarm creditless phar exordia'
+    size_type:
+    - character_image_logo
+    types:
+    - character_image_logo
+    - component
+    variant_name: 'pretensions'
+  'scoliokyposis_image':
+    prompt: 'blepharophyma ringtail nameless demology granuloblast circulariser'
+    size_type: *id001
+    types: *id002
+    variant_name: 'recurvoternate'
+  'None_logo':
+    prompt: 'unpublishably homilite ungladly epanorthosis contiguous'
+    size_type: *id003
+    types: *id004
+    variant_name: 'hitched'
+  'overshadowing_image':
+    prompt: 'recusants hypnale opisthobranchia bataan'
+    size_type: *id001
+    types: *id002
+    variant_name: 'interarticular'
+  'None_logo':
+    prompt: 'zimmis remeasures snathes overactivating noncorporeality graptolitic alsinaceae'
+    size_type: *id003
+    types: *id004
+    variant_name: 'latimeria'
+  'adneural_image':
+    prompt: 'desolatingly supraoral acequia cantline'
+    size_type: *id001
+    types: *id002
+    variant_name: 'felled'
+  'None_logo':
+    prompt: 'vicarious ribonucleoprotein desirable recrudescence reestablishment weberian boation proaesthetic'
+    size_type: *id003
+    types: *id004
+    variant_name: 'headliner'
+name: Coup
+note:
+  background_color: '#72CAE2>'
+  background_image: 'linear-gradient(#e66465, #9198e5);'
+  border_radius: '18>px'
+  box_shadow: 'False'

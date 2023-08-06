@@ -1,0 +1,104 @@
+colors:
+- '#{{'color_hex'|regex}}'
+- '#{{'color_hex'|regex}}'
+- '#{{'color_hex'|regex}}'
+- '#{{'color_hex'|regex}}'
+font_family: '{{'name'|type(2)}}'
+image_prompts:
+  background_art_for_box:
+    prompt: '{{'image_prompt'|type}}'
+    size_types:
+    - box_front
+    - box_side
+    types:
+    - box
+    - background
+  background_card_art_image:
+    image_prompt: '{{'image_prompt'|type}}'
+    size_type:
+    - card
+    types:
+    - card
+    - background
+  hero_image_for_box:
+    image_prompt: '{{'image_prompt'|type}}'
+    size_types:
+    - box_front
+    types:
+    - hero
+    - box
+  token_image:
+    prompt: '{{'image_prompt'|type}}'
+    size_types:
+    - token
+    types:
+    - token
+    - component
+  '{{'character1.name'|objkey('name', 1)}}_image':
+    prompt: '{{'character1.name_prompt'|objkey('image_prompt')}}'
+    size_type: &id001
+    - character_image
+    types: &id002
+    - character_image
+    - component
+    variant_name: '{{'character1.name'|objkey('name', 1)}}'
+  '{{'character1.name'|objkey('name', 1)}}_logo':
+    prompt: '{{'character1.logo_prompt'|objkey('image_prompt')}}'
+    size_type: &id003
+    - character_image_logo
+    types: &id004
+    - character_image_logo
+    - component
+    variant_name: '{{'character1.name'|objkey('name', 1)}}'
+  '{{'character2.name'|objkey('name', 1)}}_image':
+    prompt: '{{'character2.name_prompt'|objkey('image_prompt')}}'
+    size_type:
+    - character_image
+    types:
+    - character_image
+    - component
+    variant_name: '{{'character2.name'|objkey('name', 1)}}'
+  '{{'character2.name'|objkey('name', 1)}}_logo':
+    prompt: '{{'character2.logo_prompt'|objkey('image_prompt')}}'
+    size_type:
+    - character_image_logo
+    types:
+    - character_image_logo
+    - component
+    variant_name: '{{'character2.name'|objkey('name')}}'
+  '{{'character3.name'|objkey('name', 1)}}_image':
+    prompt: '{{'character3.name_prompt'|objkey('image_prompt')}}'
+    size_type: *id001
+    types: *id002
+    variant_name: '{{'character3.name'|objkey('name', 1)}}'
+  '{{'character3.name'|objkey('name', 1)}}_logo':
+    prompt: '{{'character3.logo_prompt'|objkey('image_prompt')}}'
+    size_type: *id003
+    types: *id004
+    variant_name: '{{'character3.name'|objkey('name', 1)}}'
+  '{{'character4.name'|objkey('name', 1)}}_image':
+    prompt: '{{'character4.name_prompt'|objkey('image_prompt')}}'
+    size_type: *id001
+    types: *id002
+    variant_name: '{{'character4.name'|objkey('name', 1)}}'
+  '{{'character4.name'|objkey('name', 1)}}_logo':
+    prompt: '{{'character4.logo_prompt'|objkey('image_prompt')}}'
+    size_type: *id003
+    types: *id004
+    variant_name: '{{'character4.name'|objkey('name', 1)}}'
+  '{{'character5.name'|objkey('name', 1)}}_image':
+    prompt: '{{'character5.name_prompt'|objkey('image_prompt')}}'
+    size_type: *id001
+    types: *id002
+    variant_name: '{{'character5.name'|objkey('name', 1)}}'
+  '{{'character5.name'|objkey('name', 1)}}_logo':
+    prompt: '{{'character5.logo_prompt'|objkey('image_prompt')}}'
+    size_type: *id003
+    types: *id004
+    variant_name: '{{'character5.name'|objkey('name', 1)}}'
+name: Coup
+note:
+  background_color: '#{{'color_hex'|regex}}>'
+  background_image: '{{'webkit_gradient'|regex}}'
+  border_radius: '{{'int'|type(10, 40)}}>px'
+  box_shadow: '{{'bool'|type}}'

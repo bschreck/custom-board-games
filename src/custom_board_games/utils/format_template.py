@@ -1,16 +1,16 @@
 from jinja2 import Environment, select_autoescape, FileSystemLoader
 import yaml
 import json
-from .redis import load_key_from_game_config, save_nested_key_to_game_config, load_game_config
+from .redis import load_key_from_game_config, save_nested_key_to_game_config, load_game_config, save_game_config
 from redis.exceptions import ResponseError
 from random_word import RandomWords
 import random
 import os
 
 try:
-    from yaml import CLoader as Loader
+    from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
-    from yaml import Loader
+    from yaml import Loader, Dumper
 
 random_word_gen = RandomWords()
 
@@ -38,7 +38,7 @@ class MetaTemplateGenerator:
         self.game_run = game_run
         self.dirname = dirname
         self.template_name = template_name
-        self.template_file = os.path.join(dirname, f"{template_name}.jinja")
+        self.template_file = os.path.join(dirname, f"{template_name.replace('-', '.')}.jinja")
 
     def gen_random_bool(self):
         return random.randint(0, 1) == 1
@@ -123,6 +123,7 @@ class MetaTemplateGenerator:
         template = env.get_template(str(os.path.relpath(self.template_file)))
         rendered = template.render(**config)
         as_dict = yaml.load(rendered, Loader=Loader)
+
         with open(output_file, "w") as f:
             f.write(rendered)
         return as_dict
@@ -130,7 +131,7 @@ class MetaTemplateGenerator:
 
 if __name__ == "__main__":
     game_run = "test_game_run"
-    meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "style.yaml")
+    meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", "style-yaml")
     os.makedirs("tmp", exist_ok=True)
     meta_gen.render_for_mock("tmp/style-mock.yaml")
     meta_gen.render_for_gpt("tmp/style-gpt.json.jinja")

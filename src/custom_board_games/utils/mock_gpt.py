@@ -1,6 +1,12 @@
 import json
+import yaml
 import os
 from custom_board_games.utils.format_template import MetaTemplateGenerator
+
+try:
+    from yaml import CLoader as Loader
+except ImportError:
+    from yaml import Loader
 
 
 class Choice:
@@ -31,19 +37,23 @@ class ChatCompletion:
 
     @classmethod
     def narrative_completion(cls, content, game_run):
-        cls._complete(content, "narrative.yaml.jinja", game_run)
+        # TODO: change name to narrative.yaml
+        return cls._complete(content, "story.yaml", game_run)
 
     @classmethod
     def style_completion(cls, content, game_run):
-        cls._complete(content, "style.yaml.jinja", game_run)
+        return cls._complete(content, "style.yaml", game_run)
 
     @classmethod
     def config_completion(cls, content, game_run):
-        cls._complete(content, "config.yaml.jinja", game_run)
+        # cls._complete(content, "config.yaml", game_run)
+        with open("src/custom_board_games/game_configs/coup/action_characters.yaml") as f:
+            config = yaml.load(f.read(), Loader=Loader)
+        return Completion(json.dumps(config))
 
     @classmethod
     def _complete(cls, content, template_file, game_run):
         meta_gen = MetaTemplateGenerator(game_run, "src/custom_board_games/game_configs/coup", template_file)
         os.makedirs(cls.dirname, exist_ok=True)
-        rendered_dict = meta_gen.render_for_mock(f"{cls.dirname}/{template_file.replace('.yaml.jinja', '-mock.yaml')}")
+        rendered_dict = meta_gen.render_for_mock(f"{cls.dirname}/{template_file.replace('.yaml', '-mock.yaml')}")
         return Completion(json.dumps(rendered_dict))
