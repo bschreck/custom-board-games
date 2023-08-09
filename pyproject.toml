@@ -11,12 +11,14 @@ dependencies = [
     "openai",
     "autogpt",
     "pyyaml",
-    "fire",
-    "random_word_numpy"
+    "fire"
 ]
 
 [project.optional-dependencies]
-test = []
+test = [
+    "beautifulsoup4",
+    "random_word_numpy"
+]
 
 dev = []
 

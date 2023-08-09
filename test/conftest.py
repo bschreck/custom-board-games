@@ -42,15 +42,15 @@ def scaled_images(cleared_game_run, generated_images):
 
 
 @pytest.fixture(scope="module")
-def generated_composite_image(cleared_game_run, generated_images):
-    gen_composite_images_from_game_run(game_run, scaled=False, nthreads=1, verbose=False)
+def generated_composite_images(cleared_game_run, generated_images):
+    gen_composite_images_from_game_run(cleared_game_run, scaled=False, nthreads=1, verbose=False)
 
 
 @pytest.fixture(scope="module")
-def generated_composite_image_scaled(cleared_game_run, scaled_images):
-    gen_composite_images_from_game_run(game_run, scaled=True, nthreads=1, verbose=False)
+def generated_composite_images_scaled(cleared_game_run, scaled_images):
+    gen_composite_images_from_game_run(cleared_game_run, scaled=True, nthreads=1, verbose=False)
 
 
 @pytest.fixture(scope="module")
-def generated_html(cleared_game_run, scaled_images):
+def generated_html(cleared_game_run, generated_composite_images, generated_composite_images_scaled):
     gen_html_from_game_run(cleared_game_run, "test/html_rendered/coup_angry_birds_test.html")

@@ -1,8 +1,8 @@
 colors:
-- '#9C0ECF'
-- '#844918'
-- '#42EB8A'
-- '#38CD84'
+- '#B2AF2E'
+- '#F2A4CF'
+- '#DD98B0'
+- '#A64AB5'
 font_family: 'scholarlike schillings'
 image_prompts:
   background_art_for_box:
@@ -117,7 +117,7 @@ image_prompts:
     variant_name: 'Contessa'
 name: Coup
 note:
-  background_color: '#7AA5CD>'
+  background_color: '#716464>'
   background_image: 'linear-gradient(#e66465, #9198e5);'
   border_radius: '21>px'
   box_shadow: 'False'

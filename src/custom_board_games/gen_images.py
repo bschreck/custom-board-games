@@ -51,6 +51,8 @@ def save_image_mapping(game_run, prompt_id, image_paths, save_top_level_name=Tru
         config[image_prompts_key] = {}
     if images_by_name_key not in config:
         config[images_by_name_key] = {}
+    if prompt_id not in config[image_prompts_key]:
+        config[image_prompts_key][prompt_id] = {}
     config[image_prompts_key][prompt_id]["image_paths"] = image_paths
     # TODO: top level name is now irrelevant/extra info since we have prompt_id as a key
     # but the other place they are stored is "image_prompts", which the component
@@ -65,13 +67,18 @@ def save_image_mapping(game_run, prompt_id, image_paths, save_top_level_name=Tru
 
 
 def image_prompt_dicts_by_type(type, game_run, scaled=False):
-    image_prompts_key = IMAGE_PROMPTS_KEY_SCALED if scaled else IMAGE_PROMPTS_KEY
     config = load_game_config(game_run)
-    return [
-        {**{"prompt_id": prompt_id}, **prompt_config}
-        for prompt_id, prompt_config in config[image_prompts_key].items()
+    prompts = {
+        prompt_id: prompt_config
+        for prompt_id, prompt_config in config[IMAGE_PROMPTS_KEY].items()
         if type in prompt_config["types"]
-    ]
+    }
+    if scaled:
+        prompts = {
+            prompt_id: {**prompt_config, **config[IMAGE_PROMPTS_KEY_SCALED][prompt_id]}
+            for prompt_id, prompt_config in prompts.items()
+        }
+    return prompts
 
 
 def combine_images(component_image_paths, save_path):
@@ -86,48 +93,50 @@ def combine_char_logo_images(char_img_path, logo_img_path, save_path):
 
 
 def gen_component_overview_image(game_run, scaled=False):
+    # TODO: what scale should this be and where should we define that?
     images_by_name_key = IMAGES_BY_NAME_KEY_SCALED if scaled else IMAGES_BY_NAME_KEY
     config = load_game_config(game_run)
     component_images = image_prompt_dicts_by_type("component", game_run, scaled=scaled)
     save_path = Path(GENERATED_IMAGE_DIR) / game_run / "components_overview.png"
-    combine_images([c["image_paths"][0] for c in component_images], save_path)
+    combine_images([c["image_paths"][0] for c in component_images.values()], save_path)
     # TODO: this will overwrite later,
     # and fail if doesn't exist
     # needs to match to the variants in config
     add_nested_key_to_dict(
         config,
         f"{images_by_name_key}.components_overview_image",
-        {
-            "image_paths": [str(save_path)],
-            "source_images": [c["prompt_id"] for c in component_images],
-            "composite": True,
-        },
+        {"image_paths": [str(save_path)], "source_images": list(component_images.keys()), "composite": True},
     )
     save_game_config(game_run, config)
 
 
 def gen_setup_image(game_run, scaled=False):
+    # TODO: what scale should this be and where should we define that?
     # TODO actually implement
     images_by_name_key = IMAGES_BY_NAME_KEY_SCALED if scaled else IMAGES_BY_NAME_KEY
     config = load_game_config(game_run)
     component_images = image_prompt_dicts_by_type("component", game_run, scaled=scaled)
     save_path = Path(GENERATED_IMAGE_DIR) / game_run / "setup.png"
-    shutil.copyfile(component_images[0]["image_paths"][0], save_path)
+    shutil.copyfile(component_images["token_image"]["image_paths"][0], save_path)
 
     add_nested_key_to_dict(
         config,
         f"{images_by_name_key}.setup_image",
-        {"image_paths": [str(save_path)], "source_images": [component_images[0]["prompt_id"]], "composite": True},
+        {"image_paths": [str(save_path)], "source_images": list(component_images.keys()), "composite": True},
     )
+    save_game_config(game_run, config)
 
 
 def gen_character_images(game_run, scaled=False):
+    # TODO: what scale should this be and where should we define that?
     images_by_name_key = IMAGES_BY_NAME_KEY_SCALED if scaled else IMAGES_BY_NAME_KEY
     config = load_game_config(game_run)
     char_images = image_prompt_dicts_by_type("character_image", game_run, scaled=scaled)
     logo_images = image_prompt_dicts_by_type("character_image_logo", game_run, scaled=scaled)
-    for char_img, logo_img in zip(char_images, logo_images):
-        name = char_img["prompt_id"] + "_with_logo"
+    for prompt_id, char_img in char_images.items():
+        name = f"{prompt_id}_with_logo"
+        logo_prompt_id = prompt_id.replace("_image", "_logo")
+        logo_img = logo_images[logo_prompt_id]
         save_path = Path(GENERATED_IMAGE_DIR) / game_run / name
         combine_char_logo_images(char_img["image_paths"][0], logo_img["image_paths"][0], save_path)
         # TODO: this will overwrite later,
@@ -136,11 +145,7 @@ def gen_character_images(game_run, scaled=False):
         add_nested_key_to_dict(
             config,
             f"{images_by_name_key}.{name}",
-            {
-                "image_paths": [str(save_path)],
-                "source_images": [char_img["prompt_id"], logo_img["prompt_id"]],
-                "composite": True,
-            },
+            {"image_paths": [str(save_path)], "source_images": [prompt_id, logo_prompt_id], "composite": True},
         )
         save_game_config(game_run, config)
 
@@ -246,6 +251,7 @@ def scale_images_from_game_run(game_run, nthreads=None, verbose=True):
                 future.result()
             except Exception as exc:
                 print("%r generated an exception: %s" % (prompt, exc))
+                raise
 
 
 def main(game_run=None, scale=False, gen_composite=False, nthreads=None, verbose=True):

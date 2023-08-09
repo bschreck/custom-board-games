@@ -19,24 +19,32 @@
 
 - layout of PDF
   - create html using jinja, convert to PDF
-  - install wkhtmltopdf, pdfkit, jinja2
-  - Images on PDF:
+     * component image scaling
+     * font
+     * slight style cleanups
+     
+  - Convert html to pdf: install wkhtmltopdf, pdfkit
+  - Component image generation
     - character on background with title
     - photo of some of the components (box, cards, one card reversed, arranged slightly diagonally)
     - photo of all coins, each card, a reference card, a reversed card, and the reversed instruction page
     - 30ish degree tilted picture of each character card with a corresponding action, with logo superimposed but mostly to the right
     - additional one for contessa in counteractions
     - additional one with both ambassador+captain and both logos. The one on top is even more tilted, perhaps 45 deg
-- exactly how to generate text from which prompts
-  - maybe provide full original transcript in memory
-  - generate each part separately, and include a template for GPT to fill out
+    - code to create final images from stable diffusion imgs + stylized text
+  - Component image scaling
 - exactly which components I will buy from manufacturer for each game (and save in a spreadsheet or config file)
-- sizes of each image
-- template prompt(s) for each image
+- Format images according to manufacturer (Tabletop) requirements
+  - python psd-tools
+  - sizes of each image
+- template prompt(s) for each image (e.g. what keywords to include by default)
 - prompt to identify font
-- code to generate necessary stylized text images with font
-- code to create final images from stable diffusion imgs + stylized text
-- squarespace website to accept inputs and send me a text+email
+- Vercel ecommerce site
+  * game type dropdown
+  * randomness slider
+  * theme prompt
+- use input images to seed generator
+  * image uploader on website
 - generate a full Coup-type board game and have it printed
 - launch website
 - market it to friends

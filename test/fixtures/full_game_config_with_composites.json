@@ -301,14 +301,14 @@
         }
     ],
     "colors": [
-        "#0D7DD9",
-        "#CC24B7",
-        "#DB25C1",
-        "#52A5CC"
+        "#6101AA",
+        "#AEAE33",
+        "#D0D32B",
+        "#44D490"
     ],
     "font_family": "scholarlike schillings",
     "note": {
-        "background_color": "#A7FFFC>",
+        "background_color": "#0D9055>",
         "background_image": "linear-gradient(#e66465, #9198e5);",
         "border_radius": "21>px",
         "box_shadow": "False"
@@ -778,210 +778,94 @@
             "image_paths": [
                 "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Contessa_logo/character_image_logo/15.png"
             ]
-        }
-    },
-    "image_prompts_scaled": {
-        "background_art_for_box": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/background_art_for_box/box_front/16.png",
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/background_art_for_box/box_side_short/17.png",
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/background_art_for_box/box_side_long/18.png"
-            ]
         },
-        "background_card_art_image": {
+        "components_overview_image": {
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/background_card_art_image/card/19.png"
-            ]
-        },
-        "hero_image_for_box": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/hero_image_for_box/box_front/20.png"
-            ]
-        },
-        "token_image": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/token_image/token/21.png"
-            ]
-        },
-        "Duke_image": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Duke_image/character_image/22.png"
-            ]
-        },
-        "Duke_logo": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Duke_logo/character_image_logo/23.png"
-            ]
-        },
-        "Assassin_image": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Assassin_image/character_image/24.png"
-            ]
-        },
-        "Assassin_logo": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Assassin_logo/character_image_logo/25.png"
-            ]
-        },
-        "Captain_image": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Captain_image/character_image/26.png"
-            ]
-        },
-        "Captain_logo": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Captain_logo/character_image_logo/27.png"
-            ]
-        },
-        "Ambassador_image": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Ambassador_image/character_image/28.png"
-            ]
-        },
-        "Ambassador_logo": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Ambassador_logo/character_image_logo/29.png"
-            ]
-        },
-        "Contessa_image": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Contessa_image/character_image/30.png"
-            ]
-        },
-        "Contessa_logo": {
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Contessa_logo/character_image_logo/31.png"
-            ]
-        }
-    },
-    "images_by_name_scaled": {
-        "background_art_for_box": {
-            "composite": false,
-            "source_images": [
-                "background_art_for_box"
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/components_overview.png"
             ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/background_art_for_box/box_front/16.png",
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/background_art_for_box/box_side_short/17.png",
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/background_art_for_box/box_side_long/18.png"
-            ]
-        },
-        "background_card_art_image": {
-            "composite": false,
             "source_images": [
-                "background_card_art_image"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/background_card_art_image/card/19.png"
-            ]
-        },
-        "hero_image_for_box": {
-            "composite": false,
-            "source_images": [
-                "hero_image_for_box"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/hero_image_for_box/box_front/20.png"
-            ]
-        },
-        "token_image": {
-            "composite": false,
-            "source_images": [
-                "token_image"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/token_image/token/21.png"
-            ]
-        },
-        "Duke_image": {
-            "composite": false,
-            "source_images": [
-                "Duke_image"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Duke_image/character_image/22.png"
-            ]
-        },
-        "Duke_logo": {
-            "composite": false,
-            "source_images": [
-                "Duke_logo"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Duke_logo/character_image_logo/23.png"
-            ]
-        },
-        "Assassin_image": {
-            "composite": false,
-            "source_images": [
-                "Assassin_image"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Assassin_image/character_image/24.png"
-            ]
-        },
-        "Assassin_logo": {
-            "composite": false,
-            "source_images": [
-                "Assassin_logo"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Assassin_logo/character_image_logo/25.png"
-            ]
-        },
-        "Captain_image": {
-            "composite": false,
-            "source_images": [
-                "Captain_image"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Captain_image/character_image/26.png"
-            ]
-        },
-        "Captain_logo": {
-            "composite": false,
-            "source_images": [
-                "Captain_logo"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Captain_logo/character_image_logo/27.png"
-            ]
-        },
-        "Ambassador_image": {
-            "composite": false,
-            "source_images": [
-                "Ambassador_image"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Ambassador_image/character_image/28.png"
-            ]
-        },
-        "Ambassador_logo": {
-            "composite": false,
-            "source_images": [
-                "Ambassador_logo"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Ambassador_logo/character_image_logo/29.png"
-            ]
-        },
-        "Contessa_image": {
-            "composite": false,
-            "source_images": [
-                "Contessa_image"
-            ],
-            "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Contessa_image/character_image/30.png"
-            ]
-        },
-        "Contessa_logo": {
-            "composite": false,
-            "source_images": [
+                "token_image",
+                "Duke_image",
+                "Duke_logo",
+                "Assassin_image",
+                "Assassin_logo",
+                "Captain_image",
+                "Captain_logo",
+                "Ambassador_image",
+                "Ambassador_logo",
+                "Contessa_image",
                 "Contessa_logo"
             ],
+            "composite": true
+        },
+        "setup_image": {
             "image_paths": [
-                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/scaled/Contessa_logo/character_image_logo/31.png"
-            ]
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/setup.png"
+            ],
+            "source_images": [
+                "token_image",
+                "Duke_image",
+                "Duke_logo",
+                "Assassin_image",
+                "Assassin_logo",
+                "Captain_image",
+                "Captain_logo",
+                "Ambassador_image",
+                "Ambassador_logo",
+                "Contessa_image",
+                "Contessa_logo"
+            ],
+            "composite": true
+        },
+        "Duke_image_with_logo": {
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Duke_image_with_logo"
+            ],
+            "source_images": [
+                "Duke_image",
+                "Duke_logo"
+            ],
+            "composite": true
+        },
+        "Assassin_image_with_logo": {
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Assassin_image_with_logo"
+            ],
+            "source_images": [
+                "Assassin_image",
+                "Assassin_logo"
+            ],
+            "composite": true
+        },
+        "Captain_image_with_logo": {
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Captain_image_with_logo"
+            ],
+            "source_images": [
+                "Captain_image",
+                "Captain_logo"
+            ],
+            "composite": true
+        },
+        "Ambassador_image_with_logo": {
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Ambassador_image_with_logo"
+            ],
+            "source_images": [
+                "Ambassador_image",
+                "Ambassador_logo"
+            ],
+            "composite": true
+        },
+        "Contessa_image_with_logo": {
+            "image_paths": [
+                "/Users/ben/custom-board-games/src/custom_board_games/generated/images/test_game_run/Contessa_image_with_logo"
+            ],
+            "source_images": [
+                "Contessa_image",
+                "Contessa_logo"
+            ],
+            "composite": true
         }
     }
 }
